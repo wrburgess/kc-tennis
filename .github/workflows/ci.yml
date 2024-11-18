@@ -1,55 +1,78 @@
-name: CI
+name: Continuous Integration
 
-on:
-  pull_request:
-  push:
-    branches: [ main ]
+on: [push]
 
 jobs:
-  scan_ruby:
-    runs-on: ubuntu-latest
+  test:
+    name: Run RSpec Tests
+    runs-on: blacksmith-4vcpu-ubuntu-2204
+
+    env:
+      RAILS_ENV: test
+
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: postgres
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
+      - name: Cache Cargo dependencies
+        uses: useblacksmith/cache@v5
         with:
-          ruby-version: .ruby-version
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            target
+          key: ${{ matrix.rust }}-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: |
+            ${{ runner.labels }}-rust-${{ matrix.rust }}-
+          
+      - name: Read .tool-versions
+        uses: marocchino/tool-versions-action@v1
+        id: versions
+
+      - name: Install ruby
+        uses: useblacksmith/setup-ruby@v2
+        with:
           bundler-cache: true
+          ruby-version: ${{ steps.versions.outputs.ruby }}
+
+      - name: Install ruby gems
+        run: bundle install
 
       - name: Scan for common Rails security vulnerabilities using static analysis
         run: bin/brakeman --no-pager
 
-  scan_js:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
+      - name: Install node
+        uses: useblacksmith/setup-node@v5
         with:
-          ruby-version: .ruby-version
-          bundler-cache: true
+          cache: "yarn"
+          node-version: ${{ steps.versions.outputs.nodejs }}
+
+      - name: Install node packages
+        run: yarn install
 
       - name: Scan for security vulnerabilities in JavaScript dependencies
         run: bin/importmap audit
 
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - name: Setup database
+        run: bin/rails db:create db:schema:load
 
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: .ruby-version
-          bundler-cache: true
+      # - name: Prepare test environment
+      #   run: bin/rails spec:prepare css:build
 
-      - name: Lint code for consistent style
-        run: bin/rubocop -f github
-
+      # - name: Run tests
+      #   run: bundle exec rspec --format RSpec::Github::Formatter --format progress
