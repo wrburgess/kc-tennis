@@ -1,7 +1,7 @@
 # kc.tennis
 
-* [GitHub](https://github.com/wrburgess/kc-tennis.git)
-* [Github Actions/CI](https://github.com/wrburgess/kc-tennis/actions/new)
+* [GitHub](https://github.com/wrburgess/kc-tennis)
+* [Github Actions/CI](https://github.com/wrburgess/kc-tennis/actions)
 * [Production Site](https://www.kc.tennis)
 
 ## Useful Commands
@@ -10,7 +10,7 @@
 
 ## Tools Versions
 
-### Install asdf
+### Install asdf for dependency versioning
 
 * [asdf](https://github.com/asdf-vm/asdf)
 * Install with `brew install asdf`
