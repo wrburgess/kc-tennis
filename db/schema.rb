@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_11_18_205625) do
+ActiveRecord::Schema[8.0].define(version: 2024_11_18_214724) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -122,6 +122,62 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_18_205625) do
     t.integer "lock_version", default: 0, null: false
     t.text "metadata"
     t.index ["task_name", "status", "created_at"], name: "index_maintenance_tasks_runs", order: { created_at: :desc }
+  end
+
+  create_table "system_group_system_roles", force: :cascade do |t|
+    t.bigint "system_group_id"
+    t.bigint "system_role_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["system_group_id"], name: "index_system_group_system_roles_on_system_group_id"
+    t.index ["system_role_id"], name: "index_system_group_system_roles_on_system_role_id"
+  end
+
+  create_table "system_group_users", force: :cascade do |t|
+    t.bigint "system_group_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["system_group_id"], name: "index_system_group_users_on_system_group_id"
+    t.index ["user_id"], name: "index_system_group_users_on_user_id"
+  end
+
+  create_table "system_groups", force: :cascade do |t|
+    t.string "name"
+    t.string "abbreviation"
+    t.string "description"
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "system_permissions", force: :cascade do |t|
+    t.string "name"
+    t.string "abbreviation"
+    t.string "resource"
+    t.string "operation"
+    t.string "description"
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "system_role_system_permissions", force: :cascade do |t|
+    t.bigint "system_role_id"
+    t.bigint "system_permission_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["system_permission_id"], name: "index_system_role_system_permissions_on_system_permission_id"
+    t.index ["system_role_id"], name: "index_system_role_system_permissions_on_system_role_id"
+  end
+
+  create_table "system_roles", force: :cascade do |t|
+    t.string "name"
+    t.string "abbreviation"
+    t.string "description"
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
