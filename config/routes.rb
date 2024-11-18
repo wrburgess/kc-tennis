@@ -1,14 +1,32 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
+  root to: "static#index"
   get "up" => "rails/health#show", as: :rails_health_check
 
-  # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
-  # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
-  # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
+  devise_for :users
+  mount MaintenanceTasks::Engine, at: "/maintenance_tasks"
 
-  # Defines the root path route ("/")
-  # root "posts#index"
+  scope "/admin" do
+    authenticate :user, lambda { |u| u.admin? } do
+      mount GoodJob::Engine, at: :good_job
+      mount MaintenanceTasks::Engine, at: :maintenance_tasks
+    end
+
+    if Rails.env.development? || Rails.env.staging?
+      authenticate :user, lambda { |u| u.admin? } do
+        mount RailsDb::Engine, at: "/rails/db", as: :rails_db
+      end
+    end
+
+    if Rails.env.development?
+      authenticate :user, lambda { |u| u.admin? } do
+        mount Lookbook::Engine, at: :lookbook
+      end
+    end
+
+    # resources :users, concerns: :exportable do
+    #   member do
+    #     put :trigger_password_reset_email
+    #   end
+    # end
+  end
 end
