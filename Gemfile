@@ -43,7 +43,6 @@ group :development do
   gem "brakeman", "6.2.2", require: false
   gem "bullet", "8.0.0"
   gem "bundler-audit", "0.9.2", require: false
-  gem "factory_bot_rails", "6.4.4"
   gem "hakiri", "0.7.2", require: false
   gem "lookbook", "2.3.4"
   gem "rspec-rails", "7.1.0"
@@ -54,6 +53,7 @@ end
 group :test do
   gem "capybara", "3.40.0"
   gem "database_cleaner-active_record", "2.2.0"
+  gem "factory_bot_rails", "6.4.4"
   gem "faker", "3.5.1"
   gem "rails-controller-testing", "1.0.5"
   gem "rspec-github", "2.4.0", require: false

@@ -13,10 +13,10 @@ class User < ApplicationRecord
     :validatable,
   )
 
-  # has_many :system_group_users, dependent: :destroy
-  # has_many :system_groups, through: :system_group_users
-  # has_many :system_roles, through: :system_groups
-  # has_many :system_permissions, through: :system_roles
+  has_many :system_group_users, dependent: :destroy
+  has_many :system_groups, through: :system_group_users
+  has_many :system_roles, through: :system_groups
+  has_many :system_permissions, through: :system_roles
 
   scope :select_order, -> { order("last_name ASC") }\
 
