@@ -57,8 +57,8 @@ jobs:
       - name: Setup database
         run: bin/rails db:create db:schema:load
 
-      # - name: Prepare test environment
-      #   run: bin/rails spec:prepare css:build
+      - name: Prepare test environment
+        run: bin/rails spec:prepare css:build
 
-      # - name: Run tests
-      #   run: bundle exec rspec --format RSpec::Github::Formatter --format progress
+      - name: Run tests
+        run: bundle exec rspec --format RSpec::Github::Formatter --format progress
