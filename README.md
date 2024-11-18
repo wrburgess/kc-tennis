@@ -39,7 +39,7 @@
 * [node](https://nodejs.org/en/)
 * [rails](https://rubyonrails.org/)
 * [yarn](https://yarnpkg.com/)
-* [postgres (heroku)](https://www.postgresql.org/)
+* [postgres](https://www.postgresql.org/)
 * [bootstrap](https://getbootstrap.com/)
 
 ## Encrypted Credentials
