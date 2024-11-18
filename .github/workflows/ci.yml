@@ -54,9 +54,6 @@ jobs:
       - name: Install node packages
         run: yarn install
 
-      - name: Scan for security vulnerabilities in JavaScript dependencies
-        run: bin/importmap audit
-
       - name: Setup database
         run: bin/rails db:create db:schema:load
 
