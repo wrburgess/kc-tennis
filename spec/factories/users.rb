@@ -11,6 +11,8 @@ FactoryBot.define do
     password_confirmation { fake_password }
     notes { Faker::Lorem.sentence(word_count: 12) }
     confirmed_at { Time.zone.now - 1.day }
+    confirmation_sent_at { Time.zone.now - 1.day }
+    confirmation_token { 'abcd1234' }
   end
 
   trait :super_user do

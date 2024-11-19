@@ -10,32 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_11_19_023512) do
+ActiveRecord::Schema[8.0].define(version: 2024_11_18_215537) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
-
-  create_table "contacts", force: :cascade do |t|
-    t.string "first_name"
-    t.string "middle_name"
-    t.string "last_name"
-    t.string "prefix"
-    t.string "title"
-    t.string "address_1"
-    t.string "address_2"
-    t.string "city"
-    t.string "state"
-    t.string "zip_code"
-    t.string "country"
-    t.string "direct_phone_number"
-    t.string "office_phone_number"
-    t.string "fax_phone_number"
-    t.string "email_address_1"
-    t.string "email_address_2"
-    t.text "notes"
-    t.datetime "archived_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "data_logs", force: :cascade do |t|
     t.string "loggable_type", null: false
@@ -140,17 +117,6 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_19_023512) do
     t.index ["scheduled_at"], name: "index_good_jobs_on_scheduled_at", where: "(finished_at IS NULL)"
   end
 
-  create_table "links", force: :cascade do |t|
-    t.string "url_type"
-    t.string "url"
-    t.string "secure_code"
-    t.string "video_type"
-    t.text "notes"
-    t.datetime "archived_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "maintenance_tasks_runs", force: :cascade do |t|
     t.string "task_name", null: false
     t.datetime "started_at", precision: nil
@@ -170,79 +136,6 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_19_023512) do
     t.integer "lock_version", default: 0, null: false
     t.text "metadata"
     t.index ["task_name", "status", "created_at"], name: "index_maintenance_tasks_runs", order: { created_at: :desc }
-  end
-
-  create_table "organizations", force: :cascade do |t|
-    t.string "name"
-    t.string "organization_type"
-    t.string "company_no"
-    t.string "address_1"
-    t.string "address_2"
-    t.string "city"
-    t.string "state"
-    t.string "zip_code"
-    t.string "country"
-    t.string "fax_phone_number"
-    t.string "office_phone_number_1"
-    t.string "office_phone_number_2"
-    t.string "email_address_1"
-    t.string "email_address_2"
-    t.string "website_url"
-    t.text "notes"
-    t.datetime "archived_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "reports", force: :cascade do |t|
-    t.string "name", null: false
-    t.text "description"
-    t.text "sql", null: false
-    t.text "notes"
-    t.datetime "archived_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "storage_asset_service_prices", force: :cascade do |t|
-    t.string "storage_asset_service"
-    t.string "storage_asset_service_tier"
-    t.string "storage_asset_service_region"
-    t.decimal "price_per_gb_per_month"
-    t.integer "years_reserved"
-    t.integer "priority"
-    t.text "notes"
-    t.datetime "archived_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "storage_asset_sessions", force: :cascade do |t|
-    t.string "setting", null: false
-    t.string "value"
-    t.datetime "expires_at"
-    t.text "notes"
-    t.datetime "archived_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["setting"], name: "index_storage_asset_sessions_on_setting", unique: true
-  end
-
-  create_table "storage_assets", force: :cascade do |t|
-    t.string "service", null: false
-    t.string "name", null: false
-    t.string "full_path", null: false
-    t.bigint "size_bytes", null: false
-    t.string "access_tier"
-    t.string "temporary_url"
-    t.datetime "temporary_url_expires_at"
-    t.datetime "asset_created_at"
-    t.datetime "asset_updated_at"
-    t.text "notes"
-    t.datetime "archived_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["full_path"], name: "index_storage_assets_on_full_path", unique: true
   end
 
   create_table "system_group_system_roles", force: :cascade do |t|

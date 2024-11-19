@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root to: "static#index"
   get "up" => "rails/health#show", as: :rails_health_check
 
-  devise_for :users
+  # devise_for :users
 
   concern :copyable do
     member do

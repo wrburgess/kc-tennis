@@ -15,7 +15,7 @@ gem 'bootsnap', '1.18.4', require: false
 gem 'caxlsx', '4.1.0'
 gem 'caxlsx_rails', '0.6.4'
 gem 'csv', '3.3.0'
-gem 'devise', '4.9.4'
+# gem 'devise', '4.9.4'
 gem 'good_job', '4.4.2'
 gem 'jbuilder', '2.13.0'
 gem 'jsbundling-rails', '1.3.1'

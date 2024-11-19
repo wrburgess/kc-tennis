@@ -2,16 +2,16 @@ class User < ApplicationRecord
   include Archivable
   include Loggable
 
-  devise(
-    :confirmable,
-    :database_authenticatable,
-    :lockable,
-    :recoverable,
-    :rememberable,
-    :timeoutable,
-    :trackable,
-    :validatable,
-  )
+  # devise(
+  #   :confirmable,
+  #   :database_authenticatable,
+  #   :lockable,
+  #   :recoverable,
+  #   :rememberable,
+  #   :timeoutable,
+  #   :trackable,
+  #   :validatable,
+  # )
 
   has_many :data_logs, dependent: :destroy
   has_many :system_group_users, dependent: :destroy
