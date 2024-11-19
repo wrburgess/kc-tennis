@@ -33,10 +33,11 @@ class AddUserForDevise < ActiveRecord::Migration[8.0]
       # Profile
       t.string   :first_name
       t.string   :last_name
-      t.text     :notes
 
       # Meta
-      t.timestamps null: false
+      t.text :notes
+      t.datetime :archived_at
+      t.timestamps
 
       # Indexes
       t.index [ "email" ], name: "index_users_on_email", unique: true

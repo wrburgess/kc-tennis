@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  # include Archivable
-  # include Loggable
+  include Archivable
+  include Loggable
 
   devise(
     :confirmable,
@@ -13,19 +13,20 @@ class User < ApplicationRecord
     :validatable,
   )
 
+  has_many :data_logs, dependent: :destroy
   has_many :system_group_users, dependent: :destroy
   has_many :system_groups, through: :system_group_users
   has_many :system_roles, through: :system_groups
   has_many :system_permissions, through: :system_roles
 
-  scope :select_order, -> { order("last_name ASC") }\
+  scope :select_order, -> { order(last_name: :asc, first_name: :asc) }
 
   def admin?
     true
   end
 
   def self.options_for_select
-    select_order.map { |user| [ user.last_name_first_name, user.id ] }
+    select_order.map { |user| [user.last_name_first_name, user.id] }
   end
 
   def access_authorized?(resource:, operation:)
@@ -42,9 +43,9 @@ class User < ApplicationRecord
 
   def last_name_first_name
     return "#{last_name}, #{first_name}".titleize.strip if last_name.present? && first_name.present?
-    return "#{last_name}".titleize.strip if first_name.blank?
+    return last_name.titleize.strip if first_name.blank?
 
-    "#{first_name}".titleize.strip if last_name.blank?
+    first_name.titleize.strip if last_name.blank?
   end
 
   def full_name_and_email

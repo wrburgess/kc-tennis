@@ -16,4 +16,5 @@ admins = [
 admins.each do |admin|
   User.create_with(admin).find_or_create_by(email: admin[:email])
 end
+
 puts "END:   Create admins, Users Count: #{User.count}"

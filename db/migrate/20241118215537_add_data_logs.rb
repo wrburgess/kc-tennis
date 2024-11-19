@@ -4,9 +4,9 @@ class AddDataLogs < ActiveRecord::Migration[8.0]
       t.references :loggable, polymorphic: true, null: false
       t.references :user
       t.string :operation
-      t.text :note
       t.jsonb :meta
       t.jsonb :original_data
+      t.text :note
       t.timestamps
     end
   end
