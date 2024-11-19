@@ -1,0 +1,1 @@
+class SystemPermissionPolicy < ApplicationPolicy; end

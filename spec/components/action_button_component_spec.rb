@@ -1,0 +1,251 @@
+require 'rails_helper'
+
+describe ActionButton::Component, type: :component do
+  include_context 'component_setup'
+
+  describe '#render' do
+    let(:title) { create(:title) }
+    let(:sale) { create(:sale) }
+    let(:report) { create(:report) }
+
+    before do
+      sign_in(user)
+    end
+
+    it 'renders a cancel_to_index action button' do
+      component = described_class.new(operation: :cancel_to_index, instance: sale, public: true)
+      render_inline(component)
+
+      expect(page).to have_text('Cancel')
+      expect(page).to have_link(nil, href: '/admin/sales')
+      expect(page).to have_css('.btn-secondary')
+      expect(page).to have_css('.bi-x-octagon')
+
+      link = page.find('a', text: 'Cancel')
+      method_attribute = link['data-method']
+
+      expect(method_attribute).to eq('get')
+    end
+
+    it 'renders a cancel_to_show action button' do
+      component = described_class.new(operation: :cancel_to_show, instance: sale, public: true)
+      render_inline(component)
+
+      expect(page).to have_text('Cancel')
+      expect(page).to have_link(nil, href: "/admin/sales/#{sale.id}")
+      expect(page).to have_css('.btn-secondary')
+      expect(page).to have_css('.bi-x-octagon')
+
+      link = page.find('a', text: 'Cancel')
+      method_attribute = link['data-method']
+
+      expect(method_attribute).to eq('get')
+    end
+
+    it 'renders a copy action button' do
+      component = described_class.new(operation: :copy, instance: sale)
+      render_inline(component)
+
+      expect(page).to have_text('Create Duplicate Sale')
+      expect(page).to have_link(nil, href: "/admin/sales/#{sale.id}/copy")
+      expect(page).to have_css('.btn-success')
+      expect(page).to have_css('.bi-front')
+
+      link = page.find('a', text: 'Create Duplicate Sale')
+      method_attribute = link['data-method']
+
+      expect(method_attribute).to eq('post')
+    end
+
+    it 'renders a new action button' do
+      component = described_class.new(operation: :new, instance: title)
+      render_inline(component)
+
+      expect(page).to have_text('Create New Title')
+      expect(page).to have_link(nil, href: '/admin/titles/new')
+      expect(page).to have_css('.btn-success')
+      expect(page).to have_css('.bi-plus-circle')
+
+      link = page.find('a', text: 'Create New Title')
+      method_attribute = link['data-method']
+      expect(method_attribute).to eq('get')
+    end
+
+    it 'renders an edit action button' do
+      component = described_class.new(operation: :edit, instance: title)
+      render_inline(component)
+
+      expect(page).to have_text('Edit')
+      expect(page).to have_link(nil, href: "/admin/titles/#{title.id}/edit")
+      expect(page).to have_css('.btn-warning')
+      expect(page).to have_css('.bi-pencil')
+
+      link = page.find('a', text: 'Edit')
+      method_attribute = link['data-method']
+      expect(method_attribute).to eq('get')
+    end
+
+    it 'renders an edit action link' do
+      component = described_class.new(operation: :edit, instance: title, button_classes: :none, icon_classes: :none)
+      render_inline(component)
+
+      expect(page).to have_text('Edit')
+      expect(page).to have_link(nil, href: "/admin/titles/#{title.id}/edit")
+      expect(page).to_not have_css('.btn-warning')
+      expect(page).to_not have_css('.bi-pencil')
+
+      link = page.find('a', text: 'Edit')
+      method_attribute = link['data-method']
+      expect(method_attribute).to eq('get')
+    end
+
+    it 'renders an export xlsx action button' do
+      component = described_class.new(operation: :export_xlsx, instance: title)
+      render_inline(component)
+
+      expect(page).to have_text('Download')
+      expect(page).to have_link(nil, href: '/admin/titles/export_xlsx')
+      expect(page).to have_css('.btn-info')
+      expect(page).to have_css('.bi-file-spreadsheet')
+
+      link = page.find('a', text: 'Download')
+      method_attribute = link['data-method']
+      expect(method_attribute).to eq('get')
+    end
+
+    it 'renders a destroy action button' do
+      component = described_class.new(operation: :destroy, instance: title)
+      render_inline(component)
+
+      expect(page).to have_text('Delete')
+      expect(page).to have_link(nil, href: "/admin/titles/#{title.id}")
+      expect(page).to have_css('.btn-danger')
+      expect(page).to have_css('.bi-x-circle')
+
+      link = page.find('a', text: 'Delete')
+      method_attribute = link['data-method']
+      expect(method_attribute).to eq('delete')
+    end
+
+    it 'renders an index action button' do
+      component = described_class.new(operation: :index, instance: title)
+      render_inline(component)
+
+      expect(page).to have_text('View List')
+      expect(page).to have_link(nil, href: '/admin/titles')
+      expect(page).to have_css('.btn-primary')
+      expect(page).to have_css('.bi-list-ul')
+
+      link = page.find('a', text: 'View List')
+      method_attribute = link['data-method']
+      expect(method_attribute).to eq('get')
+    end
+
+    it 'renders a show action button' do
+      component = described_class.new(operation: :show, instance: title)
+      render_inline(component)
+
+      expect(page).to have_text('View')
+      expect(page).to have_link(nil, href: "/admin/titles/#{title.id}")
+      expect(page).to have_css('.btn-info')
+      expect(page).to have_css('.bi-eyeglasses')
+
+      link = page.find('a', text: 'View')
+      method_attribute = link['data-method']
+      expect(method_attribute).to eq('get')
+    end
+
+    it 'renders a show action link' do
+      component = described_class.new(operation: :show, instance: title, button_classes: :none, icon_classes: :none)
+      render_inline(component)
+
+      expect(page).to have_text('View')
+      expect(page).to have_link(nil, href: "/admin/titles/#{title.id}")
+      expect(page).to_not have_css('.btn-warning')
+      expect(page).to_not have_css('.bi-pencil')
+
+      link = page.find('a', text: 'View')
+      method_attribute = link['data-method']
+      expect(method_attribute).to eq('get')
+    end
+
+    it 'renders a user_export_xlsx action link' do
+      component = described_class.new(operation: :user_export_xlsx, instance: report)
+      render_inline(component)
+
+      expect(page).to have_text('Download')
+      expect(page).to have_link(nil, href: "/admin/reports/#{report.id}/user_export_xlsx")
+      expect(page).to_not have_css('.btn-warning')
+      expect(page).to_not have_css('.bi-pencil')
+
+      link = page.find('a', text: 'Download')
+      method_attribute = link['data-method']
+      expect(method_attribute).to eq('get')
+    end
+
+    it 'renders a user_export_xlsx action button' do
+      component = described_class.new(operation: :user_export_xlsx, instance: report)
+      render_inline(component)
+
+      expect(page).to have_text('Download')
+      expect(page).to have_link(nil, href: "/admin/reports/#{report.id}/user_export_xlsx")
+      expect(page).to have_css('.btn-info')
+      expect(page).to have_css('.bi-file-spreadsheet')
+
+      link = page.find('a', text: 'Download')
+      method_attribute = link['data-method']
+      expect(method_attribute).to eq('get')
+    end
+
+    it 'renders a button with overrides' do
+      custom_text = Faker::Lorem.word
+      custom_path = Faker::Internet.url
+      custom_method = Faker::Lorem.word
+      component = described_class.new(operation: :new, instance: title, method: custom_method, path: custom_path, text: custom_text, button_classes: 'btn btn-test', classes_append: 'm-2', icon_classes: 'bi bi-test')
+      render_inline(component)
+
+      expect(page).to have_text(custom_text)
+      expect(page).to have_link(nil, href: custom_path)
+      expect(page).to have_css('.btn-test')
+      expect(page).to have_css('.bi-test')
+      expect(page).to have_css('.m-2')
+
+      link = page.find('a', text: custom_text)
+      method_attribute = link['data-method']
+      expect(method_attribute).to eq(custom_method)
+    end
+
+    it 'renders a button as authorized despite non-sanctioned operation' do
+      custom_text = Faker::Lorem.word
+      custom_path = Faker::Internet.url
+      custom_method = Faker::Lorem.word
+      custom_operation = Faker::Lorem.word.to_sym
+      component = described_class.new(operation: custom_operation, instance: title, method: custom_method, path: custom_path, text: custom_text, button_classes: 'btn btn-test', classes_append: 'm-2', icon_classes: 'bi bi-test', public: true)
+      render_inline(component)
+
+      expect(page).to have_text(custom_text)
+      expect(page).to have_link(nil, href: custom_path)
+      expect(page).to have_css('.btn-test')
+      expect(page).to have_css('.bi-test')
+      expect(page).to have_css('.m-2')
+
+      link = page.find('a', text: custom_text)
+      method_attribute = link['data-method']
+      expect(method_attribute).to eq(custom_method)
+    end
+
+    it 'renders a button as unauthorized' do
+      custom_text = Faker::Lorem.word
+      custom_path = Faker::Internet.url
+      custom_method = Faker::Lorem.word
+      custom_operation = Faker::Lorem.word.to_sym
+      component = described_class.new(operation: custom_operation, instance: title, method: custom_method, path: custom_path, text: custom_text, button_classes: 'btn btn-test', classes_append: 'm-2', icon_classes: 'bi bi-test', public: false)
+      render_inline(component)
+
+      expect(page).to_not have_text(custom_text)
+      expect(page).to_not have_css('.btn-test')
+      expect(page).to_not have_css('.bi-test')
+      expect(page).to_not have_css('.m-2')
+    end
+  end
+end

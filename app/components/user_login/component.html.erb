@@ -1,0 +1,8 @@
+<ul class="<%= style[:base] %>">
+  <%= link_to "Support", "https://mpi.media/avails_support", class: "nav-item nav-link", target: "_blank" %>
+  <% if @user_signed_in %>
+    <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "nav-item nav-link" %>
+  <% else %>
+    <%= link_to "Login", new_user_session_path, class: "nav-item nav-link" %>
+  <% end %>
+</ul>

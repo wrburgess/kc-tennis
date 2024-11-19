@@ -1,0 +1,43 @@
+<%= component "page_wrapper", instance: @instance, controller: params[:controller], action: params[:action] do %>
+  <div class="row header">
+    <%= component 'header_for_new', instance: @instance %>
+  </div>
+  <%= form_with url: send("#{@instance.model_name.singular.downcase.pluralize}_path"), method: :post do |form| %>
+    <div class="row">
+      <div class="col-6">
+        <div class="form-floating">
+          <input type="text" class="form-control" id="first_name" name="first_name" value="<%= @instance.first_name %>" required>
+          <label for="first_name" class="form-label">First Name</label>
+        </div>
+        <div class="form-floating">
+          <input type="text" class="form-control" id="last_name" name="last_name" value="<%= @instance.last_name %>" required>
+          <label for="last_name" class="form-label">Last Name</label>
+        </div>
+        <div class="form-floating">
+          <input type="text" class="form-control" id="email" name="email" value="<%= @instance.email %>" required>
+          <label for="email" class="form-label">Email Address</label>
+        </div>
+        <div class="form-group">
+          <label for="role" class="form-label">Role</label>
+          <%= select_tag(:role, options_for_select(UserRoles.options_for_select, @instance.role), { multiple: false, prompt: "Select a role...", autocomplete: "off", class: "tom-select", required: true }) %>
+        </div>
+        <div class="form-floating">
+          <input type="password" class="form-control" id="password" name="password" value="" required>
+          <label for="password" class="form-label">Password</label>
+        </div>
+        <div class="form-floating">
+          <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" value="" required>
+          <label for="password_confirmation" class="form-label">Confirm Password</label>
+        </div>
+      </div><!-- col-6 -->
+      <div class="col-6">
+      </div><!-- col-6 -->
+    </div><!-- row -->
+    <div class="row">
+      <div class="form-group">
+        <%= component "action_button", operation: :cancel_to_index, instance: @instance, classes_append: "me-3", public: true %>
+        <%= component "form_button", operation: :submit %>
+      </div>
+    </div><!-- row -->
+  <% end %>
+<% end %>

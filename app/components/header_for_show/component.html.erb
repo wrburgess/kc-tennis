@@ -1,0 +1,13 @@
+<div class="col-6">
+  <h2>
+    <%= link_to(link_text, send("#{path_name}_path")) %>:&nbsp; 
+    <%= headline %>
+    <%= component "archived_flag", archived_at: @instance.try(:archived_at) %>
+  </h2>
+</div>
+<div class="col-6">
+  <%= component("action_button", operation: :destroy, instance: @instance, classes_append: "float-end me-2") if @delete_button %>
+  <%= component("action_button", operation: :edit, instance: @instance, classes_append: "float-end me-2") if @edit_button %>
+  <%= component("action_button", operation: :copy, instance: @instance, classes_append: "float-end me-2") if @copy_button %>
+  <%= component("action_button", operation: :download, instance: @instance, classes_append: "float-end me-2") if @download_show_button %>
+</div>
