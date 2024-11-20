@@ -29,7 +29,7 @@
 * Set global version: `asdf global [plugin] latest`
 * Set local version: `asdf local [plugin] latest`
 
-### Setup Yarn 3+
+### Setup Yarn 4+
 
 * Install Yarn 4 Plugin outdated: `yarn plugin import https://go.mskelton.dev/yarn-outdated/v4`
 
@@ -83,23 +83,15 @@
 * Setup alias `alias mpivid="cloudflared tunnel run mpivid"`
 * Check tunnel status with `cloudflared tunnel info mpivid`
 
-
-
 ## Security Checks
 
 * run `bundle outdated` > update gems with `bundle update` > run tests
 * run `bundle-audit update`
 * run `bundle-audit`
 * run `brakeman`
-* run `hakiri system:steps`
-* run `hakiri manifest:generate` > `hakiri system:scan`
-* run `hakiri gemfile:scan`
 
 ## Security References
 
-* [How Do Ruby/Rails Developers Keep Updated on Security Alerts?](http://gavinmiller.io/2015/staying-up-to-date-with-security-alerts/)
-* [Ruby Security Mailing List](https://groups.google.com/forum/#!forum/ruby-security-ann)
-* [Rails Security Mailing List](https://groups.google.com/forum/?fromgroups#!forum/rubyonrails-security)
+* [Ruby Security Discource](https://discuss.rubyonrails.org/c/security-announcements/9)
 * [CVE Details](https://www.cvedetails.com/)
-* [Hakiri service (fee-based)](https://hakiri.io/)
-* [AppCanary service (fee-based)](https://appcanary.com/)
+* [Security Alerts on GitHub](https://github.blog/news-insights/product-news/introducing-security-alerts-on-github/)

@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
       params[:q].merge!({ archived_at_not_null: 0 })
     end
 
-    params.required(:q).permit!
+    params.require(:q).permit(:archived_at_not_null)
   end
 
   def user_not_authorized
