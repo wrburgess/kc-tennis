@@ -97,7 +97,7 @@ describe Admin::LinksController, type: :controller do
   end
 
   describe '#unarchive' do
-    archive_date = (Time.now - 1)
+    archive_date = 1.minute.ago.beginning_of_minute
     let(:instance) { create(resource, archived_at: archive_date) }
 
     it 'unarchives an instance' do
