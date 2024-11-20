@@ -23,4 +23,13 @@ RSpec.configure do |config|
   config.append_after(:each) do |example|
     DatabaseCleaner.clean unless example.metadata[:skip_db_cleaner]
   end
+
+  # TODO: Remove below adjustments when Devise fixes https://github.com/heartcombo/devise/issues/5705
+  config.before(:each, type: :controller) do
+    Rails.application.reload_routes_unless_loaded
+  end
+
+  config.before(:each, type: :component) do
+    Rails.application.reload_routes_unless_loaded
+  end
 end

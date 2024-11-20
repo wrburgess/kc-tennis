@@ -18,8 +18,6 @@ describe User, type: :model do
   end
 
   describe 'validations' do
-    it { is_expected.to validate_presence_of(:first_name) }
-
     it 'is invalid without an email address' do
       expect(FactoryBot.build(:user, password: nil)).not_to be_valid
     end

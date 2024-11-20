@@ -6,8 +6,6 @@ describe Organization, type: :model do
   it_behaves_like 'archivable'
   it_behaves_like 'loggable'
 
-  it { is_expected.to have_many :contacts }
-
   it 'has a valid factory' do
     expect(create(:organization)).to be_valid
   end

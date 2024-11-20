@@ -2,12 +2,13 @@ require 'spec_helper'
 
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../config/environment', __dir__)
-require 'rspec/rails'
+
 # Prevent database truncation if the environment is production or staging
 abort('The Rails environment is running in production mode!') if Rails.env.production? || Rails.env.staging?
 require 'capybara/rspec'
 require 'pundit/rspec'
 require 'rake'
+require 'rspec/rails'
 require 'shoulda/matchers'
 include RSpec::Longrun::DSL
 
@@ -27,20 +28,18 @@ Capybara.register_driver :selenium_with_long_timeout do |app|
 end
 
 RSpec.configure do |config|
+  config.extend ControllerMacros, type: :component
+  config.extend ControllerMacros, type: :controller
   config.include ActiveJob::TestHelper
   config.include ActiveSupport::Testing::TimeHelpers
+  config.include Capybara::RSpecMatchers, type: :component
+  config.include Devise::Test::ControllerHelpers, type: :component
+  config.include Devise::Test::ControllerHelpers, type: :controller
   config.include FactoryBot::Syntax::Methods
   config.include Rails.application.routes.url_helpers
-  # config.include Warden::Test::Helpers
-
-  # config.extend ControllerMacros, type: :controller
-  # config.include Devise::Test::ControllerHelpers, type: :controller
-
-  config.include Capybara::RSpecMatchers, type: :component
-  # config.extend ControllerMacros, type: :component
-  # config.include Devise::Test::ControllerHelpers, type: :component
   config.include ViewComponent::SystemTestHelpers, type: :component
   config.include ViewComponent::TestHelpers, type: :component
+  config.include Warden::Test::Helpers
 
   config.fixture_paths = ["#{::Rails.root}/spec/fixtures"]
   config.use_transactional_fixtures = true
@@ -54,7 +53,7 @@ RSpec.configure do |config|
   end
 
   config.after(:each) do
-    # Warden.test_reset!
+    Warden.test_reset!
   end
 
   config.before(:each, type: :component) do

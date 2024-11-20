@@ -2,7 +2,6 @@ class AdminController < ApplicationController
   layout 'admin'
 
   before_action :authenticate_user!
-  before_action :redirect_unless_admin?
 
   def destroy
     @instance = @model_class.find(params[:id])
