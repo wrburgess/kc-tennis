@@ -1,0 +1,29 @@
+{
+  "ignored_warnings": [
+    {
+      "warning_type": "File Access",
+      "warning_code": 16,
+      "fingerprint": "cdbabd4a823b615e4e1a4433b0f81ce17625fe9bf47e2a9edad0c448783cad1c",
+      "check_name": "FileAccess",
+      "message": "Parameter value used in file name",
+      "file": "app/controllers/admin/links_controller.rb",
+      "line": 114,
+      "link": "https://brakemanscanner.org/docs/warning_types/file_access/",
+      "code": "File.open(\"#{Rails.root}/tmp/#{controller_class.find(params[:id]).class_name_singular}.xlsx\", \"wb\")",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Admin::LinksController",
+        "method": "member_export_xlsx"
+      },
+      "user_input": "params[:id]",
+      "confidence": "Weak",
+      "cwe_id": [
+        22
+      ],
+      "note": ""
+    }
+  ],
+  "updated": "2024-11-20 15:14:17 -0600",
+  "brakeman_version": "6.2.2"
+}
