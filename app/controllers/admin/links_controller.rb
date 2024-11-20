@@ -1,12 +1,12 @@
-class LinksController < ApplicationController
+class Admin::LinksController < ApplicationController
   include Pagy::Backend
 
   before_action :authenticate_user!
 
   def index
     authorize(controller_class)
-    @q = controller_class.includes(:titles).ransack(index_archivable_params)
-    @q.sorts = ['name asc', 'created_at desc'] if @q.sorts.empty?
+    @q = controller_class.ransack(index_archivable_params)
+    @q.sorts = controller_class.default_sort if @q.sorts.empty?
     @pagy, @instances = pagy(@q.result)
     @instance = controller_class.new
   end
@@ -27,7 +27,7 @@ class LinksController < ApplicationController
 
     instance.log(user: current_user, operation: action_name, meta: params.to_json)
     flash[:success] = "New #{instance.class_name_title} successfully created"
-    redirect_to polymorphic_path(instance)
+    redirect_to polymorphic_path([:admin, instance])
   end
 
   def edit
@@ -44,17 +44,27 @@ class LinksController < ApplicationController
 
     instance.log(user: current_user, operation: action_name, meta: params.to_json, original_data: original_instance.attributes.to_json)
     flash[:success] = "#{instance.class_name_title} successfully updated"
-    redirect_to polymorphic_path(instance)
+    redirect_to polymorphic_path([:admin, instance])
   end
 
   def destroy
     authorize(controller_class)
     instance = controller_class.find(params[:id])
-    instance.destroy
+    instance.archive
 
-    instance.log(user: current_user, operation: action_name)
-    flash[:danger] = "#{instance.class_name_title} successfully deleted"
-    redirect_to polymorphic_path(controller_class)
+    instance.log(user: current_user, operation: SystemOperations::ARCHIVED)
+    flash[:danger] = "#{instance.class_name_title} successfully archived"
+    redirect_to polymorphic_path([:admin, controller_class])
+  end
+
+  def unarchive
+    authorize(controller_class)
+    instance = controller_class.find(params[:id])
+    instance.unarchive
+
+    instance.log(user: current_user, operation: SystemOperations::UNARCHIVED)
+    flash[:danger] = "#{instance.class_name_title} successfully archived"
+    redirect_to polymorphic_path([:admin, instance])
   end
 
   def collection_export_xlsx
@@ -72,7 +82,33 @@ class LinksController < ApplicationController
     )
 
     @results = ActiveRecord::Base.connection.select_all(sql)
-    file_name = instance.class_name_plural
+    file_name = controller_class_plural
+    filepath = "#{Rails.root}/tmp/#{file_name}.xlsx"
+
+    File.open(filepath, 'wb') do |f|
+      f.write render_to_string(handlers: [:axlsx], formats: [:xlsx], template: 'xlsx/reports')
+    end
+
+    render xlsx: 'reports', handlers: [:axlsx], formats: [:xlsx], template: 'xlsx/reports', filename: "#{file_name}_#{DateTime.now.strftime('%Y-%m-%d_%k-%M-%S')}.xlsx"
+  end
+
+  def member_export_xlsx
+    authorize(controller_class)
+    instance = controller_class.find(params[:id])
+
+    sql = %(
+      SELECT
+        *
+      FROM
+        links
+      WHERE
+        links.id = #{instance.id}
+      ORDER BY
+        links.created_at ASC
+    )
+
+    @results = ActiveRecord::Base.connection.select_all(sql)
+    file_name = instance.class_name_singular
     filepath = "#{Rails.root}/tmp/#{file_name}.xlsx"
 
     File.open(filepath, 'wb') do |f|

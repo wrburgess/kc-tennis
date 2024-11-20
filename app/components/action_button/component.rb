@@ -88,29 +88,29 @@ class ActionButton::Component < ApplicationComponent
 
     case @operation
     when :cancel_to_index
-      send("#{@instance.class_name_plural}_path")
+      polymorphic_path([:admin, @instance.class])
     when :cancel_to_show
-      polymorphic_path(@instance)
+      polymorphic_path([:admin, @instance])
     when :collection_export_xlsx
-      send("collection_export_xlsx_#{@instance.class_name_plural}_path")
+      polymorphic_path([:export_xlsx, :admin, @instance.class])
     when :copy
-      send("copy_#{@instance.class_name_singular}_path", @instance)
+      polymorphic_path([:copy, :admin, @instance])
     when :destroy
-      polymorphic_path(@instance)
+      polymorphic_path([:admin, @instance], method: :delete)
     when :edit
-      send("edit_#{@instance.class_name_singular}_path", @instance)
+      edit_polymorphic_path([:admin, @instance])
     when :index
-      send("#{@instance.class_name_plural}_path")
+      polymorphic_path([:admin, @instance.class])
     when :member_export_xlsx
-      send("member_export_xlsx_#{@instance.class_name_singular}_path", @instance)
+      polymorphic_path([:export_xlsx, :admin, @instance])
     when :new
-      send("new_#{@instance.class_name_singular}_path")
+      new_polymorphic_path([:admin, @instance.class])
     when :show
-      polymorphic_path(@instance)
+      polymorphic_path([:admin, @instance])
     when :upload
-      send("upload_#{@instance.class_name_plural}_path", @instance)
+      polymorphic_path([:upload, :admin, @instance])
     when :upload_new
-      send("new_#{@instance.class_name_singular}_path")
+      new_polymorphic_path([:admin, @instance.class])
     else
       '/'
     end

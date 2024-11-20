@@ -90,4 +90,26 @@ describe LinkPolicy, type: :policy do
       expect(policy.collection_export_xlsx?).to be_falsey
     end
   end
+
+  describe '#member_export_xlsx?' do
+    it 'allows access if user has member_export_xlsx permission' do
+      expect(policy.member_export_xlsx?).to be_truthy
+    end
+
+    it 'denies access if user does not have member_export_xlsx permission' do
+      system_role.system_permissions.delete(sp_member_export_xlsx)
+      expect(policy.member_export_xlsx?).to be_falsey
+    end
+  end
+
+  describe '#unarchive?' do
+    it 'allows access if user has unarchive permission' do
+      expect(policy.unarchive?).to be_truthy
+    end
+
+    it 'denies access if user does not have unarchive permission' do
+      system_role.system_permissions.delete(sp_unarchive)
+      expect(policy.unarchive?).to be_falsey
+    end
+  end
 end

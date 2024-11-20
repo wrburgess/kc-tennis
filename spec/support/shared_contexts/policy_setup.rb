@@ -15,6 +15,7 @@ RSpec.shared_context 'policy_setup' do
   let(:sp_new) { create(:system_permission, name: "#{klass} New", resource: klass, operation: 'new') }
   let(:sp_show) { create(:system_permission, name: "#{klass} Show", resource: klass, operation: 'show') }
   let(:sp_update) { create(:system_permission, name: "#{klass} Update", resource: klass, operation: 'update') }
+  let(:sp_unarchive) { create(:system_permission, name: "#{klass} Unarchive", resource: klass, operation: 'unarchive') }
 
   before do
     system_role.system_permissions << [
@@ -27,7 +28,8 @@ RSpec.shared_context 'policy_setup' do
       sp_member_export_xlsx,
       sp_new,
       sp_show,
-      sp_update,
+      sp_unarchive,
+      sp_update
     ]
     system_group.system_roles << system_role
     system_group.users << user

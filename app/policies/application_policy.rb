@@ -40,7 +40,15 @@ class ApplicationPolicy
     user_access_authorized?(:destroy)
   end
 
+  def unarchive?
+    user_access_authorized?(:unarchive)
+  end
+
   def collection_export_xlsx?
     user_access_authorized?(:collection_export_xlsx)
+  end
+
+  def member_export_xlsx?
+    user_access_authorized?(:member_export_xlsx)
   end
 end

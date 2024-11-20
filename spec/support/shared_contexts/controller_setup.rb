@@ -1,6 +1,6 @@
 RSpec.shared_context 'controller_setup' do
   let(:user) { create(:user) }
-  let(:klass) { described_class.to_s.gsub('Controller', '').singularize.constantize }
+  let(:klass) { described_class.name.demodulize.gsub('Controller', '').singularize.constantize }
   let(:policy) { described_class.new(user, klass) }
 
   let(:system_group) { create(:system_group) }
@@ -14,6 +14,7 @@ RSpec.shared_context 'controller_setup' do
   let(:sp_member_export_xlsx) { create(:system_permission, name: "#{klass} Member Export Xlsx", resource: klass, operation: 'member_export_xlsx') }
   let(:sp_new) { create(:system_permission, name: "#{klass} New", resource: klass, operation: 'new') }
   let(:sp_show) { create(:system_permission, name: "#{klass} Show", resource: klass, operation: 'show') }
+  let(:sp_unarchive) { create(:system_permission, name: "#{klass} Unarchive", resource: klass, operation: 'unarchive') }
   let(:sp_update) { create(:system_permission, name: "#{klass} Update", resource: klass, operation: 'update') }
 
   before do
@@ -27,7 +28,8 @@ RSpec.shared_context 'controller_setup' do
       sp_member_export_xlsx,
       sp_new,
       sp_show,
-      sp_update,
+      sp_unarchive,
+      sp_update
     ]
     system_group.system_roles << system_role
     system_group.users << user

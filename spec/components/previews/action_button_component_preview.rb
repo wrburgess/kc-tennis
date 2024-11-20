@@ -5,47 +5,47 @@ class ActionButtonComponentPreview < ViewComponent::Preview
   # ------------
   # Component for an admin interface button
   def rendering_copy
-    resource = Sale.order('RANDOM()').first
+    resource = Link.order('RANDOM()').first
     render(ActionButton::Component.new(operation: :copy, instance: resource))
   end
 
   def rendering_destroy
-    resource = Title.order('RANDOM()').first
+    resource = Link.order('RANDOM()').first
     render(ActionButton::Component.new(operation: :destroy, instance: resource))
   end
 
   def rendering_edit
-    resource = Title.order('RANDOM()').first
+    resource = Link.order('RANDOM()').first
     render(ActionButton::Component.new(operation: :edit, instance: resource))
   end
 
   def rendering_edit_link
-    resource = Title.order('RANDOM()').first
+    resource = Link.order('RANDOM()').first
     render(ActionButton::Component.new(operation: :edit, instance: resource, button_classes: :none, icon_classes: :none))
   end
 
   def rendering_export_xlsx
-    resource = Title.order('RANDOM()').first
+    resource = Link.order('RANDOM()').first
     render(ActionButton::Component.new(operation: :export_xlsx, instance: resource))
   end
 
   def rendering_index
-    resource = Asset.order('RANDOM()').first
+    resource = User.order('RANDOM()').first
     render(ActionButton::Component.new(operation: :index, instance: resource))
   end
 
   def rendering_new
-    resource = Title.order('RANDOM()').first
+    resource = Link.order('RANDOM()').first
     render(ActionButton::Component.new(operation: :new, instance: resource))
   end
 
   def rendering_show
-    resource = Title.order('RANDOM()').first
+    resource = Link.order('RANDOM()').first
     render(ActionButton::Component.new(operation: :show, instance: resource))
   end
 
   def rendering_show_link
-    resource = Title.order('RANDOM()').first
+    resource = Link.order('RANDOM()').first
     render(ActionButton::Component.new(operation: :show, instance: resource, button_classes: :none, icon_classes: :none))
   end
   # @!endgroup

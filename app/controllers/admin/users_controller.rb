@@ -1,4 +1,4 @@
-class UsersController < AdminController
+class Admin::UsersController < AdminController
   include Pagy::Backend
 
   before_action :authenticate_user!

@@ -5,6 +5,18 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   add_flash_types :info, :error, :warning
 
+  def controller_class
+    controller_name.classify.constantize
+  end
+
+  def controller_class_plural
+    controller_name.underscore.pluralize
+  end
+
+  def controller_class_singular
+    controller_name.underscore.singularize
+  end
+
   private
 
   def index_archivable_params

@@ -4,6 +4,12 @@ Rails.application.routes.draw do
   root to: "static#index"
   get "up" => "rails/health#show", as: :rails_health_check
 
+  concern :archivable do
+    member do
+      get :unarchive
+    end
+  end
+
   concern :copyable do
     member do
       post :copy
@@ -12,13 +18,13 @@ Rails.application.routes.draw do
 
   concern :collection_exportable do
     collection do
-      get :export_xlsx
+      get :export_xlsx, action: :collection_export_xlsx
     end
   end
 
   concern :member_exportable do
     member do
-      get :export_xlsx
+      get :export_xlsx, action: :member_export_xlsx
     end
   end
 
@@ -30,7 +36,7 @@ Rails.application.routes.draw do
     end
   end
 
-  scope "/admin" do
+  namespace :admin do
     authenticate :user, lambda { |u| u.admin? } do
       mount GoodJob::Engine, at: :good_job
       mount MaintenanceTasks::Engine, at: :maintenance_tasks
@@ -44,7 +50,7 @@ Rails.application.routes.draw do
 
     resources :contacts, concerns: :collection_exportable
     resources :data_logs, only: [:index, :show], concerns: :collection_exportable
-    resources :links, concerns: :collection_exportable
+    resources :links, concerns: [:archivable, :collection_exportable, :member_exportable]
     resources :organizations, concerns: :collection_exportable
 
     resources :reports, concerns: [:collection_exportable, :member_exportable]
