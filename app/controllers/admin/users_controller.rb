@@ -91,10 +91,10 @@ class Admin::UsersController < AdminController
     filepath = "#{Rails.root}/tmp/#{file_name}.xlsx"
 
     File.open(filepath, 'wb') do |f|
-      f.write render_to_string(handlers: [:axlsx], formats: [:xlsx], template: 'xlsx/reports')
+      f.write render_to_string(handlers: [:axlsx], formats: [:xlsx], template: 'xlsx/reports', layout: false)
     end
 
-    render xlsx: 'reports', handlers: [:axlsx], formats: [:xlsx], template: 'xlsx/reports', filename: "#{file_name}_#{DateTime.now.strftime('%Y-%m-%d_%k-%M-%S')}.xlsx"
+    render(xlsx: 'reports', handlers: [:axlsx], formats: [:xlsx], template: 'xlsx/reports', filename: helpers.file_name_with_timestamp(file_name:, file_extension: 'xlsx'), layout: false)
   end
 
   private
