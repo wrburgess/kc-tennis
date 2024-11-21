@@ -36,6 +36,16 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :inbound_requests do
+    collection do
+      post :aws
+      post :azure
+      get :dropbox
+      post :dropbox
+      post :s3_event
+    end
+  end
+
   namespace :admin do
     authenticate :user, lambda { |u| u.admin? } do
       mount GoodJob::Engine, at: :good_job

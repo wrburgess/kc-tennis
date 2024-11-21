@@ -1,8 +1,8 @@
-<%= render "shared/admin/view_div_wrapper", obj: @instance %>
+<%= component "page_wrapper", instance: @instance, controller: params[:controller], action: params[:action] do %>
   <div class="row header">
     <%= component "header_for_edit", instance: @instance %>
   </div>
-  <%= form_with url: send("#{@instance.model_name.singular.downcase}_path", @instance), method: :put do |form| %>
+  <%= form_with url: polymorphic_path([:admin, @instance]), method: :put do |form| %>
     <div class="row">
       <div class="col-6">
         <div class="form-floating">
@@ -43,4 +43,4 @@
       </div>
     </div><!-- row -->
   <% end %>
-</div>
+<% end %>

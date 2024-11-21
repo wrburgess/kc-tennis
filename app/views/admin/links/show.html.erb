@@ -1,4 +1,4 @@
-<%= render "shared/admin/view_div_wrapper", obj: @instance %>
+<%= component "page_wrapper", instance: @instance, controller: params[:controller], action: params[:action] do %>
   <div class="row header">
     <%= component "header_for_show", instance: @instance, edit_button: true, delete_button: true, copy_button: true %>
   </div>
@@ -38,13 +38,4 @@
       </tr>
     </table>
   </div>
-  <div class="row associations">
-    <%= render "shared/admin/associated_titles", obj: @instance %>
-  </div>
-  <div class="row associations">
-    <%= render "shared/admin/associated_external_titles", obj: @instance %>
-  </div>
-  <div class="row associations">
-    <%= render "shared/admin/associated_episodes", obj: @instance %>
-  </div>
-</div>
+<% end %>

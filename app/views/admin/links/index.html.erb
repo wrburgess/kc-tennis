@@ -8,11 +8,11 @@
         <table class="table table-striped table-hover table-sm">
           <thead>
             <tr>
-              <th><%= sort_link(@q, :id, "ID") %></th>
-              <th><%= sort_link(@q, :title_name, "Title") %></th>
-              <th><%= sort_link(@q, :url_type, "URL Type", default_order: :asc) %></th>
-              <th><%= sort_link(@q, :url, "URL", default_order: :asc) %></th>
-              <th><%= sort_link(@q, :video_type, "Video Type", default_order: :asc) %></th>
+              <th><%= sort_link([:admin, @q], :id, "ID") %></th>
+              <th><%= sort_link([:admin, @q], :title_name, "Title") %></th>
+              <th><%= sort_link([:admin, @q], :url_type, "URL Type", default_order: :asc) %></th>
+              <th><%= sort_link([:admin, @q], :url, "URL", default_order: :asc) %></th>
+              <th><%= sort_link([:admin, @q], :video_type, "Video Type", default_order: :asc) %></th>
               <th>Secure Code</th>
               <th>Actions</th>
             </tr>
@@ -22,7 +22,7 @@
               <tr>
                 <th><%= instance.id %></th>
                 <td>
-                  <%= link_to link_to instance.try(:titles).try(:first).try(:name), title_path(instance.try(:titles).try(:first)) if instance.titles.first %>
+                  Stuff
                 </td>
                 <td><%= instance.url_type %></td>
                 <td><%= link_to "active link", instance.url, target: "_blank" %></td>
@@ -47,7 +47,7 @@
           Filters
         </div>
         <div class="card-body">
-          <%= search_form_for @q do |f| %>
+          <%= search_form_for [:admin, @q] do |f| %>
             <div class="form-floating mb-3">
               <input type="text" class="form-control" id="id_eq" name="q[id_eq]" placeholder="id_eq" value="<%= params.dig(:q, :id_eq) %>">
               <label for="q[id_eq]" class="form-label">ID</label>

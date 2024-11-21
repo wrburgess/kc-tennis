@@ -1,8 +1,8 @@
 <div class="col-6">
   <h2>
-    <%= link_to(link_text, send("#{path_name}_path")) %>:&nbsp; 
+    <%= link_to(link_text, polymorphic_path([:admin, @instance.class])) %>:&nbsp; 
     <%= headline %>
-    <%= component "archived_flag", archived_at: @instance.try(:archived_at) %>
+    <%= component "archived_badge", archived_at: @instance.try(:archived_at) %>
   </h2>
 </div>
 <div class="col-6">

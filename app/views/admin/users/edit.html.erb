@@ -2,7 +2,7 @@
   <div class="row header">
     <%= component "header_for_edit", instance: @instance %>
   </div>
-  <%= form_with url: polymorphic_path(@instance), method: :put do |form| %>
+  <%= form_with url: polymorphic_path([:admin, @instance]), method: :put do |form| %>
     <div class="row">
       <div class="col-6">
         <div class="form-floating">

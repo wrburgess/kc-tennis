@@ -2,7 +2,7 @@
   <div class="row header">
     <%= component 'header_for_new', instance: @instance %>
   </div>
-  <%= form_with url: send("#{@instance.model_name.singular.downcase.pluralize}_path"), method: :post do |form| %>
+  <%= form_with url: polymorphic_path([:admin, @instance.class]), method: :post do |form| %>
     <div class="row">
       <div class="col-6">
         <div class="form-floating">
