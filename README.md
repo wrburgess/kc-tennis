@@ -95,3 +95,60 @@
 * [Ruby Security Discource](https://discuss.rubyonrails.org/c/security-announcements/9)
 * [CVE Details](https://www.cvedetails.com/)
 * [Security Alerts on GitHub](https://github.blog/news-insights/product-news/introducing-security-alerts-on-github/)
+
+## Asset Pipeline
+
+* propshaft
+* esbuild
+* bootstrap
+* sass
+
+## Hotwire
+
+* stimulus
+* turbo
+
+## Authentication
+
+* Devise
+* Pundit
+* System Permissions
+
+## Database
+
+* Postgres
+
+## Testing
+
+* rspec
+* capybara
+
+## Linting
+
+* rubocop
+
+## Async
+
+* GoodJob
+
+## Caching
+
+* SolidCache
+
+## Notifications
+
+* Noticed
+* Topics/Subs
+
+## Views
+
+* ViewComponent
+
+## Assets
+
+* AWS
+* cloudfront or cloudflare
+
+## API
+
+* inbound_requests_controller
