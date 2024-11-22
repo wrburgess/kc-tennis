@@ -1,7 +1,7 @@
 {
   "name": "kc-tennis",
   "repository": "git@github.com:wrburgess/kc-tennis.git",
-  "packageManager": "yarn@4.5.1",
+  "packageManager": "yarn@4.5.2",
   "dependencies": {
     "@hotwired/stimulus": "3.2.2",
     "@popperjs/core": "2.11.8",
