@@ -10,7 +10,7 @@ gem 'rails', '8.0.0'
 # gem install debug
 
 gem 'aws-sdk-s3', '1.173.0'
-gem 'aws-sdk-sns', '1.91.0'
+gem 'aws-sdk-sns', '1.92.0'
 gem 'bootsnap', '1.18.4', require: false
 gem 'caxlsx', '4.1.0'
 gem 'caxlsx_rails', '0.6.4'
