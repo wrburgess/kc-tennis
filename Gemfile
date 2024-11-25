@@ -66,6 +66,6 @@ group :test do
   gem 'rspec-json_expectations', '2.2.0'
   gem 'rspec_junit_formatter', '0.6.0'
   gem 'rspec-longrun', '3.1.0'
-  gem 'selenium-webdriver', '4.26.0'
+  gem 'selenium-webdriver', '4.27.0'
   gem 'shoulda-matchers', '6.4.0'
 end
