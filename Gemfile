@@ -16,7 +16,7 @@ gem 'caxlsx', '4.1.0'
 gem 'caxlsx_rails', '0.6.4'
 gem 'csv', '3.3.0'
 gem 'devise', '4.9.4'
-gem 'good_job', '4.5.0'
+gem 'good_job', '4.5.1'
 gem 'jbuilder', '2.13.0'
 gem 'jsbundling-rails', '1.3.1'
 gem 'kamal', '2.3.0', require: false
