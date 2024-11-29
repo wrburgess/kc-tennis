@@ -9,7 +9,7 @@ gem 'rails', '8.0.0'
 # gem install foreman
 # gem install debug
 
-gem 'aws-sdk-s3', '1.173.0'
+gem 'aws-sdk-s3', '1.174.0'
 gem 'aws-sdk-sns', '1.92.0'
 gem 'bootsnap', '1.18.4', require: false
 gem 'caxlsx', '4.1.0'
@@ -21,7 +21,7 @@ gem 'jbuilder', '2.13.0'
 gem 'jsbundling-rails', '1.3.1'
 gem 'kamal', '2.3.0', require: false
 gem 'maintenance_tasks', '2.9.0'
-gem 'pagy', '9.3.1'
+gem 'pagy', '9.3.2'
 gem 'pg', '1.5.9'
 gem 'propshaft', '1.1.0'
 gem 'puma', '6.5.0'
@@ -37,7 +37,7 @@ gem 'tzinfo-data', '1.2024.2'
 gem 'view_component', '3.20.0'
 
 group :production, :staging do
-  gem 'honeybadger', '5.24.0'
+  gem 'honeybadger', '5.26.0'
 end
 
 group :development, :test do
@@ -51,7 +51,7 @@ group :development do
   gem 'hakiri', '0.7.2', require: false
   gem 'lookbook', '2.3.4'
   gem 'rspec-rails', '7.1.0'
-  gem 'rubocop', '1.68.0', require: false
+  gem 'rubocop', '1.69.0', require: false
   gem 'web-console', '4.2.1'
 end
 
@@ -66,6 +66,6 @@ group :test do
   gem 'rspec-json_expectations', '2.2.0'
   gem 'rspec_junit_formatter', '0.6.0'
   gem 'rspec-longrun', '3.1.0'
-  gem 'selenium-webdriver', '4.26.0'
+  gem 'selenium-webdriver', '4.27.0'
   gem 'shoulda-matchers', '6.4.0'
 end
