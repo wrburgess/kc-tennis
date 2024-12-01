@@ -1,0 +1,2 @@
+worker: bundle exec good_job start
+elasticsearch: elasticsearch
