@@ -51,7 +51,7 @@ group :development do
   gem 'hakiri', '0.7.2', require: false
   gem 'lookbook', '2.3.4'
   gem 'rspec-rails', '7.1.0'
-  gem 'rubocop', '1.69.0', require: false
+  gem 'rubocop', '1.69.1', require: false
   gem 'web-console', '4.2.1'
 end
 
