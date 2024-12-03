@@ -9,7 +9,7 @@ gem 'rails', '8.0.0'
 # gem install foreman
 # gem install debug
 
-gem 'aws-sdk-s3', '1.174.0'
+gem 'aws-sdk-s3', '1.175.0'
 gem 'aws-sdk-sns', '1.92.0'
 gem 'bootsnap', '1.18.4', require: false
 gem 'caxlsx', '4.1.0'
