@@ -48,7 +48,6 @@ group :development do
   gem 'brakeman', '6.2.2', require: false
   gem 'bullet', '8.0.0'
   gem 'bundler-audit', '0.9.2', require: false
-  gem 'hakiri', '0.7.2', require: false
   gem 'lookbook', '2.3.4'
   gem 'rspec-rails', '7.1.0'
   gem 'rubocop', '1.69.1', require: false
