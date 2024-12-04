@@ -56,6 +56,17 @@
 * example: `export EDITOR="code -w"`
 * Retrieve keys with `Rails.application.credentials[:key_name]`
 
+## Database Management
+
+### pghero
+
+* [pghero gem](https://github.com/ankane/pghero)
+* Update stats with `rake pghero:capture_query_stats`
+
+### blazer
+
+* [blazer gem](https://github.com/ankane/pghero)
+
 ## Running Application Locally
 
 ### Local Server Commands
@@ -106,6 +117,8 @@
 ## Asset Pipeline
 
 * propshaft
+* js_bundling_rails
+* css_bundling_rails
 * esbuild
 * bootstrap
 * sass
@@ -124,6 +137,8 @@
 ## Database
 
 * Postgres
+* [pghero](https://github.com/ankane/pghero)
+* blazer
 
 ## Testing
 

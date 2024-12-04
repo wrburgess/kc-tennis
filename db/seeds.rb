@@ -11,7 +11,7 @@
 # CREATE Admins
 puts "BEGIN: Create admins"
 admins = [
-  { email: "wrburgess@gmail.com", first_name: "Randy", last_name: "Burgess", password: "1234567890", confirmed_at: Time.now.utc }
+  { email: "wrburgess@gmail.com", first_name: "Randy", last_name: "Burgess", password: "dtf6fhu7pdq6nbz-RED", confirmed_at: Time.now.utc }
 ]
 admins.each do |admin|
   User.create_with(admin).find_or_create_by(email: admin[:email])

@@ -45,10 +45,12 @@ group :development, :test do
 end
 
 group :development do
+  gem 'blazer', '3.1.0'
   gem 'brakeman', '6.2.2', require: false
   gem 'bullet', '8.0.0'
   gem 'bundler-audit', '0.9.2', require: false
   gem 'lookbook', '2.3.4'
+  gem 'pghero', '3.6.1', '>= 2'
   gem 'rspec-rails', '7.1.0'
   gem 'rubocop', '1.69.1', require: false
   gem 'web-console', '4.2.1'

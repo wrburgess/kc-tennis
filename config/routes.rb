@@ -48,8 +48,10 @@ Rails.application.routes.draw do
 
   namespace :admin do
     authenticate :user, lambda { |u| u.admin? } do
+      mount Blazer::Engine, at: :blazer
       mount GoodJob::Engine, at: :good_job
       mount MaintenanceTasks::Engine, at: :maintenance_tasks
+      mount PgHero::Engine, at: :pghero
     end
 
     if Rails.env.development?
