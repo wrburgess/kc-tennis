@@ -3,7 +3,7 @@
     "@hotwired/stimulus": "3.2.2",
     "@hotwired/turbo-rails": "8.0.12",
     "@popperjs/core": "2.11.8",
-    "bootstrap": "5.3.2",
+    "bootstrap": "5.3.3",
     "bootstrap-icons": "1.11.3",
     "esbuild": "0.24.0",
     "sass": "1.82.0",
@@ -13,7 +13,7 @@
   "repository": "git@github.com:wrburgess/kc-tennis.git",
   "scripts": {
     "build": "node esbuild.config.js",
-    "build:css": "NODE_PATH=node_modules sass ./app/assets/stylesheets/admin.scss:./app/assets/builds/admin.css ./app/assets/stylesheets/public.scss:./app/assets/builds/public.css --no-source-map --load-path=node_modules --style=compressed",
+    "build:css": "sass ./app/assets/stylesheets/admin.scss:./app/assets/builds/admin.css ./app/assets/stylesheets/public.scss:./app/assets/builds/public.css --no-source-map --load-path=node_modules --style=compressed",
     "watch": "node esbuild.config.js --watch",
     "watch:css": "sass --watch ./app/assets/stylesheets/admin.scss:./app/assets/builds/admin.css ./app/assets/stylesheets/public.scss:./app/assets/builds/public.css --no-source-map --load-path=node_modules"
   },
