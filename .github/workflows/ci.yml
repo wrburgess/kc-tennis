@@ -59,8 +59,9 @@ jobs:
 
       - name: Build assets
         run: |
+          yarn install --check-files
           yarn build
-          SASS_PATH=./node_modules sass ./app/assets/stylesheets/admin.scss:./app/assets/builds/admin.css ./app/assets/stylesheets/public.scss:./app/assets/builds/public.css --no-source-map --style=compressed
+          yarn build:css
 
       - name: Run tests
         run: bundle exec rspec --format RSpec::Github::Formatter --format progress
