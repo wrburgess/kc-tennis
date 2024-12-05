@@ -57,11 +57,10 @@ jobs:
       - name: Setup database
         run: bin/rails db:create db:schema:load
 
-      - name: Debug node_modules location
+      - name: Debug bootstrap location
         run: |
-          yarn why bootstrap
-          ls -la .yarn/cache
-          echo "Current directory: $(pwd)"
+          find . -name "bootstrap.scss"
+          yarn pnpify --sdk
 
       - name: Build assets
         run: |
