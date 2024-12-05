@@ -57,11 +57,8 @@ jobs:
       - name: Setup database
         run: bin/rails db:create db:schema:load
 
-      - name: Build assets
-        run: |
-          yarn install --immutable
-          yarn build
-          yarn build:css
+      - name: Prepare test environment
+        run: css:build
 
       - name: Run tests
         run: bundle exec rspec --format RSpec::Github::Formatter --format progress
