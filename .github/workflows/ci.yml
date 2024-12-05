@@ -59,7 +59,7 @@ jobs:
 
       - name: Build assets
         run: |
-          yarn install --check-files
+          yarn install --immutable
           yarn build
           yarn build:css
 
