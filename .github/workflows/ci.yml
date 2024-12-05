@@ -60,7 +60,7 @@ jobs:
       - name: Build assets
         run: |
           yarn build
-          yarn build:css
+          NODE_ENV=production yarn build:css
 
       - name: Run tests
         run: bundle exec rspec --format RSpec::Github::Formatter --format progress
