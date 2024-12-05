@@ -67,7 +67,7 @@ jobs:
           yarn install --immutable
           mkdir -p app/assets/builds
           yarn build
-          yarn dlx sass ./app/assets/stylesheets/admin.scss:./app/assets/builds/admin.css ./app/assets/stylesheets/public.scss:./app/assets/builds/public.css --no-source-map --style=compressed --load-path=.yarn/cache --load-path=.pnp/node_modules --load-path=node_modules
+          yarn build:css
 
       - name: Run tests
         run: bundle exec rspec --format RSpec::Github::Formatter --format progress
