@@ -7,18 +7,24 @@
 
 ## Approach
 
-* Uses `yarn` for package management
-* Uses the `jsbundling-rails` gem
-* Uses the `cssbundling-rails` gem
-* Uses the `esbuild` bundler package
-* Uses the `propshaft` gem
-* Uses the `boostrap` and `boostrap-icons` packages
-* Uses the `@hotwired/stimulus` package
-* Uses `turbo-rails`, `hotwire`, and `stimulus-rails` gems
-* Uses the `sass` library
+* Uses `yarn 4+` for package management
+* Uses the following gems:
+  - `cssbundling-rails`
+  - `hotwire`
+  - `jsbundling-rails`
+  - `propshaft`
+  - `stimulus-rails`
+  - `turbo-rails`
+* Uses the following packages:
+  - `@hotwired/stimulus`
+  - `@hotwired/turbo-rails`
+  - `boostrap-icons`
+  - `boostrap`
+  - `esbuild`
+  - `sass`
 * Creates a single javascript file and a single css file for the admin part of the site
 * Creates a single javascript file and a single css file for the public part of the site
-* Uses stimulus separate controllers for admin and public sites
+* Uses separate stimulus controllers for admin and public sites
 
 ## Yarn Config
 
@@ -140,7 +146,7 @@ For public layout `app/views/layouts/application.html.erb`:
 
 ## Node Scripts
 
-Add to `packkage.json` at root:
+Add to `package.json` at root:
 
 ```json
   "scripts": {
