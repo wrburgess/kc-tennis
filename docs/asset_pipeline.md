@@ -132,14 +132,14 @@ Add to `admin.scss` and `public.scss` files:
 
 For admin layout `app/views/layouts/admin.html.erb`:
 
-```erb
+```ruby
 <%= javascript_include_tag "admin", defer: true %>
 <%= stylesheet_link_tag "admin" %>
 ```
 
 For public layout `app/views/layouts/application.html.erb`:
 
-```erb
+```ruby
 <%= javascript_include_tag "public", defer: true %>
 <%= stylesheet_link_tag "public" %>
 ```

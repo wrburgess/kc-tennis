@@ -58,6 +58,12 @@
 
 ## Database Management
 
+### Heroku Commands
+
+* `heroku run rails db:reset -r [staging|production]` # warning: destructive
+* `heroku run rails db:migrate -r [staging|production]`
+* `heroku run rails db:seed -r [staging|production]`
+
 ### pghero
 
 * [pghero gem](https://github.com/ankane/pghero)
