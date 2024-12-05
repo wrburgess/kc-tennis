@@ -55,10 +55,10 @@ Rails.application.configure do
   # config.action_mailer.raise_delivery_errors = false
 
   # Set host to be used by links generated in mailer templates.
-  config.action_mailer.default_url_options = { host: 'kc.tennis' }
+  config.action_mailer.default_url_options = { host: 'staging.kc.tennis' }
   config.action_mailer.delivery_method = :postmark
   config.action_mailer.postmark_settings = {
-    api_token: Rails.application.credentials.production.postmark_api_token
+    api_token: Rails.application.credentials.staging.postmark_api_token
   }
 
   # Specify outgoing SMTP server. Remember to add smtp/* credentials via rails credentials:edit.
