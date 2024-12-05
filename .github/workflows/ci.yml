@@ -47,9 +47,9 @@ jobs:
 
       - name: Install node
         uses: actions/setup-node@v4
-        # with:
-        #   cache: "yarn"
-        #   node-version: ${{ steps.versions.outputs.nodejs }}
+        with:
+          cache: "yarn"
+          node-version: ${{ steps.versions.outputs.nodejs }}
 
       - name: Install node packages
         run: yarn install
