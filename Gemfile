@@ -14,6 +14,7 @@ gem 'aws-sdk-sns', '1.92.0'
 gem 'bootsnap', '1.18.4', require: false
 gem 'caxlsx', '4.1.0'
 gem 'caxlsx_rails', '0.6.4'
+gem 'cssbundling-rails', '1.4.1'
 gem 'csv', '3.3.0'
 gem 'devise', '4.9.4'
 gem 'good_job', '4.5.1'

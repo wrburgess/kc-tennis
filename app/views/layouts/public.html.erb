@@ -17,13 +17,18 @@
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
 
-    <%# Includes all stylesheet files in app/assets/stylesheets %>
-    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "public", defer: true %>
+    <%= stylesheet_link_tag "public", "data-turbo-track": "reload" %>
   </head>
 
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+    <div data-controller="hello">
+      <div data-hello-target="output">
+        Loading public controller...
+      </div>
+    </div>
     <%= yield %>
   </body>
 </html>

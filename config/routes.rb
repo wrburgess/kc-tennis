@@ -47,6 +47,8 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    root to: 'dashboard#index'
+
     authenticate :user, lambda { |u| u.admin? } do
       mount Blazer::Engine, at: :blazer
       mount GoodJob::Engine, at: :good_job
