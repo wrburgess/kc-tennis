@@ -57,11 +57,6 @@ jobs:
       - name: Setup database
         run: bin/rails db:create db:schema:load
 
-      - name: Debug bootstrap location
-        run: |
-          find . -name "bootstrap.scss"
-          yarn pnpify --sdk
-
       - name: Build assets
         run: |
           yarn install --immutable
