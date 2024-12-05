@@ -47,15 +47,12 @@ jobs:
 
       - name: Install node
         uses: actions/setup-node@v4
-        with:
-          cache: "yarn"
-          node-version: ${{ steps.versions.outputs.nodejs }}
+        # with:
+        #   cache: "yarn"
+        #   node-version: ${{ steps.versions.outputs.nodejs }}
 
       - name: Install node packages
         run: yarn install
-
-      - name: List node_modules
-        run: ls -R node_modules
 
       - name: Setup database
         run: bin/rails db:create db:schema:load
