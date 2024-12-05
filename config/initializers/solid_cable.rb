@@ -1,12 +1,7 @@
-Rails.application.config.to_prepare do
+ActiveSupport.on_load(:active_record) do
   Rails.application.configure do
     config.solid_cable = {
-      primary: :primary,
-      replica: :primary
+      primary: :primary
     }
   end
-
-  ActiveRecord::Base.establish_connection(
-    ActiveRecord::Base.configurations.configs_for(env_name: Rails.env, name: 'primary').configuration_hash
-  )
 end
