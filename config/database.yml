@@ -23,21 +23,9 @@ staging:
     <<: *default
     url:  <%= ENV["DATABASE_URL"] %>
     pool: <%= ENV["DB_POOL"] || ENV['RAILS_MAX_THREADS'] || 5 %>
-  cache:
-    <<: *default
-    url:  <%= ENV["DATABASE_URL"] %>
-  cable:
-    <<: *default
-    url:  <%= ENV["DATABASE_URL"] %>
 
 production:
   primary:
     <<: *default
     url:  <%= ENV["DATABASE_URL"] %>
     pool: <%= ENV["DB_POOL"] || ENV['RAILS_MAX_THREADS'] || 5 %>
-  cache:
-    <<: *default
-    url:  <%= ENV["DATABASE_URL"] %>
-  cable:
-    <<: *default
-    url:  <%= ENV["DATABASE_URL"] %>
