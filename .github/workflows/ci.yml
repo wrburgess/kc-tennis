@@ -54,11 +54,16 @@ jobs:
       - name: Install node packages
         run: yarn install
 
+      - name: List node_modules
+        run: ls -R node_modules
+
       - name: Setup database
         run: bin/rails db:create db:schema:load
 
-      - name: Prepare test environment
-        run: bin/rails spec:prepare css:build
+      - name: Build assets
+        run: |
+          yarn build
+          yarn build:css
 
       - name: Run tests
         run: bundle exec rspec --format RSpec::Github::Formatter --format progress
