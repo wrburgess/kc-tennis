@@ -30,7 +30,7 @@
 
 Add to `.yarnrc.yml` at root:
 
-```yml
+```yaml
 nodeLinker: node-modules
 yarnPath: .yarn/releases/yarn-4.5.3.cjs
 ```
@@ -121,7 +121,7 @@ File structure:
 
 Add to `admin.scss` and `public.scss` files:
 
-```css
+```scss
 @use "bootstrap/scss/bootstrap";
 @use "bootstrap-icons/font/bootstrap-icons";
 

@@ -29,7 +29,6 @@ gem 'puma', '6.5.0'
 gem 'pundit', '2.4.0'
 gem 'ransack', '4.2.1'
 gem 'roo', '2.10.1'
-gem 'solid_cable', '3.0.3'
 gem 'solid_cache', '1.0.6'
 gem 'stimulus-rails', '1.3.4'
 gem 'thruster', '0.1.9', require: false
