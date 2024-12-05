@@ -1,5 +1,7 @@
 # Asset Pipeline Setup
 
+## Context
+
 * Timeline: December 2024
 * Version: Rails 8.0
 
@@ -20,7 +22,7 @@
 
 ## Yarn Config
 
-Add to `.yarnrc.yml` at root
+Add to `.yarnrc.yml` at root:
 
 ```yml
 nodeLinker: node-modules
@@ -45,7 +47,7 @@ yarn add @hotwired/stimulus @hotwired/turbo-rails bootstrap bootstrap-icons esbu
 
 ## Add esbuild Config
 
-Add to `esbuild.config.js` at root
+Add to `esbuild.config.js` at root:
 
 ```javascript
 const path = require('path')
@@ -72,7 +74,7 @@ esbuild.build({
 
 ## Rails App Config
 
-Update `config/initializers/assets.rb` to include your new bundles
+Update `config/initializers/assets.rb` to include your new bundles:
 
 ```ruby
 Rails.application.config.assets.paths << Rails.root.join("node_modules")
@@ -80,22 +82,56 @@ Rails.application.config.assets.paths << Rails.root.join("node_modules")
 
 ## JavaScript Config
 
+Folder structure for `app/javascript` directory:
 
-
-## Stimulus Config
+```
+--app
+  --javascript
+    --admin
+      --controllers
+        - hello_controller.js
+        - index.js
+      - index.js
+    --controllers
+      - application.js
+    --public
+      --controllers
+        - yo_controller.js
+        - index.js
+      - index.js
+```
 
 ## CSS Config
 
+File structure:
+
+```
+--app
+  --assets
+    --stylesheets
+      - admin.scss
+      - public.scss
+```
+
+Add to `admin.scss` and `public.scss` files:
+
+```css
+@use "bootstrap/scss/bootstrap";
+@use "bootstrap-icons/font/bootstrap-icons";
+
+// Your admin-specific styles here
+```
+
 ## View Config
 
-For admin layout `app/views/layouts/admin.html.erb`
+For admin layout `app/views/layouts/admin.html.erb`:
 
 ```erb
 <%= javascript_include_tag "admin", defer: true %>
 <%= stylesheet_link_tag "admin" %>
 ```
 
-For public layout `app/views/layouts/application.html.erb`
+For public layout `app/views/layouts/application.html.erb`:
 
 ```erb
 <%= javascript_include_tag "public", defer: true %>
@@ -104,7 +140,7 @@ For public layout `app/views/layouts/application.html.erb`
 
 ## Node Scripts
 
-Add to `packkage.json` at root
+Add to `packkage.json` at root:
 
 ```json
   "scripts": {
@@ -117,7 +153,7 @@ Add to `packkage.json` at root
 
 ## Foreman Config
 
-Add to `Procfile.dev.frontend` at root
+Add to `Procfile.dev.frontend` at root:
 
 ```bash
 js: yarn build --watch
@@ -126,9 +162,14 @@ css: yarn build:css --watch
 
 ## CI Config
 
-Add to `.github/workflows/ci.yml`
+Add to `.github/workflows/ci.yml`:
 
-```yml
-js: yarn build --watch
-css: yarn build:css --watch
+```yaml
+  - name: Setup database
+    run: bin/rails db:create db:schema:load
+
+  - name: Build assets
+    run: |
+      yarn build
+      yarn build:css
 ```
