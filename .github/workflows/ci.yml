@@ -57,12 +57,18 @@ jobs:
       - name: Setup database
         run: bin/rails db:create db:schema:load
 
+      - name: Debug node_modules location
+        run: |
+          yarn why bootstrap
+          ls -la .yarn/cache
+          echo "Current directory: $(pwd)"
+
       - name: Build assets
         run: |
           yarn install --immutable
           mkdir -p app/assets/builds
           yarn build
-          yarn dlx sass ./app/assets/stylesheets/admin.scss:./app/assets/builds/admin.css ./app/assets/stylesheets/public.scss:./app/assets/builds/public.css --no-source-map --style=compressed --load-path=/home/runner/work/kc-tennis/kc-tennis/node_modules
+          yarn dlx sass ./app/assets/stylesheets/admin.scss:./app/assets/builds/admin.css ./app/assets/stylesheets/public.scss:./app/assets/builds/public.css --no-source-map --style=compressed --load-path=.yarn/cache --load-path=.pnp/node_modules --load-path=node_modules
 
       - name: Run tests
         run: bundle exec rspec --format RSpec::Github::Formatter --format progress
