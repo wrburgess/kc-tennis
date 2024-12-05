@@ -4,11 +4,11 @@ export default class extends Controller {
   static targets = ["output"]
 
   connect() {
-    console.log("Public Hello Controller Connected")
+    console.log("Public Yo Controller Connected")
     if (this.hasOutputTarget) {
-      this.outputTarget.textContent = "Hello from Public Controller!"
+      this.outputTarget.textContent = "Hello from Yo Controller!"
     } else {
-      console.log("No output target found for public hello controller")
+      console.log("No output target found for public Yo controller")
     }
   }
 }
