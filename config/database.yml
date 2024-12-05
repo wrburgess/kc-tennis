@@ -25,11 +25,11 @@ staging:
     pool: <%= ENV["DB_POOL"] || ENV['RAILS_MAX_THREADS'] || 5 %>
   cache:
     <<: *primary_staging
-    url:  <%= ENV["DATABASE_CACHE_URL"] %>
+    url:  <%= ENV["DATABASE_URL"] %>
     migrations_paths: db/cache_migrate
   cable:
     <<: *primary_staging
-    url:  <%= ENV["DATABASE_CABLE_URL"] %>
+    url:  <%= ENV["DATABASE_URL"] %>
     migrations_paths: db/cable_migrate
 
 production:
@@ -38,9 +38,9 @@ production:
     url:  <%= ENV["DATABASE_URL"] %>
   cache:
     <<: *primary_production
-    url:  <%= ENV["DATABASE_CACHE_URL"] %>
+    url:  <%= ENV["DATABASE_URL"] %>
     migrations_paths: db/cache_migrate
   cable:
     <<: *primary_production
-    url:  <%= ENV["DATABASE_CABLE_URL"] %>
+    url:  <%= ENV["DATABASE_URL"] %>
     migrations_paths: db/cable_migrate
