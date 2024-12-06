@@ -1,6 +1,6 @@
-<%= component "page_wrapper", instance: @instance, controller: params[:controller], action: params[:action] do %>
+<%= render Admin::PageWrapper::Component.new(instance: @instance, controller: params[:controller], action: params[:action]) do %>
   <div class="row header">
-    <%= component "header_for_show", instance: @instance, edit_button: true, delete_button: true, copy_button: true %>
+    <%= render Admin::HeaderForShow::Component.new(instance: @instance, edit_button: true, delete_button: true, copy_button: true) %>
   </div>
   <div class="row data">
     <table class="table vertical">
@@ -73,40 +73,21 @@
         <td class="col-80"><%= link_to "Send Password Reset Email", trigger_password_reset_email_user_path(@instance), method: :put, class: "button" %></td>
       </tr>        
     </table>
-    <div class="row associations">
-      <%= render "shared/admin/associated_system_groups", obj: @instance %>
-    </div>
-    <div class="row associations">
-      <%= render "shared/admin/associated_system_roles", obj: @instance %>
-    </div>
-    <div class="row associations">
-      <%= render "shared/admin/associated_system_permissions", obj: @instance %>
-    </div>
   </div>
 <% end %>
 
-<%= component "page_wrapper", instance: @instance, controller: params[:controller], action: params[:action] do %>
+<%= render Admin::PageWrapper::Component.new(instance: @instance, controller: params[:controller], action: params[:action]) do %>
   <div class="row header">
-    <%= component "header_for_show", instance: @instance, edit_button: true, delete_button: true %>
+    <%= render Admin::HeaderForShow::Component.new(instance: @instance, edit_button: true, delete_button: true, copy_button: true) %>
   </div>
   <div class="row data">
-    <%= component("show_table") do |table| %>
+    <%= render Admin::ShowTable.new do |table| %>
       <% table.with_row(name: "ID", value: @instance.id) %>
-      <% table.with_row(name: "Name", value: @instance.name) %>
-      <% table.with_row(name: "Country", value: (@instance.country ? link_to(@instance.country.name, polymorphic_path(@instance.country)) : ''))  %>
-      <% table.with_row(name: "Language", value: (@instance.language ? link_to(@instance.language.name, polymorphic_path(@instance.language)) : '')) %>
-      <% table.with_row(name: "Weight", value: @instance.weight) %>
-      <% table.with_row(name: "Notes", value: @instance.notes) %>
-      <% table.with_row(name: "Rights Count", value: @instance.rights_count) %>
+      <% table.with_row(name: "First Name", value: @instance.first_name) %>
+      <% table.with_row(name: "Last Name", value: @instance.last_name) %>
+      <% table.with_row(name: "Archived at", value: default_date_format(@instance.archived_at)) %>
       <% table.with_row(name: "Created at", value: default_date_format(@instance.created_at)) %>
       <% table.with_row(name: "Updated at", value: default_date_format(@instance.updated_at)) %>
-    <% end %>
-  </div>
-  <div class="row associations">
-    <%= component("associations_table", title: "Associated Territory Groups", data: @instance.active_territory_groups) do |table| %>
-      <% table.with_column(label: "ID", header: true) { |instance| instance.id.to_s } %>
-      <% table.with_column(label: "Name") { |instance| link_to instance.name, polymorphic_path(instance) } %>
-      <% table.with_column(label: "Type") { |instance| instance.group_type } %>
     <% end %>
   </div>
 <% end %>

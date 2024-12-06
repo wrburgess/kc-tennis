@@ -1,90 +1,23 @@
 <nav class="navbar navbar-expand-lg navbar-dark <%== env_class_color %> bg-gradient">
   <div class="container-fluid">
-    <%= component "brand", brand_name: 'Avails', environment_name: (ENV['REVIEW'] || Rails.env) %>
-    
+    <%= render Admin::brand_name::Component.new(brand_name: 'KC Tennis', environment_name: (ENV['REVIEW'] || Rails.env) %>
+      
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <%= render NavItem::Component.new(title: "Searches") do |nav_item| %>
-          <% nav_item.with_dropdown_item(name: "Availability Search", path: user_new_searches_path) %>
-          <% nav_item.with_dropdown_item(name: "My Search History", path: user_index_searches_path) %>
-          <% nav_item.with_dropdown_item(name: "My Pick Lists", path: user_index_pick_lists_path) %>
-          <% nav_item.with_dropdown_item(name: "Searches", path: searches_path, resource: Search) %>
-          <% nav_item.with_dropdown_item(name: "Pick Lists", path: pick_lists_path, resource: PickList) %>
-          <% nav_item.with_dropdown_item(name: "Reports", path: reports_path, resource: Report) %>
-          <% nav_item.with_dropdown_item(name: "Matching Search", path: title_searches_path) %>
-          <% nav_item.with_dropdown_item(name: "Title / Territory Availability", path: title_territory_availabilities_path) %>
+        <%= render Admin::NavItem::Component.new(title: "Data") do |nav_item| %>
+          <% nav_item.with_dropdown_item(resource: Link, name: "Links", path: admin_links_path) %>
+          <% nav_item.with_dropdown_item(resource: Contact, name: "Contacts", path: admin_contacts_path) %>
         <% end %>
 
-        <%= render NavItem::Component.new(title: "Business") do |nav_item| %>
-          <% nav_item.with_dropdown_item(resource: Contact, name: "Contacts", path: contacts_path) %>
-          <% nav_item.with_dropdown_item(resource: Organization, name: "Organizations", path: organizations_path) %>
-          <% nav_item.with_dropdown_item(resource: Venue, name: "Venues", path: venues_path) %>
-          <% nav_item.with_dropdown_item(resource: VenueBooking, name: "Bookings", path: venue_bookings_path) %>
-        <% end %>
-
-        <%= render NavItem::Component.new(title: "Properties") do |nav_item| %>
-          <% nav_item.with_dropdown_item(resource: Project, name: "Project Codes", path: projects_path) %>
-          <% nav_item.with_dropdown_item(resource: Label, name: "Labels", path: labels_path) %>
-          <% nav_item.with_dropdown_item(resource: Title, name: "Titles", path: titles_path) %>
-          <% nav_item.with_dropdown_item(resource: Episode, name: "Episodes", path: episodes_path) %>
-          <% nav_item.with_dropdown_item(resource: Domain, name: "Domains", path: domains_path) %>
-          <% nav_item.with_dropdown_item(resource: Asset, name: "Assets", path: assets_path) %>
-          <% nav_item.with_dropdown_item(resource: ExternalTitle, name: "External Titles", path: external_titles_path) %>
-          <% nav_item.with_dropdown_item(resource: StorageAsset, name: "Storage Assets", path: storage_assets_path) %>
-        <% end %>
-
-        <%= render NavItem::Component.new(title: "Contracts") do |nav_item| %>
-          <% nav_item.with_dropdown_item(resource: Sale, name: "Sales", path: sales_path) %>
-          <% nav_item.with_dropdown_item(resource: UnderlyingRight, name: "Underlying Rights", path: underlying_rights_path) %>
-          <% nav_item.with_dropdown_item(resource: MusicRight, name: "Music Rights", path: music_rights_path) %>
-          <% nav_item.with_dropdown_item(resource: Right, name: "Rights", path: rights_path) %>
-          <% nav_item.with_dropdown_item(resource: Document, name: "Documents", path: documents_path) %>
-        <% end %>
-
-        <%= render NavItem::Component.new(title: "Metadata") do |nav_item| %>
-          <% nav_item.with_dropdown_item(resource: Accolade, name: "Accolades", path: accolades_path) %>
-          <% nav_item.with_dropdown_item(resource: AspectRatio, name: "Aspect Ratios", path: aspect_ratios_path) %>
-          <% nav_item.with_dropdown_item(resource: CaptionLanguage, name: "Caption Languages", path: caption_languages_path) %>
-          <% nav_item.with_dropdown_item(resource: Country, name: "Countries", path: countries_path) %>
-          <% nav_item.with_dropdown_item(resource: SoundFormat, name: "Feature Sound Formats", path: sound_formats_path) %>
-          <% nav_item.with_dropdown_item(resource: VideoFormat, name: "Feature Video Formats", path: video_formats_path) %>
-          <% nav_item.with_dropdown_item(resource: FestivalScreening, name: "Festival Screenings", path: festival_screenings_path) %>
-          <% nav_item.with_dropdown_item(resource: FileType, name: "File Types", path: file_types_path) %>
-          <% nav_item.with_dropdown_item(resource: Genre, name: "Genres", path: genres_path) %>
-          <% nav_item.with_dropdown_item(resource: Language, name: "Languages", path: languages_path) %>
-          <% nav_item.with_dropdown_item(resource: Link, name: "Links", path: links_path) %>
-          <% nav_item.with_dropdown_item(resource: ManualPerson, name: "Manual People", path: manual_people_path) %>
-          <% nav_item.with_dropdown_item(resource: Media, name: "Media", path: medias_path) %>
-          <% nav_item.with_dropdown_item(resource: MediaGroup, name: "Media Groups", path: media_groups_path) %>
-          <% nav_item.with_dropdown_item(resource: Person, name: "People", path: people_path) %>
-          <% nav_item.with_dropdown_item(resource: Origin, name: "Origins", path: origins_path) %>
-          <% nav_item.with_dropdown_item(resource: SocialMediaAccount, name: "Social Media Accounts", path: social_media_accounts_path) %>
-          <% nav_item.with_dropdown_item(resource: SoundLanguage, name: "Sound Languages", path: sound_languages_path) %>
-          <% nav_item.with_dropdown_item(resource: Territory, name: "Territories", path: territories_path) %>
-          <% nav_item.with_dropdown_item(resource: TerritoryGroup, name: "Territory Groups", path: territory_groups_path) %>
-          <% nav_item.with_dropdown_item(resource: TrailerSoundFormat, name: "Trailer Sound Formats", path: trailer_sound_formats_path) %>
-          <% nav_item.with_dropdown_item(resource: TrailerVideoFormat, name: "Trailer Video Formats", path: trailer_video_formats_path) %>
-          <% nav_item.with_dropdown_item(resource: Vendor, name: "Vendors", path: vendors_path) %>
-          <% nav_item.with_dropdown_item(resource: VendorItem, name: "Vendor Items", path: vendor_items_path) %>
-        <% end %>
-
-        <%= render NavItem::Component.new(title: "Content") do |nav_item| %>
-          <% nav_item.with_dropdown_item(resource: ExternalTitle, name: "External Titles", path: external_titles_path) %>
-          <% nav_item.with_dropdown_item(resource: LocalizedName, name: "Localized Names", path: localized_names_path) %>
-        <% end %>
-
-        <%= render NavItem::Component.new(title: "Advance/Royalty") do |nav_item| %>
-          <% nav_item.with_dropdown_item(resource: Sale, name: "Sales (Advance/Royalty Status)", path: index_royalties_sales_path) %>
-          <% nav_item.with_dropdown_item(resource: Sale, name: "Sales (Advance Follow Ups)", path: index_royalties_sales_path(q: { advance_follow_up_at_not_null: 1 })) %>
-          <% nav_item.with_dropdown_item(resource: Sale, name: "Sales (CAMA)", path: index_royalties_sales_path(q: { subject_to_cama_eq: true })) %>
-          <% nav_item.with_dropdown_item(resource: UnderlyingRight, name: "Underlying Rights (CAMA)", path: underlying_rights_path(q: { subject_to_cama_eq: true })) %>
+        <%= render Admin::NavItem::Component.new(title: "Management") do |nav_item| %>
+          <% nav_item.with_dropdown_item(resource: User, name: "Users", path: admin_users_path) %>
         <% end %>
   
-        <%= component "user_login", user_signed_in: user_signed_in? %>
+        <%= render Admin::UserLogin::Component.new(user_signed_in: user_signed_in? %>
       </ul>
     </div>
   </div>

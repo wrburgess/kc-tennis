@@ -1,28 +1,28 @@
-<%= render Admin::HeaderComponent.new(title: "Dashboard") %>
+<%= render Admin::DashboardHeader::Component.new(title: "Dashboard") %>
 
-<%= render Admin::ContainerComponent.new do |container| %>
+<%= render Admin::Container::Component.new do |container| %>
   <div class="row my-3">
     <div class="col-6">
-      <%= render Admin::DashboardCardComponent.new(title: "Media") do |card| %>
+      <%= render Admin::DashboardCard::Component.new(title: "Media") do |card| %>
         <% card.with_link(name: "Links", url: admin_links_path, policy: Link) %>
       <% end %>
     </div>
 
     <div class="col-6">
-      <%= render Admin::DashboardCardComponent.new(title: "People") do |card| %>
+      <%= render Admin::DashboardCard::Component.new(title: "People") do |card| %>
         <% card.with_link(name: "Contacts", url: admin_contacts_path, policy: Contact) %>
       <% end %>
   </div>
 
   <div class="row">
     <div class="col-6">
-      <%= render Admin::DashboardCardComponent.new(title: "Tasks") do |card| %>
+      <%= render Admin::DashboardCard::Component.new(title: "Tasks") do |card| %>
         <% card.with_link(name: "Contacts", url: admin_links_path, policy: Contact) %>
       <% end %>
     </div>
 
     <div class="col-6">
-      <%= render Admin::DashboardCardComponent.new(title: "Development") do |card| %>
+      <%= render Admin::DashboardCard::Component.new(title: "Development") do |card| %>
         <% card.with_link(name: "Blazer", url: admin_blazer_path, new_window: true, env: :development) %>
         <% card.with_link(name: "Data Logs", url: admin_data_logs_path, policy: DataLog) %>
         <% card.with_link(name: "GoodJob Dashboard", url: admin_good_job_path, new_window: true) %>

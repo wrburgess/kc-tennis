@@ -14,12 +14,13 @@
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
 
-    <%= javascript_include_tag "admin", defer: true %>
-    <%= stylesheet_link_tag "admin", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag :admin, defer: true %>
+    <%= stylesheet_link_tag :admin, "data-turbo-track": "reload" %>
   </head>
 
   <body>
-    <%= component "interface_notification", flash: %>
+    <%= render Admin::NavBar.new %>
+    <%= render Admin::InterfaceNotification.new(flash:) %>
     <%= yield %>
   </body>
 </html>
