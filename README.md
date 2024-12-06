@@ -61,7 +61,8 @@
 * run `rails credentials:edit`
 * Your editor will need to run with --wait due to decryption speed
 * example: `export EDITOR="code -w"`
-* Retrieve keys with `Rails.application.credentials[:key_name]`
+* Retrieve keys with `Rails.application.credentials.[environment_name].[key_name]`
+* example `Rails.application.credentials.development.postmark_api_token`
 
 ## Database Management
 
