@@ -19,7 +19,7 @@
   </head>
 
   <body>
-    <%= render Admin::NavBar::Component.new %>
+    <%= render Admin::NavBar::Component.new(environment: Rails.env) %>
     <%= render Admin::InterfaceNotification::Component.new(flash:) %>
     <%= yield %>
   </body>

@@ -1,19 +1,19 @@
 example_id                                                  | status | run_time        |
 ----------------------------------------------------------- | ------ | --------------- |
-./spec/components/action_button_component_spec.rb[1:1:1]    | passed | 0.03581 seconds |
-./spec/components/action_button_component_spec.rb[1:1:2]    | passed | 0.02886 seconds |
-./spec/components/archived_badge_component_spec.rb[1:1]     | passed | 0.00204 seconds |
-./spec/components/archived_badge_component_spec.rb[1:2]     | passed | 0.00349 seconds |
-./spec/components/brand_component_spec.rb[1:1]              | passed | 0.00209 seconds |
-./spec/components/brand_component_spec.rb[1:2]              | passed | 0.00074 seconds |
-./spec/components/brand_component_spec.rb[1:3]              | passed | 0.00077 seconds |
-./spec/components/nav_dropdown_item_component_spec.rb[1:1]  | passed | 0.23519 seconds |
-./spec/components/nav_dropdown_item_component_spec.rb[1:2]  | passed | 0.02229 seconds |
-./spec/components/nav_dropdown_item_component_spec.rb[1:3]  | passed | 0.03713 seconds |
-./spec/components/nav_item_component_spec.rb[1:1]           | passed | 0.00186 seconds |
-./spec/components/nav_item_component_spec.rb[1:2]           | passed | 0.00103 seconds |
-./spec/components/user_login_component_spec.rb[1:1]         | passed | 0.00076 seconds |
-./spec/components/user_login_component_spec.rb[1:2]         | passed | 0.00188 seconds |
+./spec/components/action_button_component_spec.rb[1:1:1]    | passed | 0.03464 seconds |
+./spec/components/action_button_component_spec.rb[1:1:2]    | passed | 0.29962 seconds |
+./spec/components/archived_badge_component_spec.rb[1:1]     | passed | 0.00269 seconds |
+./spec/components/archived_badge_component_spec.rb[1:2]     | passed | 0.00379 seconds |
+./spec/components/brand_component_spec.rb[1:1]              | passed | 0.00078 seconds |
+./spec/components/brand_component_spec.rb[1:2]              | passed | 0.00076 seconds |
+./spec/components/brand_component_spec.rb[1:3]              | passed | 0.00192 seconds |
+./spec/components/nav_dropdown_item_component_spec.rb[1:1]  | passed | 0.02186 seconds |
+./spec/components/nav_dropdown_item_component_spec.rb[1:2]  | passed | 0.02754 seconds |
+./spec/components/nav_dropdown_item_component_spec.rb[1:3]  | passed | 0.023 seconds   |
+./spec/components/nav_item_component_spec.rb[1:1]           | passed | 0.00136 seconds |
+./spec/components/nav_item_component_spec.rb[1:2]           | passed | 0.00185 seconds |
+./spec/components/user_login_component_spec.rb[1:1]         | passed | 0.00078 seconds |
+./spec/components/user_login_component_spec.rb[1:2]         | passed | 0.00201 seconds |
 ./spec/controllers/admin/links_controller_spec.rb[1:1:1]    | passed | 0.02918 seconds |
 ./spec/controllers/admin/links_controller_spec.rb[1:2:1]    | passed | 0.02486 seconds |
 ./spec/controllers/admin/links_controller_spec.rb[1:3:1]    | passed | 0.0339 seconds  |
