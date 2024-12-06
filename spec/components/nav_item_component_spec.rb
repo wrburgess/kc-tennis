@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe NavItem::Component, type: :component do
+describe Admin::NavItem::Component, type: :component do
   it 'renders a nav bar item' do
     render_inline(described_class.new(title: 'Nav Item Title'))
     expect(page.find('ul.navbar-nav li.nav-item a.nav-link')).to have_text('Nav Item Title')

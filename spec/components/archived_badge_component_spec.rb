@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe ArchivedBadge::Component, type: :component do
+describe Admin::ArchivedBadge::Component, type: :component do
   it 'renders if instance archived_at attribute has a value' do
     link = create(:link, archived_at: Time.zone.now)
     component = described_class.new(archived_at: link.archived_at)

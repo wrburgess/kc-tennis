@@ -19,7 +19,7 @@
         </button>
       </div>
     </nav>
-    <%= render Admin::InterfaceNotification.new(flash:) %>
+    <%= render Admin::InterfaceNotification::Component.new(flash:) %>
     <%= yield %>
   </body>
 </html>

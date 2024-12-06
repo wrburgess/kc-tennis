@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe ActionButton::Component, type: :component do
+describe Admin::ActionButton::Component, type: :component do
   include_context 'component_setup'
 
   describe '#render' do

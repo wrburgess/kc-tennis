@@ -19,8 +19,8 @@
   </head>
 
   <body>
-    <%= render Admin::NavBar.new %>
-    <%= render Admin::InterfaceNotification.new(flash:) %>
+    <%= render Admin::NavBar::Component.new %>
+    <%= render Admin::InterfaceNotification::Component.new(flash:) %>
     <%= yield %>
   </body>
 </html>

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Brand::Component, type: :component do
+describe Admin::Brand::Component, type: :component do
   it 'renders with all default values' do
     component = described_class.new
     render_inline(component)

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe NavDropdownItem::Component, type: :component do
+describe Admin::NavDropdownItem::Component, type: :component do
   include_context 'component_setup'
 
   before do
