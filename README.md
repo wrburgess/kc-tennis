@@ -1,8 +1,10 @@
-# kc.tennis
+# KC Tennis
 
 * [GitHub](https://github.com/wrburgess/kc-tennis)
 * [Github Actions/CI](https://github.com/wrburgess/kc-tennis/actions)
 * [Production Site](https://www.kc.tennis)
+* [Staging Site](https://staging.kc.tennis)
+* [Local Site](https://local.kc.tennis) _via cloudflare tunnel_
 
 ## Useful Commands
 
@@ -31,7 +33,9 @@
 
 ### Setup Yarn 4+
 
-* Install Yarn 4 Plugin outdated: `yarn plugin import https://go.mskelton.dev/yarn-outdated/v4`
+* Delete existing yarn.lock: `rm -rf yarn.lock`
+* Create a blank file: `touch yarn.lock`
+* Update to the latest yarn version: `yarn set version berry`
 
 ### Production
 
@@ -43,11 +47,14 @@
 * [yarn](https://yarnpkg.com/)
 * [postgres](https://www.postgresql.org/)
 * [bootstrap](https://getbootstrap.com/)
+* [heroku](https://dashboard.heroku.com/pipelines/af2038da-a8c8-4dfd-966d-dd4c9489ed5c)
 
 #### Tools
 
 * [good_job](https://github.com/bensheldon/good_job)
 * [renovate](https://developer.mend.io/github/wrburgess/kc-tennis)
+* [blazer](https://github.com/ankane/pghero)
+* [pghero](https://github.com/ankane/pghero)
 
 ## Encrypted Credentials
 
@@ -81,9 +88,9 @@
 * alias foref="foreman start -f Procfile.dev.frontend"
 * alias rs="rails s"
 
-* `foreb` runs good_job worker and elasticsearch
+* `foreb` runs good_job worker
 * `foref` runs a js and css watcher for changes
-* `rs` runs puma locally
+* `rs8` runs puma locally on port 8000
 
 ## Setup Cloudflare Tunnel
 
