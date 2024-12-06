@@ -1,6 +1,6 @@
-<%= component "page_wrapper", instance: @instance, controller: params[:controller], action: params[:action] do %>
+<%= render Admin::PageWrapper::Component.new(instance: @instance, controller: params[:controller], action: params[:action]) do %>
   <div class="row header">
-    <%= component "header_for_edit", instance: @instance %>
+    <%= render Admin::HeaderForEdit::Component.new(instance: @instance) %>
   </div>
   <%= form_with url: polymorphic_path([:admin, @instance]), method: :put do |form| %>
     <div class="row">
@@ -35,11 +35,8 @@
     </div><!-- row -->
     <div class="row">
       <div class="form-group">
-<%= component("action_button", operation: :cancel_to_show, instance: @instance, classes_append: "me-3", public: true) %>
-        <button class="btn btn-success me-3">
-          <i class="bi bi-check-circle"></i>
-          Submit
-        </button>
+        <%= render Admin::ActionButton::Component.new(operation: :cancel_to_show, instance: @instance, classes_append: "me-3", public: true) %>
+        <%= render Admin::FormButton::Component.new(operation: :submit) %>
       </div>
     </div><!-- row -->
   <% end %>

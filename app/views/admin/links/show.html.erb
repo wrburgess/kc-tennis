@@ -1,6 +1,6 @@
-<%= component "page_wrapper", instance: @instance, controller: params[:controller], action: params[:action] do %>
+<%= render Admin::PageWrapper::Component.new(instance: @instance, controller: params[:controller], action: params[:action]) do %>
   <div class="row header">
-    <%= component "header_for_show", instance: @instance, edit_button: true, delete_button: true, copy_button: true %>
+    <%= render Admin::HeaderForShow::Component.new(instance: @instance, edit_button: true, delete_button: true, copy_button: true) %>
   </div>
   <div class="row data">
     <table class="table vertical">

@@ -1,6 +1,6 @@
-<%= component "page_wrapper", instance: @instance, controller: params[:controller], action: params[:action] do %>
+<%= render Admin::PageWrapper::Component.new(instance: @instance, controller: params[:controller], action: params[:action]) do %>
   <div class="row header">
-    <%= component "header_for_index", instance: @instance, new_button: true, export_xlsx_button: true %>
+    <%= render Admin::HeaderForIndex::Component.new(instance: @instance, new_button: true, export_xlsx_button: true) %>
   </div>
   <div class="row main">
     <div class="col-9">
@@ -29,8 +29,8 @@
                 <td><%= instance.video_type %></td>
                 <td><%= instance.secure_code %></td>
                 <td>
-                  <%= component "action_button", operation: :show, instance: instance, button_classes: "me-3", icon_classes: :none %>
-                  <%= component "action_button", operation: :edit, instance: instance, button_classes: :none, icon_classes: :none %>
+                  <%= render Admin::ActionButton::Component.new(operation: :show, instance: instance, button_classes: "me-3", icon_classes: :none) %>
+                  <%= render Admin::ActionButton::Component.new(operation: :edit, instance: instance, button_classes: :none, icon_classes: :none) %>
                 </td>
               </tr>
             <% end %>
@@ -38,7 +38,7 @@
         </table>
       </div>
       <div class="row pager">
-        <%= component "index_pager", pagy: @pagy, instance: @instance %>
+        <%= render Admin:IndexPager::Component.new(pagy: @pagy, instance: @instance) %>
       </div>
     </div>
     <div class="col-3">
@@ -68,7 +68,7 @@
               <label class="form-check-label" for="active">Archived?</label>
               <%= check_box_tag("q[archived_at_not_null]", 1, (params.dig(:q, :archived_at_not_null) == "1"), class: "form-check-input") %>
             </div>
-            <%= component "form_button", operation: :filter %>
+            <%= render Admin::FormButton::Component.new(operation: :filter) %>
           <% end %>
         </div>
       </div>
