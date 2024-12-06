@@ -50,15 +50,15 @@ Rails.application.routes.draw do
     root to: 'dashboard#index'
 
     authenticate :user, lambda { |u| u.admin? } do
+      mount Blazer::Engine, at: :blazer
       mount GoodJob::Engine, at: :good_job
       mount MaintenanceTasks::Engine, at: :maintenance_tasks
+      mount PgHero::Engine, at: :pghero
     end
 
     if Rails.env.development?
       authenticate :user, lambda { |u| u.admin? } do
-        mount Blazer::Engine, at: :blazer
         mount Lookbook::Engine, at: :lookbook
-        mount PgHero::Engine, at: :pghero
       end
     end
 

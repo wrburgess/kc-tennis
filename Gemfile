@@ -11,6 +11,7 @@ gem 'rails', '8.0.0'
 
 gem 'aws-sdk-s3', '1.176.0'
 gem 'aws-sdk-sns', '1.92.0'
+gem 'blazer', '3.1.0'
 gem 'bootsnap', '1.18.4', require: false
 gem 'caxlsx', '4.1.0'
 gem 'caxlsx_rails', '0.6.4'
@@ -24,6 +25,7 @@ gem 'kamal', '2.3.0', require: false
 gem 'maintenance_tasks', '2.10.0'
 gem 'pagy', '9.3.2'
 gem 'pg', '1.5.9'
+gem 'pghero', '3.6.1', '>= 2'
 gem 'propshaft', '1.1.0'
 gem 'puma', '6.5.0'
 gem 'pundit', '2.4.0'
@@ -41,9 +43,7 @@ group :production, :staging do
 end
 
 group :development, :test do
-  gem 'blazer', '3.1.0'
   gem 'debug', '1.9.2'
-  gem 'pghero', '3.6.1', '>= 2'
 end
 
 group :development do
