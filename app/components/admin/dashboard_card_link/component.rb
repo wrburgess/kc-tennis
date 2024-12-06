@@ -1,6 +1,5 @@
 class Admin::DashboardCardLink::Component < ApplicationComponent
   def initialize(name:, url:, policy: nil, new_window: false)
-    @env = env
     @name = name
     @new_window = new_window
     @policy = policy
