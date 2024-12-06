@@ -2,7 +2,7 @@
   <h2>
     <%= link_to(link_text, polymorphic_path([:admin, @instance.class])) %>:&nbsp; 
     <%= headline %>
-    <%= render Admin::ArchivedBadge::Component.new(archived_at: @instance.try(:archived_at) %>
+    <%= render Admin::ArchivedBadge::Component.new(archived_at: @instance.try(:archived_at)) %>
   </h2>
 </div>
 <div class="col-6">
