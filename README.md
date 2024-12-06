@@ -93,19 +93,19 @@
 
 ### Setup Steps
 
-* Avails uses the `www.mpivid.com` domain for local tunneling with Cloudflare and the `cloudflared` ci
+* KC Tennis uses the `local.kc.tennis` domain for local tunneling with Cloudflare and the `cloudflared` ci
 * Install (on Mac) with `brew install cloudflared`
 * Login with `cloudflared tunnel login`
-* Create name tunnel `cloudflared tunnel create <NAME>` or `cloudflared tunnel create mpivid`
+* Create name tunnel `cloudflared tunnel create <NAME>` or `cloudflared tunnel create localkct`
 * Create config file at `/User/[username]/.cloudflared/config.yaml`
-* [MPI Cloudflare Tunnel Dashboard](https://one.dash.cloudflare.com/ee0a8e28862d5c84754bbed265f0f861/networks/tunnels?search=)
-* Note: Config for the www.mpivid.com domain is managed on the Cloudflared Tunnel Dashboard
+* [KC Tennis Cloudflare Tunnel Dashboard](https://one.dash.cloudflare.com/ee0a8e28862d5c84754bbed265f0f861/networks/tunnels?search=)
+* Note: Config for the www.kctennis.com domain is managed on the Cloudflared Tunnel Dashboard
 
 ### Running Tunnel Commands
 
-* Run tunnel with `cloudflared tunnel run mpivid`
-* Setup alias `alias mpivid="cloudflared tunnel run mpivid"`
-* Check tunnel status with `cloudflared tunnel info mpivid`
+* Run tunnel with `cloudflared tunnel run localkct`
+* Setup alias `alias localkct="cloudflared tunnel run localkct"`
+* Check tunnel status with `cloudflared tunnel info localkct`
 
 ## Security Checks
 
