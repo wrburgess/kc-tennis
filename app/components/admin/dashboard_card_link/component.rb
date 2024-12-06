@@ -1,4 +1,4 @@
-class Admin::DashboardLink::Component < ApplicationComponent
+class Admin::DashboardCardLink::Component < ApplicationComponent
   def initialize(name:, url:, policy: nil, new_window: false)
     @name = name
     @url = url
