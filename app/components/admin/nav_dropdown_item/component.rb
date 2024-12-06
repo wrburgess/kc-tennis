@@ -1,4 +1,4 @@
-class Admin::NavDropdownItem::Component < ViewComponent::Base
+class Admin::NavDropdownItem::Component < ApplicationComponent
   def initialize(name:, path:, resource: nil, operation: 'index')
     @name = name
     @path = path

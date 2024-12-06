@@ -1,5 +1,5 @@
-class Admin::NavItem::Component < ViewComponent::Base
-  renders_many :dropdown_items, 'NavDropdownItem::Component'
+class Admin::NavItem::Component < ApplicationComponent
+  renders_many :dropdown_items, Admin::NavDropdownItem::Component
 
   def initialize(title:)
     @title = title
