@@ -38,7 +38,7 @@
         </table>
       </div>
       <div class="row pager">
-        <%= render Admin:IndexPager::Component.new(pagy: @pagy, instance: @instance) %>
+        <%= render Admin::IndexPager::Component.new(pagy: @pagy, instance: @instance) %>
       </div>
     </div>
     <div class="col-3">
