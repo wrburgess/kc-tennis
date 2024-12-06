@@ -24,13 +24,13 @@ class Admin::DashboardHeaderLink::Component < ApplicationComponent
   def render?
     case @type
     when :archive
-      Pundit.policy(Current.user, @instance).destroy? && @instance.unarchived?
+      Pundit.policy(current_user, @instance).destroy? && @instance.unarchived?
     when :unarchive
-      Pundit.policy(Current.user, @instance).unarchive? && @instance.archived?
+      Pundit.policy(current_user, @instance).unarchive? && @instance.archived?
     when :download
-      Pundit.policy(Current.user, @instance).export_xlsx?
+      Pundit.policy(current_user, @instance).export_xlsx?
     else
-      Pundit.policy(Current.user, @instance).send("#{@type}?")
+      Pundit.policy(current_user, @instance).send("#{@type}?")
     end
   end
 
