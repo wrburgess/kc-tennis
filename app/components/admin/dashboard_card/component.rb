@@ -1,14 +1,11 @@
 class Admin::DashboardCard::Component < ApplicationComponent
-  renders_many :links, 'LinkComponent'
-  # renders_many :links, -> (name:, url:, policy: nil, new_window: false) do
-  #   content_tag(:li, link_to(name, url)) if policy.nil? || Pundit.policy(Current.user, policy).index?
-  # end
+  renders_many :links, DashboardLink::Component
 
   def initialize(title:)
     @title = title
   end
 
-  class Admin::DashboardLink::Component < ApplicationComponent
+  class DashboardLink::Component < ApplicationComponent
     def initialize(name:, url:, policy: nil, new_window: false)
       @name = name
       @url = url
