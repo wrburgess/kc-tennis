@@ -5,6 +5,25 @@
 * Timeline: December 2024
 * Version: Rails 8.0
 
+## References
+
+* [Adventures with Propshaft - 2023/09/15](https://josegomezr.github.io/blog/programming/rails/2023/09/15/adventures-with-propshaft/)
+* [How to use ESBuild to load font files for Bootstrap Icons - 2022/11/14](https://www.youtube.com/watch?v=DhM-Wh9Pmd4)
+
+## Debugging
+
+* `rails assets:reveal` on local, produces a full list of logical paths
+* `rails assets:precompile` on local, compiles assets into `public/assets` directory, Propshaft will use the static resolver (local changes ignored)
+* `rails assets:clobber` on local, removes all files from `public/assets` and forces Propshaft back to the dynamic resolver (local changes acknowledged)
+
+## Notes
+
+```
+Propshaft has two ways of finding your assets (called resolvers). When you are developing and running ./bin/dev you are using the dynamic resolver, which looks for your files in app/assets.
+
+When you deploy to your server you will run rails assets:precompile before restarting puma. This tells Propshaft to move all files from app/assets to public/assets and add digests to them so that CDNs can cache them properly. From that moment on, you are using the static resolver, which is much faster. 
+```
+
 ## Approach
 
 * Uses `yarn 4+` for package management
@@ -12,7 +31,7 @@
   - `cssbundling-rails`
   - `hotwire`
   - `jsbundling-rails`
-  - `propshaft`
+  - [propshaft](https://github.com/rails/propshaft)
   - `stimulus-rails`
   - `turbo-rails`
 * Uses the following packages:
@@ -80,10 +99,10 @@ esbuild.build({
 
 ## Rails App Config
 
-Update `config/initializers/assets.rb` to include your new bundles:
+Update `config/initializers/assets.rb` to include assets from packages:
 
 ```ruby
-Rails.application.config.assets.paths << Rails.root.join("node_modules")
+Rails.application.config.assets.paths << Rails.root.join('node_modules/bootstrap-icons/font')
 ```
 
 ## JavaScript Config
@@ -125,7 +144,9 @@ Add to `admin.scss` and `public.scss` files:
 @use "bootstrap/scss/bootstrap";
 @use "bootstrap-icons/font/bootstrap-icons";
 
-// Your admin-specific styles here
+$bootstrap-icons-font-src: url("bootstrap-icons.woff2") format("woff2"), url("fonts/bootstrap-icons.woff") format("woff") !default;
+
+// Your theme-specific styles here
 ```
 
 ## View Config
