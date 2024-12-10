@@ -7,13 +7,16 @@
 
 ## References
 
-* [Adventures with Propshaft - 2023/09/15](https://josegomezr.github.io/blog/programming/rails/2023/09/15/adventures-with-propshaft/)
+* [Adventures with Propshaft - 2023/09/15](https://josegomezr.github.io/blog/programming/rails/2023/09/15/adventures-with-propshaft)
 * [How to use ESBuild to load font files for Bootstrap Icons - 2022/11/14](https://www.youtube.com/watch?v=DhM-Wh9Pmd4)
+* [Rails Discussion](https://discuss.rubyonrails.org)
+* [Hotwire Discussion](https://discuss.hotwired.dev)
 
 ## Debugging
 
 * `rails assets:reveal` on local, produces a full list of logical paths
 * `rails assets:precompile` on local, compiles assets into `public/assets` directory, Propshaft will use the static resolver (local changes ignored)
+* `rails assets:clean` on local, remove older compiled assets
 * `rails assets:clobber` on local, removes all files from `public/assets` and forces Propshaft back to the dynamic resolver (local changes acknowledged)
 
 ## Notes
@@ -26,21 +29,21 @@ When you deploy to your server you will run rails assets:precompile before resta
 
 ## Approach
 
+* Use [hotwire](https://hotwired.dev), [turbo](https://turbo.hotwired.dev), and [stimulus](https://stimulus.hotwired.dev) for frontend js 
 * Uses `yarn 4+` for package management
 * Uses the following gems:
-  - `cssbundling-rails`
-  - `hotwire`
-  - `jsbundling-rails`
+  - [cssbundling-rails](https://github.com/rails/cssbundling-rails)
+  - [jsbundling-rails](https://github.com/rails/jsbundling-rails)
   - [propshaft](https://github.com/rails/propshaft)
-  - `stimulus-rails`
-  - `turbo-rails`
+  - [stimulus-rails](https://rubygems.org/gems/stimulus-rails)
+  - [turbo-rails](https://rubygems.org/gems/turbo-rails)
 * Uses the following packages:
-  - `@hotwired/stimulus`
-  - `@hotwired/turbo-rails`
-  - `boostrap-icons`
-  - `boostrap`
-  - `esbuild`
-  - `sass`
+  - [@hotwired/stimulus](https://www.npmjs.com/package/@hotwired/stimulus)
+  - [@hotwired/turbo-rails](https://www.npmjs.com/package/@hotwired/turbo-rails)
+  - [boostrap-icons](https://www.npmjs.com/package/bootstrap-icons)
+  - [bootstrap](https://www.npmjs.com/package/bootstrap)
+  - [esbuild](https://esbuild.github.io/)
+  - [sass](https://www.npmjs.com/package/sass)
 * Creates a single javascript file and a single css file for the admin part of the site
 * Creates a single javascript file and a single css file for the public part of the site
 * Uses separate stimulus controllers for admin and public sites

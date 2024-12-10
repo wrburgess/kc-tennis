@@ -1,7 +1,5 @@
 <%= render Admin::PageWrapper::Component.new(instance: @instance, controller: params[:controller], action: params[:action]) do %>
-  <div class="row header">
-    <%= render Admin::HeaderForIndex::Component.new(instance: @instance, new_button: true, export_xlsx_button: true) %>
-  </div>
+  <%= render Admin::HeaderForIndex::Component.new(instance: @instance, new_button: true, export_xlsx_button: true) %>
   <div class="row main">
     <div class="col-9">
       <div class="row">
