@@ -1,4 +1,4 @@
-class Admin::InboundRequestLogsController < ApplicationController
+class Admin::InboundRequestLogsController < AdminController
   include Pagy::Backend
 
   before_action :authenticate_user!
