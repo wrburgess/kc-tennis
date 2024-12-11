@@ -64,6 +64,7 @@ Rails.application.routes.draw do
 
     resources :contacts, concerns: :collection_exportable
     resources :data_logs, only: [:index, :show], concerns: :collection_exportable
+    resources :inbound_request_logs, only: [:index, :show], concerns: :collection_exportable
     resources :links, concerns: [:archivable, :collection_exportable, :member_exportable]
     resources :organizations, concerns: :collection_exportable
 

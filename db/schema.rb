@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_05_200145) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_11_035301) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pg_stat_statements"
@@ -195,6 +195,12 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_05_200145) do
     t.index ["priority", "scheduled_at"], name: "index_good_jobs_on_priority_scheduled_at_unfinished_unlocked", where: "((finished_at IS NULL) AND (locked_by_id IS NULL))"
     t.index ["queue_name", "scheduled_at"], name: "index_good_jobs_on_queue_name_and_scheduled_at", where: "(finished_at IS NULL)"
     t.index ["scheduled_at"], name: "index_good_jobs_on_scheduled_at", where: "(finished_at IS NULL)"
+  end
+
+  create_table "inbound_request_logs", force: :cascade do |t|
+    t.string "service", null: false
+    t.jsonb "meta", default: {}, null: false
+    t.datetime "created_at", null: false
   end
 
   create_table "links", force: :cascade do |t|

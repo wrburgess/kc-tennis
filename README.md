@@ -6,6 +6,15 @@
 * [Staging Site](https://staging.kc.tennis)
 * [Local Site](https://local.kc.tennis) _via cloudflare tunnel_
 
+## References
+
+* [Rails Guides (8.0.0)](https://guides.rubyonrails.org/v8.0.0/index.html)
+* [PostgreSQL](https://www.postgresql.org/docs/)
+* [Heroku Documentation](https://devcenter.heroku.com/categories/reference)
+* [AWS Documentation](https://docs.aws.amazon.com/)
+* [Bootstrap Docs (5.3.3)](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
+* [Yarn Docs (2+)](https://yarnpkg.com/getting-started)
+
 ## Useful Commands
 
 * Lock Bundle: `bundle lock --add-platform x86_64-linux`
@@ -42,6 +51,7 @@
 #### Foundation
 
 * [ruby](https://www.ruby-lang.org/en/)
+* [rack](https://github.com/rack/rack)
 * [node](https://nodejs.org/en/)
 * [rails](https://rubyonrails.org/)
 * [yarn](https://yarnpkg.com/)

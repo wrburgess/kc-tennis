@@ -11,7 +11,7 @@ class SystemPermission < ApplicationRecord
   has_many :system_groups, through: :system_roles
   has_many :users, through: :system_groups
 
-  scope :select_order, -> { order(name: :asc) }
+  scope :select_order, -> { order('name ASC') }
 
   def self.options_for_select
     select_order.map { |instance| [instance.name, instance.id] }
