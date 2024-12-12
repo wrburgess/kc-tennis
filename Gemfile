@@ -18,7 +18,7 @@ gem 'caxlsx_rails', '0.6.4'
 gem 'cssbundling-rails', '1.4.1'
 gem 'csv', '3.3.0'
 gem 'devise', '4.9.4'
-gem 'good_job', '4.5.1'
+gem 'good_job', '4.6.0'
 gem 'jbuilder', '2.13.0'
 gem 'jsbundling-rails', '1.3.1'
 gem 'kamal', '2.3.0', require: false
@@ -52,7 +52,7 @@ group :development do
   gem 'bundler-audit', '0.9.2', require: false
   gem 'lookbook', '2.3.4'
   gem 'rspec-rails', '7.1.0'
-  gem 'rubocop', '1.69.1', require: false
+  gem 'rubocop', '1.69.2', require: false
   gem 'web-console', '4.2.1'
 end
 
