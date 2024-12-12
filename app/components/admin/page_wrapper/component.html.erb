@@ -1,5 +1,5 @@
 <div
-  class='<%= "container-fluid admin #{@controller} #{@action}" %>'
+  class='<%= "container-fluid admin #{@controller.gsub('/', '-')} #{@action}" %>'
   data-controller='<%= controller_name_dasherized %>'
   data-<%= controller_name_dasherized %>-action='<%= @action %>'
 >
