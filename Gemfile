@@ -21,7 +21,7 @@ gem 'devise', '4.9.4'
 gem 'good_job', '4.6.0'
 gem 'jbuilder', '2.13.0'
 gem 'jsbundling-rails', '1.3.1'
-gem 'kamal', '2.3.0', require: false
+gem 'kamal', '2.4.0', require: false
 gem 'maintenance_tasks', '2.10.0'
 gem 'pagy', '9.3.3'
 gem 'pg', '1.5.9'
