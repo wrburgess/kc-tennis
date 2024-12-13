@@ -8,10 +8,8 @@
       <thead>
         <tr>
           <th><%= sort_link([:admin, @q], :id, "ID") %></th>
-          <th><%= sort_link([:admin, @q], :title_name, "Title") %></th>
           <th><%= sort_link([:admin, @q], :url_type, "URL Type", default_order: :asc) %></th>
           <th><%= sort_link([:admin, @q], :url, "URL", default_order: :asc) %></th>
-          <th><%= sort_link([:admin, @q], :video_type, "Video Type", default_order: :asc) %></th>
           <th>Secure Code</th>
           <th>Actions</th>
         </tr>
@@ -20,12 +18,8 @@
         <% @instances.each do |instance| %>
           <tr>
             <th><%= instance.id %></th>
-            <td>
-              Stuff
-            </td>
             <td><%= instance.url_type %></td>
             <td><%= link_to "active link", instance.url, target: "_blank" %></td>
-            <td><%= instance.video_type %></td>
             <td><%= instance.secure_code %></td>
             <td>
               <%= render Admin::ActionButton::Component.new(operation: :show, instance: instance, button_classes: "me-3", icon_classes: :none) %>
@@ -40,8 +34,8 @@
 
     <%= render Admin::FilterCard::Component.new do %>
       <%= simple_form_for [:admin, @q], url: polymorphic_path([:admin, @instance]), html: { method: :get }, wrapper: :floating_labels_form do |f| %>
-        <%= f.input :id_eq, label: "ID equals", placeholder: "ID equals" %>
-        <%= f.input :url_cont, label: "URL contains", placeholder: "URL contains" %>
+        <%= f.input :id_eq, label: "ID", placeholder: "ID equals" %>
+        <%= f.input :url_cont, label: "URL", placeholder: "URL contains" %>
         <%= f.input :url_type_eq, label: "URL Type", placeholder: "URL Type", include_blank: "Any", collection: UrlTypes.all %>
         <%= f.input :archived_at_not_null, as: :boolean, label: "Archived?", wrapper: :custom_boolean_switch %>
         
