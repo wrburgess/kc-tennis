@@ -10,4 +10,11 @@
     <%= render Admin::ActionButton::Component.new(operation: :upload_file, instance: @instance, classes_append: "float-end me-2") if @upload_file_button %>
     <%= render Admin::ActionButton::Component.new(operation: :export_xlsx, instance: @instance, classes_append: "float-end me-2") if @export_xlsx_button %>
   </div>
+  <% if @show_filtering %>
+    <div>
+      <a href="#" data-bs-toggle="offcanvas" data-bs-target="#filters" aria-controls="filters">
+        <i class="bi bi-filter-right fs-2"></i>
+      </a>
+    </div>
+  <% end %>
 </div>
