@@ -1,4 +1,4 @@
-class Admin::TableForForShowRow::Component < ApplicationComponent
+class Admin::TableForShowRow::Component < ApplicationComponent
   attr_reader :name, :value
 
   def initialize(name:, value:)
