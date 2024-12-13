@@ -39,7 +39,7 @@
     <%= render Admin::IndexPager::Component.new(pagy: @pagy, instance: @instance) %>
 
     <%= render Admin::FilterCard::Component.new do %>
-      <%= simple_form_for [:admin, @q], url: polymorphic_path(:admin, @instance), html: { method: :get }, wrapper: :floating_labels_form do |f| %>
+      <%= simple_form_for [:admin, @q], url: polymorphic_path([:admin, @instance]), html: { method: :get }, wrapper: :floating_labels_form do |f| %>
         <%= f.input :id_eq, label: "ID equals", placeholder: "ID equals" %>
         <%= f.input :url_cont, label: "URL contains", placeholder: "URL contains" %>
         <%= f.input :url_type_eq, label: "URL Type", placeholder: "URL Type", include_blank: "Any", collection: UrlTypes.all %>
