@@ -1,4 +1,4 @@
-class Admin::Container::Component < ApplicationComponent
+class Admin::PageContainer::Component < ApplicationComponent
   def initialize(stimulus_controller: nil, stimulus_target: nil)
     @stimulus_controller = stimulus_controller
     @stimulus_target = stimulus_target
