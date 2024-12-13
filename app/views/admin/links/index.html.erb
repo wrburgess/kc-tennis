@@ -2,7 +2,7 @@
 
   <%= render Admin::HeaderForIndex::Component.new(instance: @instance, new_button: true, export_xlsx_button: true, show_filtering: true) %>
   
-  <%= render Admin::Container::Component.new do |container| %>
+  <%= render Admin::PageContainer::Component.new do |container| %>
 
     <table class="table table-striped table-hover table-sm">
       <thead>
@@ -38,7 +38,7 @@
 
     <%= render Admin::IndexPager::Component.new(pagy: @pagy, instance: @instance) %>
 
-    <%= render Admin::FilterCardComponent.new do %>
+    <%= render Admin::FilterCard::Component.new do %>
       <%= simple_form_for [:admin, @q], url: polymorphic_path(:admin, @instance), html: { method: :get }, wrapper: :floating_labels_form do |f| %>
         <%= f.input :id_eq, label: "ID equals", placeholder: "ID equals" %>
         <%= f.input :url_cont, label: "URL contains", placeholder: "URL contains" %>
