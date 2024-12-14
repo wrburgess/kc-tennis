@@ -18,6 +18,7 @@ gem 'caxlsx_rails', '0.6.4'
 gem 'cssbundling-rails', '1.4.1'
 gem 'csv', '3.3.0'
 gem 'devise', '4.9.4'
+gem 'faker', '3.5.1'
 gem 'good_job', '4.6.0'
 gem 'jbuilder', '2.13.0'
 gem 'jsbundling-rails', '1.3.1'
@@ -61,7 +62,6 @@ group :test do
   gem 'capybara', '3.40.0'
   gem 'database_cleaner-active_record', '2.2.0'
   gem 'factory_bot_rails', '6.4.4'
-  gem 'faker', '3.5.1'
   gem 'rails-controller-testing', '1.0.5'
   gem 'rspec-github', '2.4.0', require: false
   gem 'rspec-instafail', '1.0.0', require: false

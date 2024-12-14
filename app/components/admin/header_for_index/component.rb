@@ -1,6 +1,17 @@
 class Admin::HeaderForIndex::Component < ApplicationComponent
-  def initialize(instance:, new_button: false, upload_new_button: false, upload_file_button: false, export_xlsx_button: false, show_filtering: false)
+  def initialize(
+    instance:,
+    action:,
+    controller:,
+    new_button: false,
+    upload_new_button: false,
+    upload_file_button: false,
+    export_xlsx_button: false,
+    show_filtering: false
+  )
     @instance = instance
+    @action = action
+    @controller = controller
     @new_button = new_button
     @upload_new_button = upload_new_button
     @upload_file_button = upload_file_button

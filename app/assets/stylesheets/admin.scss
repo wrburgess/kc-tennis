@@ -4,3 +4,10 @@
 $bootstrap-icons-font-src: url("bootstrap-icons.woff2") format("woff2"), url("fonts/bootstrap-icons.woff") format("woff") !default;
 
 // Your admin-specific styles here
+.bg-custom-light-gray {
+  background-color: #c2c2c2;
+}
+
+input[readonly], textarea[readonly], input[readonly]:focus, textarea[readonly]:focus {
+  background-color: #c2c2c2; /* Change this to your desired color */
+}

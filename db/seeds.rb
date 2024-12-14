@@ -18,16 +18,13 @@ admins.each do |admin|
 end
 puts "END:   Create admins, Users Count: #{User.count}"
 
-# CREATE Admins
+# CREATE Users
 puts "BEGIN: Create users"
-admins = [
-  { email: "wrburgess@gmail.com", first_name: "Randy", last_name: "Burgess", password: "dtf6fhu7pdq6nbz-RED", confirmed_at: Time.now.utc }
-]
-[1..30].each do |admin|
+30.times do
   User.create(
     email: Faker::Internet.email,
-    first_name: Faker::Person.first_name,
-    last_name: Faker::Person.last_name,
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
     password: Faker::Internet.password,
     confirmed_at: Time.now.utc
   )
@@ -36,8 +33,7 @@ puts "END:   Create users, Users Count: #{User.count}"
 
 # CREATE Links
 puts "BEGIN: Create Links"
-
-[1..30].each do
+30.times do
   Link.create(url: Faker::Internet.url, url_type: UrlTypes.all.sample, secure_code: SecureRandom.hex(10), notes: Faker::Lorem.sentence)
 end
 puts "END:   Create Links, Links Count: #{Link.count}"

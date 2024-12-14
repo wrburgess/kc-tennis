@@ -1,6 +1,8 @@
 class Admin::HeaderForShow::Component < ApplicationComponent
-  def initialize(instance:, delete_button: false, edit_button: false, copy_button: false, download_show_button: false)
+  def initialize(instance:, action:, controller:, delete_button: false, edit_button: false, copy_button: false, download_show_button: false)
     @instance = instance
+    @action = action
+    @controller = controller
     @delete_button = delete_button
     @edit_button = edit_button
     @copy_button = copy_button
@@ -16,7 +18,7 @@ class Admin::HeaderForShow::Component < ApplicationComponent
   end
 
   def headline
-    @instance.try(:name) || @instance.try(:id)
+    "#{@instance.class_name_title.singularize}: #{@instance.try(:name) || @instance.try(:id)}"
   end
 
   def render?

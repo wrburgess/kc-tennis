@@ -1,7 +1,6 @@
-<%= render Admin::PageWrapper::Component.new(instance: @instance, controller: params[:controller], action: params[:action]) do %>
-  <div class="row header">
-    <%= render Admin::HeaderForEdit::Component.new(instance: @instance) %>
-  </div>
+<%= render Admin::HeaderForEdit::Component.new(instance: @instance, controller: params[:controller], action: params[:action]) %>
+
+<%= render Admin::PageContainer::Component.new do %>
   <%= form_with url: polymorphic_path([:admin, @instance]), method: :put do |form| %>
     <div class="row">
       <div class="col-6">

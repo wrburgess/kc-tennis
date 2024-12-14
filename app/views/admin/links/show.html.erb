@@ -1,8 +1,7 @@
-<%= render Admin::PageWrapper::Component.new(instance: @instance, controller: params[:controller], action: params[:action]) do %>
-  <div class="row header">
-    <%= render Admin::HeaderForShow::Component.new(instance: @instance, edit_button: true, delete_button: true, copy_button: true) %>
-  </div>
-  <div class="row data">
+<%= render Admin::HeaderForShow::Component.new(instance: @instance, controller: params[:controller], action: params[:action], edit_button: true, delete_button: true, copy_button: true) %>
+
+<%= render Admin::PageContainer::Component.new do %>
+
     <table class="table vertical">
       <tr>
         <th class="col-20">ID</th>
@@ -37,5 +36,4 @@
         <td class="col-80"><%= default_date_format(@instance.created_at) %></td>
       </tr>
     </table>
-  </div>
 <% end %>
