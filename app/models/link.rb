@@ -7,7 +7,7 @@ class Link < ApplicationRecord
   scope :select_order, -> { order(url_type: :asc) }
 
   def self.ransackable_attributes(auth_object = nil)
-    %w[url_type url video_type id created_at updated_at archived_at]
+    %w[url_type url id created_at updated_at archived_at]
   end
 
   def self.ransackable_associations(auth_object = nil)
