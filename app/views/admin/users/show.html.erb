@@ -1,7 +1,7 @@
 <%= render Admin::HeaderForShow::Component.new(instance: @instance, controller: params[:controller], action: params[:action], edit_button: true, delete_button: true, copy_button: true) %>
 
 <%= render Admin::PageContainer::Component.new do %>
-    <%= render Admin::TableForShow.new do |table| %>
+    <%= render Admin::TableForShow::Component.new do |table| %>
       <% table.with_row(name: "ID", value: @instance.id) %>
       <% table.with_row(name: "First Name", value: @instance.first_name) %>
       <% table.with_row(name: "Last Name", value: @instance.last_name) %>

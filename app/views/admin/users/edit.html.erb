@@ -1,4 +1,4 @@
-<%= render Admin::HeaderForEdit::Component.new(instance: @instance) %>
+<%= render Admin::HeaderForEdit::Component.new(instance: @instance, controller: params[:controller], action: params[:action]) %>
 
 <%= render Admin::PageContainer::Component.new do %>
   <%= form_with url: polymorphic_path([:admin, @instance]), method: :put do |form| %>
