@@ -41,12 +41,12 @@
         <% card.with_link(name: "Projects (GitHub)", url: 'https://github.com/wrburgess/kc-tennis/projects', new_window: true) %>
         <% card.with_link(name: "Source Control (GitHub)", url: 'https://github.com/wrburgess/kc-tennis', new_window: true) %>
         <% card.with_link(name: "UptimeRobot: Staging", url: "https://dashboard.uptimerobot.com/monitors/798151118", new_window: true) %>
-        <% card.with_link(name: "Users", url: admin_users_path, policy: User) %>
+        <% card.with_link(name: "System Users", url: admin_users_path, policy: User) %>
       <% end %>
     </div>
 
     <div class="col-6">
-      <%= render Admin::DashboardCard::Component.new(title: "Tool References") do |card| %>
+      <%= render Admin::DashboardCard::Component.new(title: "Tool Refs") do |card| %>
         <% card.with_link(name: "Blazer", url: 'https://github.com/ankane/blazer', new_window: true) %>
         <% card.with_link(name: "Bootstrap", url: 'https://getbootstrap.com/', new_window: true) %>
         <% card.with_link(name: "Devise", url: 'https://github.com/heartcombo/devise', new_window: true) %>
