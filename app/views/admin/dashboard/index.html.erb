@@ -30,6 +30,7 @@
         <% card.with_link(name: "GoodJob Dashboard", url: admin_good_job_path, new_window: true) %>
         <% card.with_link(name: "Heroku Datastores", url: 'https://data.heroku.com', new_window: true) %>
         <% card.with_link(name: "Heroku Pipeline", url: 'https://dashboard.heroku.com/pipelines/af2038da-a8c8-4dfd-966d-dd4c9489ed5c', new_window: true) %>
+        <% card.with_link(name: "Honeybadger (Staging)", url: 'https://app.honeybadger.io/projects/129221/install/rails', new_window: true) %>
         <% card.with_link(name: "Issues (GitHub)", url: 'https://github.com/wrburgess/kc-tennis/issues', new_window: true) %>
         <% card.with_link(name: "Maintenance Tasks", url: admin_maintenance_tasks_path, new_window: true) %>
         <% card.with_link(name: "PG Hero", url: admin_pg_hero_path, new_window: true) %>
@@ -43,5 +44,25 @@
         <% card.with_link(name: "Users", url: admin_users_path, policy: User) %>
       <% end %>
     </div>
-  </div>
+
+    <div class="col-6">
+      <%= render Admin::DashboardCard::Component.new(title: "Tool References") do |card| %>
+        <% card.with_link(name: "Blazer", url: 'https://account.postmarkapp.com/servers/14845165/streams', new_window: true) %>
+        <% card.with_link(name: "Bootstrap", url: 'https://staging.kc.tennis', new_window: true) %>
+        <% card.with_link(name: "Devise", url: 'https://dashboard.heroku.com/pipelines/af2038da-a8c8-4dfd-966d-dd4c9489ed5c', new_window: true) %>
+        <% card.with_link(name: "GoodJob", url: admin_pg_hero_path, new_window: true) %>
+        <% card.with_link(name: "Node", url: 'https://www.kc.tennis', new_window: true) %>
+        <% card.with_link(name: "PG Hero", url: 'https://account.postmarkapp.com/servers/14845162/streams', new_window: true) %>
+        <% card.with_link(name: "PostgreSQL", url: admin_data_logs_path, policy: DataLog) %>
+        <% card.with_link(name: "Puma", url: 'https://github.com/wrburgess/kc-tennis/issues', new_window: true) %>
+        <% card.with_link(name: "Pundit", url: 'https://app.honeybadger.io/projects/129221/install/rails', new_window: true) %>
+        <% card.with_link(name: "Ransack", url: 'https://account.postmarkapp.com/servers/14845162/streams', new_window: true) %>
+        <% card.with_link(name: "Rspec", url: admin_maintenance_tasks_path, new_window: true) %>
+        <% card.with_link(name: "Ruby on Rails", url: 'https://data.heroku.com', new_window: true) %>
+        <% card.with_link(name: "Ruby", url: admin_good_job_path, new_window: true) %>
+        <% card.with_link(name: "Tailwind", url: "https://tailwindcss.com/", new_window: true) %>
+        <% card.with_link(name: "Yarn", url: admin_blazer_path, new_window: true) %>
+      <% end %>
+    </div>
+  </div>a
 <% end %>
