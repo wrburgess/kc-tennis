@@ -5,7 +5,7 @@ class Admin::LinksController < AdminController
 
   def index
     authorize(controller_class)
-    @q = controller_class.ransack(index_archivable_params)
+    @q = controller_class.ransack(params[:q])
     @q.sorts = controller_class.default_sort if @q.sorts.empty?
     @pagy, @instances = pagy(@q.result)
     @instance = controller_class.new
@@ -121,9 +121,9 @@ class Admin::LinksController < AdminController
   private
 
   def create_params
-    params.permit(
+    params.require(:link).permit(
       :notes,
-      :secret_code,
+      :secure_code,
       :url,
       :url_type,
       :video_type,
@@ -131,9 +131,9 @@ class Admin::LinksController < AdminController
   end
 
   def update_params
-    params.permit(
+    params.require(:link).permit(
       :notes,
-      :secret_code,
+      :secure_code,
       :url,
       :url_type,
       :video_type,

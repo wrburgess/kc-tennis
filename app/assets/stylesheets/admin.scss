@@ -11,3 +11,21 @@ $bootstrap-icons-font-src: url("bootstrap-icons.woff2") format("woff2"), url("fo
 input[readonly], textarea[readonly], input[readonly]:focus, textarea[readonly]:focus {
   background-color: #c2c2c2; /* Change this to your desired color */
 }
+
+thead.table-dark a {
+  color: lightblue;
+}
+
+.table-for-show {
+  .title-header {
+    background-color: #c2c2c2;
+    color: black;
+    margin: 0;
+    padding: .5rem;
+  }
+  
+  th {
+    background-color: #ebeaea;
+    width: 15%;
+  }
+}

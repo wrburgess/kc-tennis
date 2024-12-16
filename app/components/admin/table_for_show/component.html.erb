@@ -1,12 +1,18 @@
-<% if @title %>
-  <h4 class="title-header"><%= @title %></h4>
-<% end %>
-
-<table class="table vertical">
-  <% rows.each do |row| %>
-    <tr>
-      <th class="col-20"><%= row.name %></th>
-      <td class="col-80"><%= row.value %></td>
-    </tr>
+<section class="table-for-show">
+  <% if @title %>
+    <h4 class="title-header">
+      <%= @title %>
+    </h4>
   <% end %>
-</table>
+
+  <table class="table vertical">
+    <tbody>
+      <% rows.each do |row| %>
+        <tr>
+          <th scope="col" class="w-20"><%= row.name %></th>
+          <td><%= row.value %></td>
+        </tr>
+      <% end %>
+    <tbody>
+  </table>
+</section>

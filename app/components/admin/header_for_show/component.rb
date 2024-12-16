@@ -18,7 +18,7 @@ class Admin::HeaderForShow::Component < ApplicationComponent
   end
 
   def headline
-    "#{@instance.class_name_title.singularize}: #{@instance.try(:name) || @instance.try(:id)}"
+    @instance.try(:name) || @instance.try(:id)
   end
 
   def render?

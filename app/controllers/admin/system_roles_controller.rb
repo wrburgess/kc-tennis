@@ -5,7 +5,7 @@ class Admin::SystemRolesController < AdminController
 
   def index
     authorize(controller_class)
-    @q = controller_class.ransack(index_archivable_params)
+    @q = controller_class.ransack(params[:q])
     @q.sorts = ['name asc', 'created_at desc'] if @q.sorts.empty?
     @pagy, @instances = pagy(@q.result)
     @instance = controller_class.new

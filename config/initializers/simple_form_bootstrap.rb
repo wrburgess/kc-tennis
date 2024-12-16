@@ -346,6 +346,25 @@ SimpleForm.setup do |config|
     b.use :hint, wrap_with: { class: 'form-text' }
   end
 
+  # Custom datepicker wrapper
+  config.wrappers :datepicker, tag: 'div', class: 'form-floating mb-3', error_class: 'has-error' do |b|
+    b.use :html5
+    b.use :placeholder
+    b.use :input, class: 'form-control', type: 'date'
+    b.use :label, class: 'form-label'
+    b.use :full_error, wrap_with: { tag: 'span', class: 'error' }
+    b.use :hint, wrap_with: { tag: 'p', class: 'hint' }
+  end
+
+  config.wrappers :floating_label_form, tag: 'div', class: 'form-floating mb-3', error_class: 'has-error' do |b|
+    b.use :html5
+    b.use :placeholder
+    b.use :input, class: 'form-control'
+    b.use :label, class: 'form-label', wrap_with: { tag: 'label' }
+    b.use :full_error, wrap_with: { tag: 'span', class: 'error' }
+    b.use :hint, wrap_with: { tag: 'p', class: 'hint' }
+  end
+
   # The default wrapper to be used by the FormBuilder.
   config.default_wrapper = :vertical_form
 

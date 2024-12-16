@@ -5,7 +5,7 @@ class Admin::UsersController < AdminController
 
   def index
     authorize(controller_class)
-    @q = controller_class.actives.ransack(index_archivable_params)
+    @q = controller_class.actives.ransack(params[:q])
     @q.sorts = ['last_name asc', 'created_at desc'] if @q.sorts.empty?
 
     @pagy, @instances = pagy(@q.result)
@@ -24,12 +24,15 @@ class Admin::UsersController < AdminController
 
   def create
     authorize(controller_class)
-    params[:confirmed_at] = DateTime.current
+    temp_pw = SecureRandom.hex(16)
+    params[:user][:password] = temp_pw
+    params[:user][:password_confirmation] = temp_pw
+    params[:user][:confirmed_at] = DateTime.current
     instance = controller_class.create(create_params)
 
     instance.log(user: current_user, operation: action_name, meta: params.to_json)
     flash[:success] = "New #{instance.class_name_title} successfully created"
-    redirect_to polymorphic_path(instance)
+    redirect_to polymorphic_path([:admin, instance])
   end
 
   def edit
@@ -46,7 +49,7 @@ class Admin::UsersController < AdminController
 
     instance.log(user: current_user, operation: action_name, meta: params.to_json, original_data: original_instance.attributes.to_json)
     flash[:success] = "#{instance.class_name_title} successfully updated"
-    redirect_to polymorphic_path(instance)
+    redirect_to polymorphic_path([:admin, instance])
   end
 
   def destroy
@@ -100,7 +103,7 @@ class Admin::UsersController < AdminController
   private
 
   def create_params
-    params.permit(
+    params.require(:user).permit(
       :archived_at,
       :confirmed_at,
       :email,
@@ -114,7 +117,7 @@ class Admin::UsersController < AdminController
   end
 
   def update_params
-    params.permit(
+    params.require(:user).permit(
       :archived_at,
       :confirmed_at,
       :email,

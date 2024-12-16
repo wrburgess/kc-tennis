@@ -1,42 +1,5 @@
 <%= render Admin::HeaderForEdit::Component.new(instance: @instance, controller: params[:controller], action: params[:action]) %>
 
 <%= render Admin::PageContainer::Component.new do %>
-  <%= form_with url: polymorphic_path([:admin, @instance]), method: :put do |form| %>
-    <div class="row">
-      <div class="col-6">
-        <div class="form-floating">
-          <input type="text" class="form-control" id="id" value="<%= @instance.id %>" readonly>
-          <label for="id" class="form-label">ID</label>
-        </div>
-        <div class="form-floating">
-          <input type="text" class="form-control" id="url" name="url" value="<%= @instance.name %>" required>
-          <label for="url" class="form-label">URL</label>
-        </div>
-        <div class="form-floating">
-          <%= select_tag("url_type", options_for_select(UrlTypes.all, @instance.url_type), prompt: "Select a type", class: "form-select") %>
-          <label for="url_type" class="form-label">URL Type</label>
-        </div>
-        <div class="form-floating">
-          <input type="text" class="form-control" id="video_type" name="video_type" value="<%= @instance.video_type %>" required>
-          <label for="video_type" class="form-label">Video Type</label>
-        </div>
-        <div class="form-floating">
-          <input type="text" class="form-control" id="secure_code" name="secure_code" value="<%= @instance.secure_code %>">
-          <label for="secure_code" class="form-label">Secure Code</label>
-        </div>
-        <div class="form-floating">
-          <textarea class="form-control" id="notes" name="notes" rows="2"><%= @instance.notes %></textarea>
-          <label class="form-check-label" for="notes">Notes</label>
-        </div>
-      </div><!-- col-6 -->
-      <div class="col-6">
-      </div><!-- col-6 -->
-    </div><!-- row -->
-    <div class="row">
-      <div class="form-group">
-        <%= render Admin::ActionButton::Component.new(operation: :cancel_to_show, instance: @instance, classes_append: "me-3", public: true) %>
-        <%= render Admin::FormButton::Component.new(operation: :submit) %>
-      </div>
-    </div><!-- row -->
-  <% end %>
+  <%= render "admin/#{@instance.model_name.plural}/form", instance: @instance %>
 <% end %>

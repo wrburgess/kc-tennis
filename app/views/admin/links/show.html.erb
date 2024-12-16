@@ -1,39 +1,14 @@
 <%= render Admin::HeaderForShow::Component.new(instance: @instance, controller: params[:controller], action: params[:action], edit_button: true, delete_button: true, copy_button: true) %>
 
 <%= render Admin::PageContainer::Component.new do %>
-
-    <table class="table vertical">
-      <tr>
-        <th class="col-20">ID</th>
-        <td class="col-80"><%= @instance.id %></td>
-      </tr>
-      <tr>
-        <th class="col-20">Video Type</th>
-        <td class="col-80"><%= @instance.video_type %></td>
-      </tr>
-      <tr>
-        <th class="col-20">URL</th>
-        <td class="col-80"><%= link_to @instance.url, @instance.url, target: "_blank" %></td>
-      </tr>
-      <tr>
-        <th class="col-20">URL Type</th>
-        <td class="col-80"><%= @instance.url_type %></td>
-      </tr>
-      <tr>
-        <th class="col-20">Secure Code</th>
-        <td class="col-80"><%= @instance.secure_code %></td>
-      </tr>
-      <tr>
-        <th class="col-20">Notes</th>
-        <td class="col-80"><%= @instance.notes %></td>
-      </tr>
-      <tr>
-        <th class="col-20">Updated At</th>
-        <td class="col-80"><%= default_date_format(@instance.updated_at) %></td>
-      </tr>
-      <tr>
-        <th class="col-20">Created At</th>
-        <td class="col-80"><%= default_date_format(@instance.created_at) %></td>
-      </tr>
-    </table>
+  <%= render Admin::TableForShow::Component.new(title: 'Link Data') do |table| %>
+    <% table.with_row(name: "ID", value: @instance.id) %>
+    <% table.with_row(name: "URL", value: link_to(@instance.url, @instance.url, target: "_blank")) %>
+    <% table.with_row(name: "URL Type", value: @instance.url_type) %>
+    <% table.with_row(name: "Secure Code", value: @instance.secure_code) %>
+    <% table.with_row(name: "Notes", value: @instance.notes) %>
+    <% table.with_row(name: "Archived at", value: default_date_format(@instance.archived_at)) %>
+    <% table.with_row(name: "Created at", value: default_date_format(@instance.created_at)) %>
+    <% table.with_row(name: "Updated at", value: default_date_format(@instance.updated_at)) %>
+  <% end %>
 <% end %>

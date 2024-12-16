@@ -13,6 +13,23 @@ class SystemGroup < ApplicationRecord
 
   scope :select_order, -> { order('name ASC') }
 
+  def self.ransackable_attributes(*)
+    %w[
+      abbreviation
+      description
+      id
+      name
+    ]
+  end
+
+  def self.ransackable_associations(*)
+    %w[
+      system_permissions
+      system_roles
+      users
+    ]
+  end
+
   def self.options_for_select
     select_order.map { |instance| [instance.name, instance.id] }
   end

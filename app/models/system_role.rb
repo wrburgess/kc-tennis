@@ -13,6 +13,23 @@ class SystemRole < ApplicationRecord
 
   scope :select_order, -> { order(name: :asc) }
 
+  def self.ransackable_attributes(*)
+    %w[
+      name
+      abbreviation
+      description
+      id
+    ]
+  end
+
+  def self.ransackable_associations(*)
+    %w[
+      system_groups
+      system_permissions
+      users
+    ]
+  end
+
   def self.options_for_select
     select_order.map { |instance| [instance.name, instance.id] }
   end
