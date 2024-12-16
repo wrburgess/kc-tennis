@@ -35,11 +35,11 @@ describe Admin::LinksController, type: :controller do
   end
 
   describe '#create' do
-    let(:link_params) { attributes_for(resource) }
+    let(:instance_params) { attributes_for(resource) }
 
     it 'creates a new instance' do
       expect do
-        post :create, params: link_params
+        post :create, params: { resource => instance_params }
       end.to change(resource_class, :count).by(1)
 
       instance = resource_class.last
@@ -68,7 +68,7 @@ describe Admin::LinksController, type: :controller do
       second_url = Faker::Internet.url
 
       expect do
-        put :update, params: { id: instance.id, url: second_url }
+        put :update, params: { id: instance.id, resource => { url: second_url } }
         instance.reload
       end.to change(instance, :url).from(first_url).to(second_url)
     end
@@ -76,7 +76,7 @@ describe Admin::LinksController, type: :controller do
     it 'redirects to the updated instance show view' do
       second_url = Faker::Internet.url
 
-      put :update, params: { id: instance.id, url: second_url }
+      put :update, params: { id: instance.id, resource => { url: second_url } }
       expect(response).to redirect_to(polymorphic_path([:admin, instance]))
     end
   end
