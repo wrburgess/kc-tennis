@@ -13,8 +13,8 @@ describe 'Admin Links', type: :feature do
     url = Faker::Internet.url
     notes = Faker::Lorem.sentence
 
-    fill_in 'url', with: url
-    fill_in 'notes', with: notes
+    fill_in "#{instance_name}[url]", with: url
+    fill_in "#{instance_name}[notes]", with: notes
     click_button 'Submit'
 
     expect(page).to have_text("New #{instance_name.titleize} successfully created")
@@ -35,8 +35,8 @@ describe 'Admin Links', type: :feature do
 
     visit edit_polymorphic_path([:admin, instance])
 
-    fill_in 'url', with: url
-    fill_in 'notes', with: notes
+    fill_in "#{instance_name}[url]", with: url
+    fill_in "#{instance_name}[notes]", with: notes
     click_button 'Submit'
 
     expect(page).to have_text("#{instance_name.titleize} successfully updated")

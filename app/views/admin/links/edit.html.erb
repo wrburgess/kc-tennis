@@ -1,5 +1,5 @@
 <%= render Admin::HeaderForEdit::Component.new(instance: @instance, controller: params[:controller], action: params[:action]) %>
 
 <%= render Admin::PageContainer::Component.new do %>
-  <%= render "form", instance: @instance %>
+  <%= render partial: "form", locals: { instance: @instance } %>
 <% end %>
