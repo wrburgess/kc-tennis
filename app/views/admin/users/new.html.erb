@@ -1,5 +1,5 @@
 <%= render Admin::HeaderForNew::Component.new(instance: @instance, controller: params[:controller], action: params[:action]) %>
 
 <%= render Admin::PageContainer::Component.new do %>
-  <%= render partial: "admin/#{@instance.model_name.plural}/form", locals: { instance: @instance } %>
+  <%= render partial: "form", locals: { instance: @instance } %>
 <% end %>
