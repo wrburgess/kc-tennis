@@ -84,15 +84,30 @@ describe Admin::LinksController, type: :controller do
   describe '#destroy' do
     let(:instance) { create(resource) }
 
-    it 'archives an instance' do
+    it 'destroys an instance' do
       expect do
-        get :destroy, params: { id: instance.id }
-      end.to change { instance.reload.archived_at }.from(nil).to(be_present)
+        post :destroy, params: { id: instance.id }
+      end.to change(resource_class, :count).by(-1)
     end
 
     it 'redirects to the instance index view' do
       get :destroy, params: { id: instance.id }
       expect(response).to redirect_to(polymorphic_path([:admin, resource_class]))
+    end
+  end
+
+  describe '#archive' do
+    let(:instance) { create(resource) }
+
+    it 'archives an instance' do
+      expect do
+        put :archive, params: { id: instance.id }
+      end.to change { instance.reload.archived_at }.from(nil).to(be_present)
+    end
+
+    it 'redirects to the instance index view' do
+      put :archive, params: { id: instance.id }
+      expect(response).to redirect_to(polymorphic_path([:admin, klass]))
     end
   end
 

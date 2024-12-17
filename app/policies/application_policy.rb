@@ -38,6 +38,10 @@ class ApplicationPolicy
     user_access_authorized?(:destroy)
   end
 
+  def archive?
+    user_access_authorized?(:archive)
+  end
+
   def unarchive?
     user_access_authorized?(:unarchive)
   end

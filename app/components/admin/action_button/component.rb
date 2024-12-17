@@ -19,6 +19,7 @@ class Admin::ActionButton::Component < ApplicationComponent
     return @text if @text.present?
 
     texts = {
+      archive: 'Archive',
       cancel_to_index: 'Cancel',
       cancel_to_show: 'Cancel',
       collection_export_xlsx: 'Download',
@@ -29,6 +30,7 @@ class Admin::ActionButton::Component < ApplicationComponent
       member_export_xlsx: 'Download',
       new: "Create New #{@instance.class.name.titlecase}",
       show: 'View',
+      unarchive: 'Unarchive',
       upload: 'Import Flat File',
       upload_new: "Upload New #{@instance.class.name.titlecase}"
     }
@@ -42,6 +44,7 @@ class Admin::ActionButton::Component < ApplicationComponent
     return '' if @button_classes == :none
 
     classes = {
+      archive: 'btn btn-danger',
       cancel_to_index: 'btn btn-secondary',
       cancel_to_show: 'btn btn-secondary',
       copy: 'btn btn-success',
@@ -51,6 +54,7 @@ class Admin::ActionButton::Component < ApplicationComponent
       index: 'btn btn-primary',
       new: 'btn btn-success',
       show: 'btn btn-info',
+      unarchive: 'btn btn-secondary',
       upload: 'btn btn-info',
       upload_new: 'btn btn-success',
       user_export_xlsx: 'btn btn-info'
@@ -66,6 +70,7 @@ class Admin::ActionButton::Component < ApplicationComponent
     return '' if @icon_classes == :none
 
     classes = {
+      archive: 'btn btn-archive',
       cancel_to_index: 'bi bi-x-octagon',
       cancel_to_show: 'bi bi-x-octagon',
       collection_export_xlsx: 'bi-file-spreadsheet',
@@ -76,6 +81,7 @@ class Admin::ActionButton::Component < ApplicationComponent
       member_export_xlsx: 'bi-file-spreadsheet',
       new: 'bi bi-plus-circle',
       show: 'bi bi-eyeglasses',
+      unarchive: 'btn bi-arrow-up-square-fill',
       upload: 'bi bi-eyeglasses',
       upload_new: 'bi bi-plus-circle'
     }
@@ -87,6 +93,8 @@ class Admin::ActionButton::Component < ApplicationComponent
     return @path if @path.present?
 
     case @operation
+    when :archive
+      archive_polymorphic_path([:admin, @instance])
     when :cancel_to_index
       polymorphic_path([:admin, @instance.class])
     when :cancel_to_show
@@ -107,6 +115,8 @@ class Admin::ActionButton::Component < ApplicationComponent
       new_polymorphic_path([:admin, @instance.class])
     when :show
       polymorphic_path([:admin, @instance])
+    when :unarchive
+      unarchive_polymorphic_path([:admin, @instance])
     when :upload
       polymorphic_path([:upload, :admin, @instance])
     when :upload_new
@@ -120,7 +130,7 @@ class Admin::ActionButton::Component < ApplicationComponent
     return @method if @method.present?
 
     paths = {
-      cancel_to_index: :get,
+      archive: :put,
       cancel_to_show: :get,
       copy: :post,
       destroy: :delete,
@@ -129,6 +139,7 @@ class Admin::ActionButton::Component < ApplicationComponent
       index: :get,
       new: :get,
       show: :get,
+      unarchive: :put,
       upload: :get,
       upload_new: :get,
       user_export_xlsx: :get

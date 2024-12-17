@@ -5,6 +5,7 @@ RSpec.shared_context 'component_setup' do
 
   let(:system_group) { create(:system_group) }
   let(:system_role) { create(:system_role) }
+  let(:sp_archive) { create(:system_permission, name: "#{klass} Archive", resource: klass, operation: 'archive') }
   let(:sp_collection_export_xlsx) { create(:system_permission, name: "#{klass} Collection Export Xlsx", resource: klass, operation: 'collection_export_xlsx') }
   let(:sp_copy) { create(:system_permission, name: "#{klass} Copy", resource: klass, operation: 'copy') }
   let(:sp_create) { create(:system_permission, name: "#{klass} Create", resource: klass, operation: 'create') }
@@ -19,6 +20,7 @@ RSpec.shared_context 'component_setup' do
 
   before do
     system_role.system_permissions << [
+      sp_archive,
       sp_collection_export_xlsx,
       sp_copy,
       sp_create,

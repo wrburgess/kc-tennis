@@ -4,6 +4,7 @@ module SystemOperations
   COPY = 'copy'.freeze
   CREATE = 'create'.freeze
   CREATE_FROM_UPLOAD = 'create_from_upload'.freeze
+  DELETED = 'deleted'.freeze
   DISASSOCIATE = 'disassociate'.freeze
   EDIT = 'edit'.freeze
   EXPORT_IMPORT_EXAMPLE = 'export_import_example'.freeze

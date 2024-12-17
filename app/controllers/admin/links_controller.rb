@@ -50,10 +50,21 @@ class Admin::LinksController < AdminController
   def destroy
     authorize(controller_class)
     instance = controller_class.find(params[:id])
+
+    instance.log(user: current_user, operation: SystemOperations::DELETED)
+    flash[:danger] = "#{instance.class_name_title} successfully deleted"
+    instance.destroy
+
+    redirect_to polymorphic_path([:admin, controller_class])
+  end
+
+  def archive
+    instance = controller_class.find(params[:id])
+    authorize(controller_class)
     instance.archive
 
-    instance.log(user: current_user, operation: SystemOperations::ARCHIVED)
-    flash[:danger] = "#{instance.class_name_title} successfully archived"
+    instance.log(user: current_user, operation: action_name)
+    flash[:danger] = "#{instance.class_name_title} archived"
     redirect_to polymorphic_path([:admin, controller_class])
   end
 
@@ -63,7 +74,7 @@ class Admin::LinksController < AdminController
     instance.unarchive
 
     instance.log(user: current_user, operation: SystemOperations::UNARCHIVED)
-    flash[:danger] = "#{instance.class_name_title} successfully archived"
+    flash[:success] = "#{instance.class_name_title} successfully unarchived"
     redirect_to polymorphic_path([:admin, instance])
   end
 
