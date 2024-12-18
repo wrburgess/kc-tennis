@@ -16,4 +16,4 @@ import "bootstrap"
 import "./controllers"
 
 // Log that admin JS is loaded
-console.log("Admin JavaScript bundle loaded")
+// console.log("Admin JavaScript bundle loaded")

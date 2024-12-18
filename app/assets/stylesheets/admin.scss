@@ -1,5 +1,6 @@
 @use "bootstrap/scss/bootstrap";
-@use 'bootstrap-icons/font/bootstrap-icons';
+@use "bootstrap-icons/font/bootstrap-icons";
+@use "tom-select/dist/css/tom-select.bootstrap5";
 
 $bootstrap-icons-font-src: url("bootstrap-icons.woff2") format("woff2"), url("fonts/bootstrap-icons.woff") format("woff") !default;
 

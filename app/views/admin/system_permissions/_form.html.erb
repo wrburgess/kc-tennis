@@ -10,7 +10,14 @@
         <%= f.input :operation, as: :select, collection: SystemOperations.all, wrapper: :floating_label_form %>
         <%= f.input :description, wrapper: :floating_label_form %>
         <%= f.input :notes, as: :text, wrapper: :floating_label_form %>
-        <%= f.input :system_role_ids, as: :tom_select, label: "System Roles", options_for_select: SystemRole.options_for_select, prompt: "Choose roles...", multiple: true, wrapper: :tom_select %>
+        <%= f.input :system_role_ids,
+            as: :tom_select,
+            collection: SystemRole.options_for_select,
+            label: 'Roles',
+            prompt: 'Select roles...',
+            autocomplete: 'off',
+            multiple: false,
+            wrapper: :tom_select_label_inset %>
       </div>
     </div><!-- row -->
     <div class="row">

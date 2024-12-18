@@ -357,12 +357,23 @@ SimpleForm.setup do |config|
   end
 
   # Custom tom-select wrapper
-  config.wrappers :tom_select, tag: 'div', class: 'form-group', error_class: 'has-error' do |b|
-    b.use :html5
-    b.use :label, class: 'form-label'
-    b.use :input, class: 'tom-select'
-    b.use :full_error, wrap_with: { tag: 'span', class: 'error' }
-    b.use :hint, wrap_with: { tag: 'p', class: 'hint' }
+  config.wrappers :tom_select_label_outset do |b|
+    b.wrapper html: {
+      class: 'form-group',
+      data: { controller: 'tom-select' }
+    } do |ba|
+      ba.use :label, class: 'form-label'
+      ba.use :input, class: 'tom-select', data: { tom_select_target: 'tomselect' }
+    end
+  end
+
+  config.wrappers :tom_select_label_inset do |b|
+    b.wrapper html: { class: 'input-group mb-3', data: { controller: 'tom-select' } } do |ba|
+      ba.wrapper html: { class: 'input-group-text', id: 'basic-addon3' } do |bb|
+        bb.use :label
+      end
+      ba.use :input, class: 'tom-select', data: { tom_select_target: 'tomselect' }
+    end
   end
 
   config.wrappers :floating_label_form, tag: 'div', class: 'form-floating mb-3', error_class: 'has-error' do |b|

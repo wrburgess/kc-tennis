@@ -13,4 +13,4 @@ window.Stimulus = application
 import "./controllers"
 
 // Log that public JS is loaded
-console.log("Public JavaScript bundle loaded")
+// console.log("Public JavaScript bundle loaded")
