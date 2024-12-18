@@ -20,7 +20,7 @@ describe Admin::ActionButton::Component, type: :component do
       expect(page).to have_css('.bi-x-octagon')
 
       link = page.find('a', text: 'Cancel')
-      method_attribute = link['data-method']
+      method_attribute = link['data-turbo-method']
 
       expect(method_attribute).to eq('get')
     end

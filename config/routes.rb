@@ -6,8 +6,8 @@ Rails.application.routes.draw do
 
   concern :archivable do
     member do
-      put :archive
-      put :unarchive
+      patch :archive
+      patch :unarchive
     end
   end
 

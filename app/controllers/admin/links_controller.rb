@@ -53,6 +53,7 @@ class Admin::LinksController < AdminController
 
     instance.log(user: current_user, operation: SystemOperations::DELETED)
     flash[:danger] = "#{instance.class_name_title} successfully deleted"
+
     instance.destroy
 
     redirect_to polymorphic_path([:admin, controller_class])
@@ -64,7 +65,7 @@ class Admin::LinksController < AdminController
     instance.archive
 
     instance.log(user: current_user, operation: action_name)
-    flash[:danger] = "#{instance.class_name_title} archived"
+    flash[:danger] = "#{instance.class_name_title} successfully archived"
     redirect_to polymorphic_path([:admin, controller_class])
   end
 

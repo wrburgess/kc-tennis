@@ -70,7 +70,7 @@ class Admin::ActionButton::Component < ApplicationComponent
     return '' if @icon_classes == :none
 
     classes = {
-      archive: 'btn btn-archive',
+      archive: 'bi bi-archive',
       cancel_to_index: 'bi bi-x-octagon',
       cancel_to_show: 'bi bi-x-octagon',
       collection_export_xlsx: 'bi-file-spreadsheet',
@@ -81,7 +81,7 @@ class Admin::ActionButton::Component < ApplicationComponent
       member_export_xlsx: 'bi-file-spreadsheet',
       new: 'bi bi-plus-circle',
       show: 'bi bi-eyeglasses',
-      unarchive: 'btn bi-arrow-up-square-fill',
+      unarchive: 'bi bi-arrow-up-square-fill',
       upload: 'bi bi-eyeglasses',
       upload_new: 'bi bi-plus-circle'
     }
@@ -94,7 +94,7 @@ class Admin::ActionButton::Component < ApplicationComponent
 
     case @operation
     when :archive
-      archive_polymorphic_path([:admin, @instance])
+      polymorphic_path([:archive, :admin, @instance])
     when :cancel_to_index
       polymorphic_path([:admin, @instance.class])
     when :cancel_to_show
@@ -116,7 +116,7 @@ class Admin::ActionButton::Component < ApplicationComponent
     when :show
       polymorphic_path([:admin, @instance])
     when :unarchive
-      unarchive_polymorphic_path([:admin, @instance])
+      polymorphic_path([:unarchive, :admin, @instance])
     when :upload
       polymorphic_path([:upload, :admin, @instance])
     when :upload_new
@@ -130,7 +130,7 @@ class Admin::ActionButton::Component < ApplicationComponent
     return @method if @method.present?
 
     paths = {
-      archive: :put,
+      archive: :patch,
       cancel_to_show: :get,
       copy: :post,
       destroy: :delete,
@@ -139,7 +139,7 @@ class Admin::ActionButton::Component < ApplicationComponent
       index: :get,
       new: :get,
       show: :get,
-      unarchive: :put,
+      unarchive: :patch,
       upload: :get,
       upload_new: :get,
       user_export_xlsx: :get

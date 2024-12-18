@@ -1,4 +1,4 @@
-<%= render Admin::HeaderForShow::Component.new(instance: @instance, controller: params[:controller], action: params[:action], edit_button: true, delete_button: true, copy_button: true) %>
+<%= render Admin::HeaderForShow::Component.new(instance: @instance, controller: params[:controller], action: params[:action], edit_button: true, archive_button: true, copy_button: true) %>
 
 <%= render Admin::PageContainer::Component.new do %>
   <%= render Admin::TableForShow::Component.new(title: 'Link Data') do |table| %>

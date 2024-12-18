@@ -27,6 +27,14 @@ Propshaft has two ways of finding your assets (called resolvers). When you are d
 When you deploy to your server you will run rails assets:precompile before restarting puma. This tells Propshaft to move all files from app/assets to public/assets and add digests to them so that CDNs can cache them properly. From that moment on, you are using the static resolver, which is much faster. 
 ```
 
+### Replacing UJS with Turbo for Button Link Methods
+
+```
+https://turbo.hotwired.dev/reference/attributes
+
+data-turbo-method changes the link request type from the default GET. Ideally, non-GET requests should be triggered with forms, but data-turbo-method might be useful where a form is not possible.
+```
+
 ## Approach
 
 * Use [hotwire](https://hotwired.dev), [turbo](https://turbo.hotwired.dev), and [stimulus](https://stimulus.hotwired.dev) for frontend js 

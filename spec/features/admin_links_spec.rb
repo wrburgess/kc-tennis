@@ -44,13 +44,25 @@ describe 'Admin Links', type: :feature do
     expect(page).to have_text(notes)
   end
 
-  scenario 'User deletes an instance' do
+  scenario 'User archives an instance' do
     visit polymorphic_path([:admin, instance])
 
     expect do
-      click_link 'Delete', match: :first
+      click_link 'Archive', match: :first
     end.to change(klass.actives, :count).by(-1)
 
     expect(page).to have_text("#{instance_name.titleize} successfully archived")
+  end
+
+  scenario 'User unarchives an instance' do
+    instance.update(archived_at: Time.current)
+
+    visit polymorphic_path([:admin, instance])
+
+    expect do
+      click_link 'Unarchive', match: :first
+    end.to change(klass.actives, :count).by(1)
+
+    expect(page).to have_text("#{instance_name.titleize} successfully unarchived")
   end
 end

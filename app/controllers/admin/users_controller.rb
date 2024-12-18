@@ -59,7 +59,7 @@ class Admin::UsersController < AdminController
 
     instance.log(user: current_user, operation: action_name)
     flash[:danger] = "#{instance.class_name_title} successfully deleted"
-    redirect_to polymorphic_path(controller_class)
+    redirect_to polymorphic_path([:admin, controller_class])
   end
 
   def trigger_password_reset_email

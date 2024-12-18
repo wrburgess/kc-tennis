@@ -85,13 +85,15 @@ describe Admin::LinksController, type: :controller do
     let(:instance) { create(resource) }
 
     it 'destroys an instance' do
+      instance # instantiate instance for count
+
       expect do
-        post :destroy, params: { id: instance.id }
+        delete :destroy, params: { id: instance.id }
       end.to change(resource_class, :count).by(-1)
     end
 
     it 'redirects to the instance index view' do
-      get :destroy, params: { id: instance.id }
+      delete :destroy, params: { id: instance.id }
       expect(response).to redirect_to(polymorphic_path([:admin, resource_class]))
     end
   end
