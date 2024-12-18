@@ -80,7 +80,7 @@ Rails.application.routes.draw do
 
     resources :storage_asset_service_prices, concerns: [:collection_exportable, :importable]
     resources :system_groups, concerns: :collection_exportable
-    resources :system_permissions, concerns: :collection_exportable
+    resources :system_permissions, concerns: [:copyable, :collection_exportable]
     resources :system_roles, concerns: :collection_exportable
 
     resources :users, concerns: :collection_exportable do

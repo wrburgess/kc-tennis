@@ -17,6 +17,10 @@ class ApplicationController < ActionController::Base
     controller_name.underscore.singularize
   end
 
+  def controller_class_symbolized
+    controller_name.underscore.singularize.to_sym
+  end
+
   private
 
   def user_not_authorized

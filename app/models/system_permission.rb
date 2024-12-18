@@ -35,6 +35,10 @@ class SystemPermission < ApplicationRecord
     select_order.map { |instance| [instance.name, instance.id] }
   end
 
+  def self.default_sort
+    [name: :asc, created_at: :desc]
+  end
+
   def update_associations(params)
     SystemPermission.transaction do
       system_role_system_permissions.delete_all if params[:system_role_ids].present?

@@ -6,7 +6,7 @@ class Admin::SystemPermissionsController < AdminController
   def index
     authorize(controller_class)
     @q = controller_class.ransack(params[:q])
-    @q.sorts = ['name asc', 'created_at desc'] if @q.sorts.empty?
+    @q.sorts = controller_class.default_sort if @q.sorts.empty?
     @pagy, @instances = pagy(@q.result)
     @instance = controller_class.new
   end
@@ -23,13 +23,12 @@ class Admin::SystemPermissionsController < AdminController
 
   def create
     authorize(controller_class)
-    params[:active] = params[:active].present? ? true : false
     instance = controller_class.create(create_params)
     instance.update_associations(params)
 
-    instance.log(user: current_user, action_type: DataLogActionTypes::CREATED, meta: params.to_json)
-    flash[:success] = "New #{controller_class_instance.titleize} successfully created"
-    redirect_to send("#{controller_class_instance}_path", instance)
+    instance.log(user: current_user, operation: action_name, meta: params.to_json)
+    flash[:success] = "New #{instance.class_name_title} successfully created"
+    redirect_to polymorphic_path([:admin, instance])
   end
 
   def edit
@@ -42,23 +41,24 @@ class Admin::SystemPermissionsController < AdminController
     instance = controller_class.find(params[:id])
     original_instance = instance.dup
 
-    params[:active] = params[:active].present? ? true : false
     instance.update(update_params)
     instance.update_associations(params)
+    instance.log(user: current_user, operation: action_name, meta: params.to_json, original_data: original_instance.attributes.to_json)
+    flash[:success] = "#{instance.class_name_title} successfully updated"
 
-    instance.log(user: current_user, action_type: DataLogActionTypes::UPDATED, meta: params.to_json, original_data: original_instance.attributes.to_json)
-    flash[:success] = "#{controller_class_instance.titleize} successfully updated"
-    redirect_to send("#{controller_class_instance}_path", instance)
+    redirect_to polymorphic_path([:admin, instance])
   end
 
   def destroy
     authorize(controller_class)
     instance = controller_class.find(params[:id])
-    instance.log(user: current_user, action_type: DataLogActionTypes::DELETED)
+
+    instance.log(user: current_user, operation: action_name)
+    flash[:danger] = "#{instance.class_name_title} successfully deleted"
+
     instance.destroy
 
-    flash[:danger] = "#{controller_class_instance.titleize} successfully deleted"
-    redirect_to send("#{controller_class_instances}_path")
+    redirect_to polymorphic_path([:admin, controller_class])
   end
 
   def copy
@@ -66,11 +66,12 @@ class Admin::SystemPermissionsController < AdminController
     instance = controller_class.find(params[:id])
     new_instance = instance.copy_with_associations
 
-    instance.log(user: current_user, action_type: DataLogActionTypes::DUPLICATED, meta: params.to_json)
-    redirect_to send("#{controller_class_instance}_path", new_instance), notice: "Duplicate #{controller_class_instance.titleize} Created!"
+    instance.log(user: current_user, operation: action_name, meta: params.to_json)
+    flash[:danger] = "#{new_instance.class_name_title} successfully duplicated"
+    redirect_to polymorphic_path([:admin, new_instance])
   end
 
-  def export_xlsx
+  def collection_export_xlsx
     authorize(controller_class)
 
     sql = %(
@@ -83,20 +84,21 @@ class Admin::SystemPermissionsController < AdminController
     )
 
     @results = ActiveRecord::Base.connection.select_all(sql)
-    file_name = controller_class_instances
+    file_name = controller_class_plural
     filepath = "#{Rails.root}/tmp/#{file_name}.xlsx"
 
     File.open(filepath, 'wb') do |f|
-      f.write render_to_string(handlers: [:axlsx], formats: [:xlsx], template: 'xlsx/reports')
+      f.write render_to_string(handlers: [:axlsx], formats: [:xlsx], template: 'xlsx/reports', layout: false)
     end
 
-    render xlsx: 'reports', handlers: [:axlsx], formats: [:xlsx], template: 'xlsx/reports', filename: helpers.file_name_with_timestamp(file_name:, file_extension: 'xlsx')
+    instance.log(user: current_user, action_type: action_name, meta: params.to_json)
+    render(xlsx: 'reports', handlers: [:axlsx], formats: [:xlsx], template: 'xlsx/reports', filename: "#{file_name}_#{DateTime.now.strftime('%Y-%m-%d_%H-%M-%S')}.xlsx", layout: false)
   end
 
   private
 
   def create_params
-    params.permit(
+    params.require(controller_class_symbolized).permit(
       :abbreviation,
       :description,
       :name,
@@ -107,7 +109,7 @@ class Admin::SystemPermissionsController < AdminController
   end
 
   def update_params
-    params.permit(
+    params.require(controller_class_symbolized).permit(
       :abbreviation,
       :description,
       :name,

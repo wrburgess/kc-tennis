@@ -14,6 +14,7 @@ module SystemOperations
   NEW = 'new'.freeze
   READ = 'read'.freeze
   SHARE = 'share'.freeze
+  SHOW = 'show'.freeze
   UNARCHIVED = 'unarchived'.freeze
   UPDATE = 'update'.freeze
   UPLOAD = 'upload'.freeze

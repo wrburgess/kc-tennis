@@ -51,7 +51,7 @@ class Admin::LinksController < AdminController
     authorize(controller_class)
     instance = controller_class.find(params[:id])
 
-    instance.log(user: current_user, operation: SystemOperations::DELETED)
+    instance.log(user: current_user, operation: action_name)
     flash[:danger] = "#{instance.class_name_title} successfully deleted"
 
     instance.destroy
@@ -74,7 +74,7 @@ class Admin::LinksController < AdminController
     instance = controller_class.find(params[:id])
     instance.unarchive
 
-    instance.log(user: current_user, operation: SystemOperations::UNARCHIVED)
+    instance.log(user: current_user, operation: action_name)
     flash[:success] = "#{instance.class_name_title} successfully unarchived"
     redirect_to polymorphic_path([:admin, instance])
   end
@@ -101,6 +101,7 @@ class Admin::LinksController < AdminController
       f.write render_to_string(handlers: [:axlsx], formats: [:xlsx], template: 'xlsx/reports', layout: false)
     end
 
+    instance.log(user: current_user, action_type: action_name, meta: params.to_json)
     render(xlsx: 'reports', handlers: [:axlsx], formats: [:xlsx], template: 'xlsx/reports', filename: helpers.file_name_with_timestamp(file_name:, file_extension: 'xlsx'), layout: false)
   end
 
@@ -127,6 +128,7 @@ class Admin::LinksController < AdminController
       f.write render_to_string(handlers: [:axlsx], formats: [:xlsx], template: 'xlsx/reports', layout: false)
     end
 
+    instance.log(user: current_user, action_type: action_name, meta: params.to_json)
     render(xlsx: 'reports', handlers: [:axlsx], formats: [:xlsx], template: 'xlsx/reports', filename: "#{file_name}_#{DateTime.now.strftime('%Y-%m-%d_%H-%M-%S')}.xlsx", layout: false)
   end
 
@@ -149,6 +151,7 @@ class Admin::LinksController < AdminController
       :url,
       :url_type,
       :video_type,
+      :archived_at
     )
   end
 end

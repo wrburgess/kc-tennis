@@ -356,6 +356,15 @@ SimpleForm.setup do |config|
     b.use :hint, wrap_with: { tag: 'p', class: 'hint' }
   end
 
+  # Custom tom-select wrapper
+  config.wrappers :tom_select, tag: 'div', class: 'form-group', error_class: 'has-error' do |b|
+    b.use :html5
+    b.use :label, class: 'form-label'
+    b.use :input, class: 'tom-select'
+    b.use :full_error, wrap_with: { tag: 'span', class: 'error' }
+    b.use :hint, wrap_with: { tag: 'p', class: 'hint' }
+  end
+
   config.wrappers :floating_label_form, tag: 'div', class: 'form-floating mb-3', error_class: 'has-error' do |b|
     b.use :html5
     b.use :placeholder
