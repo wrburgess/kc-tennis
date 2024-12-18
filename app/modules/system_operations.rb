@@ -24,6 +24,6 @@ module SystemOperations
   end
 
   def self.all
-    constants.map(&:to_s).map(&:downcase)
+    constants.map(&:to_s).map(&:downcase).sort
   end
 end
