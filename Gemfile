@@ -45,7 +45,7 @@ group :production, :staging do
 end
 
 group :development, :test do
-  gem 'debug', '1.9.2'
+  gem 'debug', '1.10.0'
 end
 
 group :development do
