@@ -8,7 +8,7 @@
     <%= render Admin::ActionButton::Component.new(operation: :new, instance: @instance, classes_append: "float-end me-2") if @upload_button %>
     <%= render Admin::ActionButton::Component.new(operation: :new, instance: @instance, text: "Upload New #{@instance.class_name_title}", classes_append: "float-end me-2") if @upload_new_button %>
     <%= render Admin::ActionButton::Component.new(operation: :upload_file, instance: @instance, classes_append: "float-end me-2") if @upload_file_button %>
-    <%= render Admin::ActionButton::Component.new(operation: :export_xlsx, instance: @instance, classes_append: "float-end me-2") if @export_xlsx_button %>
+    <%= render Admin::ActionButton::Component.new(operation: :collection_export_xlsx, instance: @instance, classes_append: "float-end me-2") if @collection_export_xlsx_button %>
     <% if @show_filtering %>
       <div>
         <a href="#" data-bs-toggle="offcanvas" data-bs-target="#filters" aria-controls="filters">

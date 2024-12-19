@@ -98,11 +98,13 @@ class Admin::LinksController < AdminController
     filepath = "#{Rails.root}/tmp/#{file_name}.xlsx"
 
     File.open(filepath, 'wb') do |f|
-      f.write render_to_string(handlers: [:axlsx], formats: [:xlsx], template: 'xlsx/reports', layout: false)
+      f.write render_to_string(handlers: [:axlsx], formats: [:xlsx], template: 'admin/xlsx/reports', layout: false)
     end
 
-    instance.log(user: current_user, action_type: action_name, meta: params.to_json)
-    render(xlsx: 'reports', handlers: [:axlsx], formats: [:xlsx], template: 'xlsx/reports', filename: helpers.file_name_with_timestamp(file_name:, file_extension: 'xlsx'), layout: false)
+    instance = controller_class.find(@results.first['id'])
+    instance.log(user: current_user, operation: action_name, meta: params.to_json) if instance.present?
+
+    render(xlsx: 'reports', handlers: [:axlsx], formats: [:xlsx], template: 'admin/xlsx/reports', layout: false, filename: helpers.file_name_with_timestamp(file_name:, file_extension: 'xlsx'))
   end
 
   def member_export_xlsx
@@ -125,11 +127,12 @@ class Admin::LinksController < AdminController
     filepath = "#{Rails.root}/tmp/#{file_name}.xlsx"
 
     File.open(filepath, 'wb') do |f|
-      f.write render_to_string(handlers: [:axlsx], formats: [:xlsx], template: 'xlsx/reports', layout: false)
+      f.write render_to_string(handlers: [:axlsx], formats: [:xlsx], template: 'admin/xlsx/reports', layout: false)
     end
 
-    instance.log(user: current_user, action_type: action_name, meta: params.to_json)
-    render(xlsx: 'reports', handlers: [:axlsx], formats: [:xlsx], template: 'xlsx/reports', filename: "#{file_name}_#{DateTime.now.strftime('%Y-%m-%d_%H-%M-%S')}.xlsx", layout: false)
+    instance.log(user: current_user, operation: action_name, meta: params.to_json) if instance.present?
+
+    render(xlsx: 'reports', handlers: [:axlsx], formats: [:xlsx], template: 'admin/xlsx/reports', filename: "#{file_name}_#{DateTime.now.strftime('%Y-%m-%d_%H-%M-%S')}.xlsx", layout: false)
   end
 
   private
