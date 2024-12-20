@@ -95,16 +95,17 @@ class Admin::LinksController < AdminController
 
     @results = ActiveRecord::Base.connection.select_all(sql)
     file_name = controller_class_plural
-    filepath = "#{Rails.root}/tmp/#{file_name}.xlsx"
 
-    File.open(filepath, 'wb') do |f|
-      f.write render_to_string(handlers: [:axlsx], formats: [:xlsx], template: 'admin/xlsx/reports', layout: false)
-    end
-
-    instance = controller_class.find(@results.first['id'])
-    instance.log(user: current_user, operation: action_name, meta: params.to_json) if instance.present?
-
-    render(xlsx: 'reports', handlers: [:axlsx], formats: [:xlsx], template: 'admin/xlsx/reports', layout: false, filename: helpers.file_name_with_timestamp(file_name:, file_extension: 'xlsx'))
+    send_data(
+      render_to_string(
+        template: 'admin/xlsx/reports',
+        formats: [:xlsx],
+        handlers: [:axlsx],
+        layout: false
+      ),
+      filename: helpers.file_name_with_timestamp(file_name: file_name, file_extension: 'xlsx'),
+      type: Mime[:xlsx]
+    )
   end
 
   def member_export_xlsx
@@ -123,16 +124,18 @@ class Admin::LinksController < AdminController
     )
 
     @results = ActiveRecord::Base.connection.select_all(sql)
-    file_name = instance.class_name_singular
-    filepath = "#{Rails.root}/tmp/#{file_name}.xlsx"
+    file_name = controller_class_singular
 
-    File.open(filepath, 'wb') do |f|
-      f.write render_to_string(handlers: [:axlsx], formats: [:xlsx], template: 'admin/xlsx/reports', layout: false)
-    end
-
-    instance.log(user: current_user, operation: action_name, meta: params.to_json) if instance.present?
-
-    render(xlsx: 'reports', handlers: [:axlsx], formats: [:xlsx], template: 'admin/xlsx/reports', filename: "#{file_name}_#{DateTime.now.strftime('%Y-%m-%d_%H-%M-%S')}.xlsx", layout: false)
+    send_data(
+      render_to_string(
+        template: 'admin/xlsx/reports',
+        formats: [:xlsx],
+        handlers: [:axlsx],
+        layout: false
+      ),
+      filename: helpers.file_name_with_timestamp(file_name: file_name, file_extension: 'xlsx'),
+      type: Mime[:xlsx]
+    )
   end
 
   private

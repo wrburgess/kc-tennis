@@ -74,30 +74,33 @@ class Admin::UsersController < AdminController
     authorize(controller_class)
 
     sql = %(
-    SELECT
-      users.id AS id,
-      users.first_name AS first_name,
-      users.last_name AS last_name,
-      users.email AS email,
-      users.role AS role,
-      users.notes AS notes
-    FROM
-      users
-    WHERE
-      users.archived_at IS NULL
-    ORDER BY
-      users.last_name ASC
-  )
+      SELECT
+        users.id AS id,
+        users.first_name AS first_name,
+        users.last_name AS last_name,
+        users.email AS email,
+        users.notes AS notes
+      FROM
+        users
+      WHERE
+        users.archived_at IS NULL
+      ORDER BY
+        users.last_name ASC
+    )
 
     @results = ActiveRecord::Base.connection.select_all(sql)
-    file_name = controller_class_instances
-    filepath = "#{Rails.root}/tmp/#{file_name}.xlsx"
+    file_name = controller_class_plural
 
-    File.open(filepath, 'wb') do |f|
-      f.write render_to_string(handlers: [:axlsx], formats: [:xlsx], template: 'xlsx/reports', layout: false)
-    end
-
-    render(xlsx: 'reports', handlers: [:axlsx], formats: [:xlsx], template: 'xlsx/reports', filename: helpers.file_name_with_timestamp(file_name:, file_extension: 'xlsx'), layout: false)
+    send_data(
+      render_to_string(
+        template: 'admin/xlsx/reports',
+        formats: [:xlsx],
+        handlers: [:axlsx],
+        layout: false
+      ),
+      filename: helpers.file_name_with_timestamp(file_name: file_name, file_extension: 'xlsx'),
+      type: Mime[:xlsx]
+    )
   end
 
   private

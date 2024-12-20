@@ -1,4 +1,5 @@
 wb = xlsx_package.workbook
+
 wb.add_worksheet(name: @file_name) do |sheet|
   sheet.add_row @results.columns
   

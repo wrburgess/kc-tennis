@@ -1,4 +1,4 @@
-<%= render Admin::HeaderForIndex::Component.new(instance: @instance, controller: params[:controller], action: params[:action], new_button: true, export_xlsx_button: true, show_filtering: true) %>
+<%= render Admin::HeaderForIndex::Component.new(instance: @instance, controller: params[:controller], action: params[:action], new_button: true, collection_export_xlsx_button: true, show_filtering: true) %>
 
 <%= render Admin::PageContainer::Component.new do %>
   <%= render Admin::TableForIndex::Component.new(data: @instances) do |table| %>
