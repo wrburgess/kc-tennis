@@ -38,7 +38,7 @@ gem 'stimulus-rails', '1.3.4'
 gem 'thruster', '0.1.9', require: false
 gem 'turbo-rails', '2.0.11'
 gem 'tzinfo-data', '1.2024.2'
-gem 'view_component', '3.20.0'
+gem 'view_component', '3.21.0'
 
 group :production, :staging do
   gem 'honeybadger', '5.26.1'
