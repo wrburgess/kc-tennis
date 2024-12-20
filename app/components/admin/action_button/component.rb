@@ -126,6 +126,14 @@ class Admin::ActionButton::Component < ApplicationComponent
     end
   end
 
+  def turbo_active
+    if @operation == :collection_export_xlsx || @operation == :member_export_xlsx
+      false
+    else
+      true
+    end
+  end
+
   def method_type
     return @method if @method.present?
 
