@@ -60,7 +60,7 @@ class Admin::SystemRolesController < AdminController
     redirect_to send("#{controller_class_instances}_path")
   end
 
-  def export_xlsx
+  def collection_export_xlsx
     authorize(controller_class)
 
     sql = %(
@@ -74,13 +74,17 @@ class Admin::SystemRolesController < AdminController
 
     @results = ActiveRecord::Base.connection.select_all(sql)
     file_name = controller_class_instances
-    filepath = "#{Rails.root}/tmp/#{file_name}.xlsx"
 
-    File.open(filepath, 'wb') do |f|
-      f.write render_to_string(handlers: [:axlsx], formats: [:xlsx], template: 'xlsx/reports')
-    end
-
-    render xlsx: 'reports', handlers: [:axlsx], formats: [:xlsx], template: 'xlsx/reports', filename: helpers.file_name_with_timestamp(file_name:, file_extension: 'xlsx')
+    send_data(
+      render_to_string(
+        template: 'admin/xlsx/reports',
+        formats: [:xlsx],
+        handlers: [:axlsx],
+        layout: false
+      ),
+      filename: helpers.file_name_with_timestamp(file_name: file_name, file_extension: 'xlsx'),
+      type: Mime[:xlsx]
+    )
   end
 
   private
