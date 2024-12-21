@@ -17,9 +17,11 @@
   <div class="row">
     <div class="col-6">
       <%= render Admin::DashboardCard::Component.new(title: "Management") do |card| %>
-        <% card.with_link(name: "Data Logs", url: admin_data_logs_path, policy: DataLog) %>
-        <% card.with_link(name: "System Users", url: admin_users_path, policy: User) %>
-        <% card.with_link(name: "System Permissions", url: admin_system_permissions_path, policy: SystemPermission) %>
+        <% card.with_link(name: "Data Logs", url: polymorphic_path([:admin, DataLog]), policy: DataLog) %>
+        <% card.with_link(name: "System Groups", url: polymorphic_path([:admin, SystemGroup]), policy: SystemGroup) %>
+        <% card.with_link(name: "System Permissions", url: polymorphic_path([:admin, SystemPermission]), policy: SystemPermission) %>
+        <% card.with_link(name: "System Roles", url: polymorphic_path([:admin, SystemRole]), policy: SystemRole) %>
+        <% card.with_link(name: "System Users", url: polymorphic_path([:admin, User]), policy: User) %>
       <% end %>
     </div>
 

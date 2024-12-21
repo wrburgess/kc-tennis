@@ -60,7 +60,7 @@ class Admin::SystemGroupsController < AdminController
     redirect_to send("#{controller_class_instances}_path")
   end
 
-  def export_xlsx
+  def collection_export_xlsx
     authorize(controller_class)
 
     sql = %(
@@ -73,7 +73,7 @@ class Admin::SystemGroupsController < AdminController
     )
 
     @results = ActiveRecord::Base.connection.select_all(sql)
-    file_name = controller_class_instances
+    file_name = controller_class_plural
 
     send_data(
       render_to_string(

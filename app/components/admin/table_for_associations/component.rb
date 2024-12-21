@@ -1,4 +1,4 @@
-class Admin::AssociationsTable::Component < ApplicationComponent
+class Admin::TableForAssociations::Component < ApplicationComponent
   renders_many :columns, ->(label:, header: false, &block) { ColumnComponent.new(label:, header:, &block) }
 
   def initialize(data:, title: nil)

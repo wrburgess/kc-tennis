@@ -73,7 +73,7 @@ class Admin::SystemRolesController < AdminController
     )
 
     @results = ActiveRecord::Base.connection.select_all(sql)
-    file_name = controller_class_instances
+    file_name = controller_class_plural
 
     send_data(
       render_to_string(

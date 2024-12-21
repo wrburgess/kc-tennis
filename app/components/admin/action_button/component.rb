@@ -23,16 +23,16 @@ class Admin::ActionButton::Component < ApplicationComponent
       cancel_to_index: 'Cancel',
       cancel_to_show: 'Cancel',
       collection_export_xlsx: 'Download',
-      copy: "Create Duplicate #{@instance.class.name.titlecase}",
+      copy: 'Create Duplicate',
       destroy: 'Delete',
       edit: 'Edit',
       index: 'View List',
       member_export_xlsx: 'Download',
-      new: "Create New #{@instance.class.name.titlecase}",
+      new: 'Create New',
       show: 'View',
       unarchive: 'Unarchive',
       upload: 'Import Flat File',
-      upload_new: "Upload New #{@instance.class.name.titlecase}"
+      upload_new: 'Upload New'
     }
 
     texts[@operation] || 'Submit'
