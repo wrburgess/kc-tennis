@@ -34,6 +34,10 @@ class SystemRole < ApplicationRecord
     select_order.map { |instance| [instance.name, instance.id] }
   end
 
+  def self.default_sort
+    [name: :asc, created_at: :desc]
+  end
+
   def update_associations(params)
     SystemRole.transaction do
       system_group_system_roles.delete_all if params[:system_group_ids].present?

@@ -6,7 +6,7 @@ class Admin::SystemRolesController < AdminController
   def index
     authorize(controller_class)
     @q = controller_class.ransack(params[:q])
-    @q.sorts = ['name asc', 'created_at desc'] if @q.sorts.empty?
+    @q.sorts = controller_class.default_sort if @q.sorts.empty?
     @pagy, @instances = pagy(@q.result)
     @instance = controller_class.new
   end
@@ -23,12 +23,12 @@ class Admin::SystemRolesController < AdminController
 
   def create
     authorize(controller_class)
-    params[:active] = params[:active].present? ? true : false
     instance = controller_class.create(create_params)
+    instance.update_associations(params)
 
-    instance.log(user: current_user, action_type: DataLogActionTypes::CREATED, meta: params.to_json)
-    flash[:success] = "New #{controller_class_instance.titleize} successfully created"
-    redirect_to send("#{controller_class_instance}_path", instance)
+    instance.log(user: current_user, operation: action_name, meta: params.to_json)
+    flash[:success] = "New #{instance.class_name_title} successfully created"
+    redirect_to polymorphic_path([:admin, instance])
   end
 
   def edit
@@ -41,23 +41,24 @@ class Admin::SystemRolesController < AdminController
     instance = controller_class.find(params[:id])
     original_instance = instance.dup
 
-    params[:active] = params[:active].present? ? true : false
     instance.update(update_params)
     instance.update_associations(params)
 
-    instance.log(user: current_user, action_type: DataLogActionTypes::UPDATED, meta: params.to_json, original_data: original_instance.attributes.to_json)
-    flash[:success] = "#{controller_class_instance.titleize} successfully updated"
-    redirect_to send("#{controller_class_instance}_path", instance)
+    instance.log(user: current_user, operation: action_name, meta: params.to_json, original_data: original_instance.attributes.to_json)
+    flash[:success] = "#{instance.class_name_title} successfully updated"
+    redirect_to polymorphic_path([:admin, instance])
   end
 
   def destroy
     authorize(controller_class)
     instance = controller_class.find(params[:id])
-    instance.log(user: current_user, action_type: DataLogActionTypes::DELETED)
+
+    instance.log(user: current_user, operation: action_name)
+    flash[:danger] = "#{instance.class_name_title} successfully deleted"
+
     instance.destroy
 
-    flash[:danger] = "#{controller_class_instance.titleize} successfully deleted"
-    redirect_to send("#{controller_class_instances}_path")
+    redirect_to polymorphic_path([:admin, controller_class])
   end
 
   def collection_export_xlsx

@@ -43,9 +43,9 @@ class Admin::SystemPermissionsController < AdminController
 
     instance.update(update_params)
     instance.update_associations(params)
+
     instance.log(user: current_user, operation: action_name, meta: params.to_json, original_data: original_instance.attributes.to_json)
     flash[:success] = "#{instance.class_name_title} successfully updated"
-
     redirect_to polymorphic_path([:admin, instance])
   end
 
