@@ -26,6 +26,18 @@ jobs:
           --health-retries 5
 
     steps:
+      - name: Install Chrome
+        uses: browser-actions/setup-chrome@latest
+
+      - name: Install Chrome Driver
+        uses: nanasess/setup-chromedriver@master
+
+      - name: Start Chrome Driver
+        run: |
+          export DISPLAY=:99
+          chromedriver --url-base=/wd/hub &
+          sudo Xvfb :99 -screen 0 1280x1024x24 > /dev/null 2>&1 &
+
       - name: Checkout code
         uses: actions/checkout@v4
           
