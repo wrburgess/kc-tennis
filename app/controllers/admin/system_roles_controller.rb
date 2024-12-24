@@ -91,7 +91,7 @@ class Admin::SystemRolesController < AdminController
   private
 
   def create_params
-    params.permit(
+    params.require(controller_class_symbolized).permit(
       :abbreviation,
       :description,
       :name,
@@ -100,7 +100,7 @@ class Admin::SystemRolesController < AdminController
   end
 
   def update_params
-    params.permit(
+    params.require(controller_class_symbolized).permit(
       :abbreviation,
       :description,
       :name,

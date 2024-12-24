@@ -23,3 +23,42 @@
   Download
 </a>
 ```
+
+## TomSelect and Capybara
+
+* TomSelect.js manipulates the html structure of a select field to a degree that capybara select/find doesn't natively work
+* You need to create a TomSelectHelper method that instructs capybara specifically how to find and click on an option
+
+```rb
+# spec/support/tom_select_helper.rb
+
+module TomSelectHelper
+  def fill_in_tom_select_field(input_selector:, text_value:)
+    # Find the TomSelect wrapper
+    wrapper = find("#{input_selector} + .ts-wrapper")
+    wrapper.click
+
+    # Wait for dropdown and select option
+    within('.ts-dropdown-content') do
+      find('.option', text: text_value, wait: 5, exact_text: true).click
+    end
+  end
+end
+```
+
+```rb
+# spec/rails_helper.rb
+
+RSpec.configure do |config|
+  config.include TomSelectHelper, type: :feature
+end
+```
+
+```rb
+# spec/features/admin_system_permission_spec.rb
+
+fill_in_tom_select_field_outset(
+  input_selector: '#system_permission_operation',
+  text_value: operation.upcase
+)
+```
