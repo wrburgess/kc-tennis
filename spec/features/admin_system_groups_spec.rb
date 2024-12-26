@@ -11,7 +11,7 @@ describe 'Admin SystemGroups', type: :feature do
     visit new_polymorphic_path([:admin, instance.class])
 
     name = Faker::Company.name
-    abbreviation = name[0..2].upcase
+    abbreviation = Faker::Company.name.upcase
     description = Faker::Lorem.sentence
     notes = Faker::Lorem.sentence
 
@@ -39,7 +39,7 @@ describe 'Admin SystemGroups', type: :feature do
 
   scenario 'User updates an instance' do
     name = Faker::Company.name
-    abbreviation = name[0..2].upcase
+    abbreviation = Faker::Company.name.upcase
     description = Faker::Lorem.sentence
     notes = Faker::Lorem.sentence
 

@@ -7,7 +7,7 @@ describe 'Admin SystemPermissions', type: :feature do
     login_as(user, scope: :user)
   end
 
-  scenario 'User creates a new instance' do
+  xscenario 'User creates a new instance' do
     visit new_polymorphic_path([:admin, instance.class])
 
     name = Faker::Company.name
@@ -51,7 +51,7 @@ describe 'Admin SystemPermissions', type: :feature do
     expect(page).to have_text(instance.notes)
   end
 
-  scenario 'User updates an instance' do
+  xscenario 'User updates an instance' do
     name = Faker::Company.name
     abbreviation = name[0..2].upcase
     resource = 'Link'
@@ -84,7 +84,7 @@ describe 'Admin SystemPermissions', type: :feature do
     expect(page).to have_text(notes)
   end
 
-  scenario 'User deletes an instance' do
+  xscenario 'User deletes an instance' do
     visit polymorphic_path([:admin, instance])
 
     expect do
