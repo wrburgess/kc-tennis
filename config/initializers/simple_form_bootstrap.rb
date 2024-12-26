@@ -379,10 +379,20 @@ SimpleForm.setup do |config|
   config.wrappers :floating_label_form, tag: 'div', class: 'form-floating mb-3', error_class: 'has-error' do |b|
     b.use :html5
     b.use :placeholder
+    b.optional :maxlength
+    b.optional :minlength
+    b.optional :pattern
+    b.optional :min_max
+    b.optional :readonly
+
     b.use :input, class: 'form-control'
     b.use :label, class: 'form-label', wrap_with: { tag: 'label' }
-    b.use :full_error, wrap_with: { tag: 'span', class: 'error' }
-    b.use :hint, wrap_with: { tag: 'p', class: 'hint' }
+
+    b.optional :required do |required|
+      required.use :error, wrap_with: { tag: 'div', class: 'invalid-feedback' }
+    end
+
+    b.use :hint, wrap_with: { tag: 'div', class: 'form-text' }
   end
 
   # The default wrapper to be used by the FormBuilder.
