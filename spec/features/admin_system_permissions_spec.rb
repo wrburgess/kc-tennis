@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Admin SystemPermissions', type: :feature, js: true do
+describe 'Admin SystemPermissions', type: :feature do
   include_context 'feature_setup'
 
   before do
@@ -20,10 +20,13 @@ describe 'Admin SystemPermissions', type: :feature, js: true do
     fill_in "#{instance_name}[name]", with: name
     fill_in "#{instance_name}[abbreviation]", with: abbreviation
     fill_in "#{instance_name}[resource]", with: resource
+
     fill_in_tom_select_field(
       input_selector: '#system_permission_operation',
+      ancestor_selector: '.input-group',
       text_value: operation.upcase
     )
+
     fill_in "#{instance_name}[description]", with: description
     fill_in "#{instance_name}[notes]", with: notes
     click_button 'Submit'
@@ -64,6 +67,7 @@ describe 'Admin SystemPermissions', type: :feature, js: true do
 
     fill_in_tom_select_field(
       input_selector: '#system_permission_operation',
+      ancestor_selector: '.input-group',
       text_value: operation.upcase
     )
 

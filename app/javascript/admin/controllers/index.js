@@ -1,8 +1,9 @@
 import { application } from "../../controllers/application"
 
-import TomSelectController from "./tom_select_controller"
+// console.log("Admin JavaScript bundle loaded")
 
-// Register the controller with the application instance
+import TomSelectController from "./tom_select_controller"
 application.register("tom-select", TomSelectController)
 
-// console.log("Admin JavaScript bundle loaded")
+import FormValidationController from "./form_validation_controller"
+application.register("form-validation", FormValidationController)
