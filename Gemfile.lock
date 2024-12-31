@@ -108,7 +108,7 @@ GEM
       safely_block (>= 0.4)
     bootsnap (1.18.4)
       msgpack (~> 1.2)
-    brakeman (6.2.2)
+    brakeman (7.0.0)
       racc
     builder (3.3.0)
     bullet (8.0.0)
@@ -486,7 +486,7 @@ DEPENDENCIES
   aws-sdk-sns (= 1.92.0)
   blazer (= 3.1.0)
   bootsnap (= 1.18.4)
-  brakeman (= 6.2.2)
+  brakeman (= 7.0.0)
   bullet (= 8.0.0)
   bundler-audit (= 0.9.2)
   capybara (= 3.40.0)

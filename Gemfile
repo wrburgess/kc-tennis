@@ -49,7 +49,7 @@ group :development, :test do
 end
 
 group :development do
-  gem 'brakeman', '6.2.2', require: false
+  gem 'brakeman', '7.0.0', require: false
   gem 'bullet', '8.0.0'
   gem 'bundler-audit', '0.9.2', require: false
   gem 'lookbook', '2.3.4'
