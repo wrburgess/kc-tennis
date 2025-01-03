@@ -13,6 +13,8 @@ class User < ApplicationRecord
     :validatable,
   )
 
+  normalizes :email, with: EmailNormalizer
+
   has_many :data_logs, dependent: :destroy
   has_many :system_group_users, dependent: :destroy
   has_many :system_groups, through: :system_group_users
