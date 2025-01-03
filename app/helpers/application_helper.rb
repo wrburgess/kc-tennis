@@ -20,4 +20,10 @@ module ApplicationHelper
       date_value
     end
   end
+
+  def external_link_to(name, url, options = {})
+    default_options = { target: '_blank', rel: 'noopener noreferrer' }
+
+    link_to(name, url, options.merge(default_options))
+  end
 end

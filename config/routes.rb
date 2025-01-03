@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  draw :external_urls
+
   devise_for :users
 
   root to: "static#index"

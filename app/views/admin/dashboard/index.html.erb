@@ -25,6 +25,7 @@
       <% end %>
     </div>
 
+    <%= external_link_to("Test Staging", staging_site_url) %>
     <div class="col-6">
       <%= render Admin::DashboardCard::Component.new(title: "Development") do |card| %>
         <% card.with_link(name: "KC Tennis (Staging)", url: 'https://staging.kc.tennis', new_window: true) %>

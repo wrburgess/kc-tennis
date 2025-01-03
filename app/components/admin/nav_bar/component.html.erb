@@ -12,6 +12,11 @@
           <%= link_to "Admin", admin_root_path, class: "nav-item nav-link" %>
         </ul>
 
+        <%= render Admin::NavItem::Component.new(title: "Sites") do |nav_item| %>
+          <% nav_item.with_dropdown_item(resource: nil, name: "Staging", path: staging_site_url, external: true) %>
+          <% nav_item.with_dropdown_item(resource: nil, name: "Production", path: production_site_url, external: true) %>
+        <% end %>
+
         <%= render Admin::NavItem::Component.new(title: "Data") do |nav_item| %>
           <% nav_item.with_dropdown_item(resource: Link, name: "Links", path: admin_links_path) %>
           <% nav_item.with_dropdown_item(resource: Contact, name: "Contacts", path: admin_contacts_path) %>

@@ -14,7 +14,7 @@ class Admin::DashboardCardLink::Component < ApplicationComponent
 
   def link
     if @new_window
-      link_to(@name, @url, target: '_blank', rel: 'noopener noreferrer')
+      external_link_to(@name, @url)
     else
       link_to(@name, @url)
     end
