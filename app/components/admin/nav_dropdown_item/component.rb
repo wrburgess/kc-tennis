@@ -1,10 +1,10 @@
 class Admin::NavDropdownItem::Component < ApplicationComponent
-  def initialize(name:, path:, resource: nil, operation: 'index', external: false)
+  def initialize(name:, path:, resource: nil, operation: 'index', new_window: false)
     @name = name
     @path = path
     @resource = resource
     @operation = operation
-    @external = external
+    @new_window = new_window
   end
 
   def render?

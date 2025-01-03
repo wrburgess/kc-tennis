@@ -13,8 +13,8 @@
         </ul>
 
         <%= render Admin::NavItem::Component.new(title: "Sites") do |nav_item| %>
-          <% nav_item.with_dropdown_item(resource: nil, name: "Staging", path: staging_site_url, external: true) %>
-          <% nav_item.with_dropdown_item(resource: nil, name: "Production", path: production_site_url, external: true) %>
+          <% nav_item.with_dropdown_item(resource: nil, name: "Staging", path: staging_site_url, new_window: true) %>
+          <% nav_item.with_dropdown_item(resource: nil, name: "Production", path: production_site_url, new_window: true) %>
         <% end %>
 
         <%= render Admin::NavItem::Component.new(title: "Data") do |nav_item| %>

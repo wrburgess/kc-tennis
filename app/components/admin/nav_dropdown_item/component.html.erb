@@ -1,5 +1,5 @@
 <li>
-  <% if @external %>
+  <% if @new_window %>
     <%= external_link_to(@name, @path, class: "dropdown-item") %>
   <% else %>
     <%= link_to(@name, @path, class: "dropdown-item") %>
