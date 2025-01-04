@@ -2,12 +2,12 @@ require 'rails_helper'
 
 describe ApplicationHelper, type: :helper do
   describe '#file_name_with_timestamp' do
-    let(:timestamp) { '2024-12-19_14-30-00' }
+    let(:frozen_time) { Time.local(2024, 12, 19, 14, 30, 0) }
+    let(:timestamp) { frozen_time.strftime('%Y-%m-%d_%H-%M-%S') }
 
     around do |example|
-      Time.use_zone('Central Time (US & Canada)') do
-        time = Time.zone.local(2024, 12, 19, 14, 30, 0)
-        Timecop.freeze(time) do
+      Time.use_zone(Time.zone) do
+        Timecop.freeze(frozen_time) do
           example.run
         end
       end
