@@ -2,6 +2,8 @@ require 'rails_helper'
 
 describe ApplicationHelper, type: :helper do
   describe '#file_name_with_timestamp' do
+    let(:timestamp) { '2024-12-19_14-30-00' }
+
     around do |example|
       Time.use_zone('Central Time (US & Canada)') do
         time = Time.zone.local(2024, 12, 19, 14, 30, 0)
@@ -13,19 +15,19 @@ describe ApplicationHelper, type: :helper do
 
     it 'returns filename with timestamp and extension' do
       result = helper.file_name_with_timestamp(file_name: 'report', file_extension: 'xlsx')
-      expect(result).to eq('report_2024-12-19_14-30-00.xlsx')
+      expect(result).to eq("report_#{timestamp}.xlsx")
     end
 
     it 'handles special characters in filename' do
       result = helper.file_name_with_timestamp(file_name: 'my report!', file_extension: 'csv')
-      expect(result).to eq('my report!_2024-12-19_14-30-00.csv')
+      expect(result).to eq("my report!_#{timestamp}.csv")
     end
 
     it 'handles different file extensions' do
       extensions = %w[pdf doc xlsx csv txt]
       extensions.each do |ext|
         result = helper.file_name_with_timestamp(file_name: 'report', file_extension: ext)
-        expect(result).to eq("report_2024-12-19_14-30-00.#{ext}")
+        expect(result).to eq("report_#{timestamp}.#{ext}")
       end
     end
   end
