@@ -70,4 +70,5 @@ group :test do
   gem 'rspec-longrun', '3.1.0'
   gem 'selenium-webdriver', '4.27.0'
   gem 'shoulda-matchers', '6.4.0'
+  gem 'timecop', '0.9.1'
 end
