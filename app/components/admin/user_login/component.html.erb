@@ -1,7 +1,7 @@
 <ul class="<%= style[:base] %>">
   <%= link_to "Support", "https://www.kc.tennis/support", class: "nav-item nav-link", target: "_blank" %>
   <% if @user_signed_in %>
-    <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "nav-item nav-link" %>
+    <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "nav-item nav-link", data: { turbo: true, turbo_method: :delete } %>
   <% else %>
     <%= link_to "Login", new_user_session_path, class: "nav-item nav-link" %>
   <% end %>
