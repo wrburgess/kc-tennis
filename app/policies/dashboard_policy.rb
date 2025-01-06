@@ -1,6 +1,7 @@
 class DashboardPolicy < ApplicationPolicy
-  def initialize(user, _record)
+  def initialize(user, dashboard)
     @user = user
+    @record = dashboard
   end
 
   def index?
