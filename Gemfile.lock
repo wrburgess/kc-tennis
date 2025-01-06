@@ -407,7 +407,7 @@ GEM
     rubocop-ast (1.37.0)
       parser (>= 3.3.1.0)
     ruby-progressbar (1.13.0)
-    rubyzip (2.4)
+    rubyzip (2.4.1)
     safely_block (0.4.1)
     securerandom (0.4.1)
     selenium-webdriver (4.27.0)
