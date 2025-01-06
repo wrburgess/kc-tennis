@@ -40,13 +40,13 @@ class SystemRole < ApplicationRecord
 
   def update_associations(params)
     SystemRole.transaction do
-      system_group_system_roles.delete_all if params[:system_group_ids].present?
-      params[:system_group_ids]&.each do |system_group_id|
+      system_group_system_roles.delete_all if params[:system_role][:system_group_ids].present?
+      params[:system_role][:system_group_ids]&.each do |system_group_id|
         SystemGroupSystemRole.create(system_role: self, system_group_id:)
       end
 
-      system_role_system_permissions.delete_all if params[:system_permission_ids].present?
-      params[:system_permission_ids]&.each do |system_permission_id|
+      system_role_system_permissions.delete_all if params[:system_role][:system_permission_ids].present?
+      params[:system_role][:system_permission_ids]&.each do |system_permission_id|
         SystemRoleSystemPermission.create(system_role: self, system_permission_id:)
       end
     end

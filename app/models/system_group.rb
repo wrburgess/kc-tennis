@@ -40,13 +40,13 @@ class SystemGroup < ApplicationRecord
 
   def update_associations(params)
     SystemGroup.transaction do
-      system_group_users.delete_all if params[:user_ids].present?
-      params[:user_ids]&.each do |user_id|
+      system_group_users.delete_all if params[:system_group][:user_ids].present?
+      params[:system_group][:user_ids]&.each do |user_id|
         SystemGroupUser.create(system_group: self, user_id:)
       end
 
-      system_group_system_roles.delete_all if params[:system_role_ids].present?
-      params[:system_role_ids]&.each do |system_role_id|
+      system_group_system_roles.delete_all if params[:system_group][:system_role_ids].present?
+      params[:system_group][:system_role_ids]&.each do |system_role_id|
         SystemGroupSystemRole.create(system_group: self, system_role_id:)
       end
     end

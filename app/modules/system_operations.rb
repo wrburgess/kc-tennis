@@ -8,6 +8,7 @@ module SystemOperations
   DISASSOCIATE = 'disassociate'.freeze
   EDIT = 'edit'.freeze
   EXPORT_IMPORT_EXAMPLE = 'export_import_example'.freeze
+  IMPERSONATE = 'impersonate'.freeze
   IMPORT = 'import'.freeze
   INDEX = 'index'.freeze
   MEMBER_EXPORT_XLSX = 'member_export_xlsx'.freeze
@@ -15,6 +16,7 @@ module SystemOperations
   READ = 'read'.freeze
   SHARE = 'share'.freeze
   SHOW = 'show'.freeze
+  STOP_IMPERSONATING = 'stop_impersonating'.freeze
   UNARCHIVED = 'unarchived'.freeze
   UPDATE = 'update'.freeze
   UPLOAD = 'upload'.freeze

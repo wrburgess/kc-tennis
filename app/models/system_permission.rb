@@ -41,8 +41,8 @@ class SystemPermission < ApplicationRecord
 
   def update_associations(params)
     SystemPermission.transaction do
-      system_role_system_permissions.delete_all if params[:system_role_ids].present?
-      params[:system_role_ids]&.each do |system_role_id|
+      system_role_system_permissions.delete_all if params[:system_permission][:system_role_ids].present?
+      params[:system_permission][:system_role_ids]&.each do |system_role_id|
         SystemRoleSystemPermission.create(system_permission: self, system_role_id:)
       end
     end
