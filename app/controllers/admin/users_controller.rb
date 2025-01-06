@@ -104,12 +104,14 @@ class Admin::UsersController < AdminController
   end
 
   def impersonate
+    authorize(controller_class)
     user = User.find(params[:id])
     impersonate_user(user)
     redirect_to root_path
   end
 
   def stop_impersonating
+    authorize(controller_class)
     stop_impersonating_user
     redirect_to admin_root_path
   end
