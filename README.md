@@ -64,6 +64,7 @@
 * [blazer](https://github.com/ankane/pghero)
 * [good_job](https://github.com/bensheldon/good_job)
 * [pghero](https://github.com/ankane/pghero)
+* [pretender](https://github.com/ankane/pretender)
 * [renovate](https://developer.mend.io/github/wrburgess/kc-tennis)
 * [simple_form](https://github.com/heartcombo/simple_form)
 

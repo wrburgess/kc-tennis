@@ -7,18 +7,14 @@ describe 'Admin Dashboard', type: :feature do
   let(:sp_index) { create(:system_permission, name: 'Dashboard Index', resource: 'Dashboard', operation: 'index') }
   let(:policy) { described_class.new(user, :dashboard) }
 
-  before do
-    login_as(user, scope: :user)
-  end
-
   context 'when user is authorized' do
-    before do
+    scenario 'User visits dashboard' do
       system_role.system_permissions << sp_index
       system_group.system_roles << system_role
       system_group.users << user
-    end
 
-    scenario 'User visits dashboard' do
+      login_as(user, scope: :user)
+
       visit admin_root_path
 
       expect(page).to have_current_path(admin_root_path)
@@ -26,12 +22,23 @@ describe 'Admin Dashboard', type: :feature do
     end
   end
 
-  context 'when user is not authorized' do
-    scenario 'User is redirected from dashboard' do
+  context 'when user is not authenticated' do
+    scenario 'User is redirected from dashboard to login' do
       visit admin_root_path
 
-      expect(page).to have_current_path(root_path)
-      expect(page).to have_text('You are not authorized to perform this action')
+      expect(page).to have_current_path(new_user_session_path)
+      expect(page).to have_text('You need to sign in')
+    end
+  end
+
+  context 'when user is not authorized' do
+    scenario 'User is redirected from dashboard' do
+      login_as(user, scope: :user)
+
+      visit admin_root_path
+
+      expect(page).to have_current_path(admin_root_path)
+      expect(page).to have_text("You don't have permission to access this page")
     end
   end
 end

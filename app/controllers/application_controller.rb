@@ -27,6 +27,11 @@ class ApplicationController < ActionController::Base
 
   def user_not_authorized
     flash[:error] = 'You are not authorized to perform this action.'
-    redirect_to(root_path)
+
+    render(
+      file: Rails.public_path.join('401.html'),
+      status: :unauthorized,
+      layout: false
+    )
   end
 end

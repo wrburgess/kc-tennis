@@ -24,7 +24,7 @@
         <% card.with_link(name: "System Users", url: polymorphic_path([:admin, User]), policy: User) %>
       <% end %>
     </div>
-    
+
     <div class="col-6">
       <%= render Admin::DashboardCard::Component.new(title: "Development") do |card| %>
         <% card.with_link(name: "KC Tennis (Staging)", url: 'https://staging.kc.tennis', new_window: true) %>
@@ -60,6 +60,7 @@
         <% card.with_link(name: "PostgreSQL", url: 'https://www.postgresql.org/', new_window: true) %>
         <% card.with_link(name: "Puma", url: 'https://puma.io/', new_window: true) %>
         <% card.with_link(name: "Pundit", url: 'https://github.com/varvet/pundit', new_window: true) %>
+        <% card.with_link(name: "Pretender", url: 'https://github.com/ankane/pretender', new_window: true) %>
         <% card.with_link(name: "Ransack", url: 'https://activerecord-hackery.github.io/ransack/', new_window: true) %>
         <% card.with_link(name: "Rspec", url: 'https://rspec.info/', new_window: true) %>
         <% card.with_link(name: "Ruby on Rails", url: 'https://rubyonrails.org/', new_window: true) %>
