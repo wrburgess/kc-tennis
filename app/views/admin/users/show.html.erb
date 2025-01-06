@@ -10,4 +10,7 @@
     <% table.with_row(name: "Created at", value: default_date_format(@instance.created_at)) %>
     <% table.with_row(name: "Updated at", value: default_date_format(@instance.updated_at)) %>
   <% end %>
+  <%= render Admin::TableForShow::Component.new(title: 'Admin') do |table| %>
+    <% table.with_row(name: "Act As User", value: link_to("Impersonate", polymorphic_path([:impersonate, :admin, @instance]), method: :get, data: { turbo: false })) %>
+  <% end %>
 <% end %>

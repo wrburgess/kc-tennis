@@ -27,6 +27,23 @@ describe User, type: :model do
     end
   end
 
+  describe '#has_system_permission?' do
+    it 'returns true when user has permissions' do
+      user = create(:user)
+      permission = create(:system_permission)
+      role = create(:system_role, system_permissions: [permission])
+      group = create(:system_group, system_roles: [role])
+      user.system_groups << group
+
+      expect(user.has_system_permission?).to be true
+    end
+
+    it 'returns false when user has no permissions' do
+      user = create(:user)
+      expect(user.has_system_permission?).to be false
+    end
+  end
+
   describe '#full_name' do
     it 'renders the user first and last name separated by a space' do
       user = create(:user, first_name: 'Bubba', last_name: 'Jones')

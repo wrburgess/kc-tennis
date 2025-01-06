@@ -50,6 +50,10 @@ class User < ApplicationRecord
     system_permissions.where(resource:, operation:).exists?
   end
 
+  def has_system_permission?
+    system_permissions.exists?
+  end
+
   def name
     full_name
   end
