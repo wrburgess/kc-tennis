@@ -9,6 +9,7 @@ gem 'rails', '8.0.1'
 # gem install foreman
 # gem install debug
 
+gem 'awesome_print', '1.9.2'
 gem 'aws-sdk-s3', '1.177.0'
 gem 'aws-sdk-sns', '1.92.0'
 gem 'blazer', '3.1.0'

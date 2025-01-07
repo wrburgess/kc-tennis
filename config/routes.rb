@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   root to: "static#index"
   get "up" => "rails/health#show", as: :rails_health_check
+  get "/user/status", to: "static#impersonation_status", as: :impersonation_status
 
   concern :archivable do
     member do

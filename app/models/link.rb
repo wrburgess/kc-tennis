@@ -26,7 +26,7 @@ class Link < ApplicationRecord
   end
 
   def self.default_sort
-    [name: :asc, created_at: :desc]
+    ['url asc', 'created_at desc']
   end
 
   def name

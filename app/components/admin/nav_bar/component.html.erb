@@ -23,6 +23,7 @@
         <% end %>
 
         <%= render Admin::NavItem::Component.new(title: "Management") do |nav_item| %>
+          <% nav_item.with_dropdown_item(resource: DataLog, name: "Data Logs", path: admin_data_logs_path) %>
           <% nav_item.with_dropdown_item(resource: User, name: "Users", path: admin_users_path) %>
         <% end %>
   

@@ -106,12 +106,17 @@ class Admin::UsersController < AdminController
   def impersonate
     authorize(controller_class)
     user = User.find(params[:id])
+
     impersonate_user(user)
+
+    user.log(user: true_user, operation: action_name, meta: user.to_json)
     redirect_to root_path
   end
 
   def stop_impersonating
     authorize(controller_class)
+
+    current_user.log(user: true_user, operation: action_name, meta: current_user.to_json)
     stop_impersonating_user
     redirect_to admin_root_path
   end

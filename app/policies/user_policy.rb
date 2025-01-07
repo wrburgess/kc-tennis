@@ -8,6 +8,6 @@ class UserPolicy < ApplicationPolicy
   end
 
   def stop_impersonating?
-    user_access_authorized?(:impersonate)
+    true
   end
 end
