@@ -88,12 +88,12 @@ Rails.application.routes.draw do
 
     resources :users, concerns: :collection_exportable do
       member do
-        get :impersonate
+        post :impersonate
         put :trigger_password_reset_email
       end
 
       collection do
-        get :stop_impersonating
+        post :stop_impersonating
       end
     end
   end

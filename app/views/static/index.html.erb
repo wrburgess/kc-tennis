@@ -1,8 +1,7 @@
 This is the static#index view.
 
 <% if current_user != true_user %>
-  You (<%= true_user.name %>) are signed in as <%= current_user.name %><br/>
-  <%= link_to("Stop Impersonating", stop_impersonating_admin_users_path, data: { turbo: false }) %>
+  You (<%= true_user.name %>) are signed in as <%= current_user.name %>
 <% else %>
   You are <%= current_user.full_name if current_user %>
 <% end %>
