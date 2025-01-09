@@ -1,5 +1,4 @@
 <ul class="<%= style[:base] %>">
-  <%= link_to "Support", "https://www.kc.tennis/support", class: "nav-item nav-link", target: "_blank" %>
   <% if @user_signed_in %>
     <div class="d-flex align-items-center text-decoration-none text-light ms-2">
       (<%= current_user.full_name if current_user.present? %>)

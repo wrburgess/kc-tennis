@@ -13,18 +13,18 @@
         </ul>
 
         <%= render Admin::NavItem::Component.new(title: "Sites") do |nav_item| %>
-          <% nav_item.with_dropdown_item(resource: nil, name: "Staging", path: staging_site_url, new_window: true) %>
           <% nav_item.with_dropdown_item(resource: nil, name: "Production", path: production_site_url, new_window: true) %>
+          <% nav_item.with_dropdown_item(resource: nil, name: "Staging", path: staging_site_url, new_window: true) %>
         <% end %>
 
         <%= render Admin::NavItem::Component.new(title: "Data") do |nav_item| %>
-          <% nav_item.with_dropdown_item(resource: Link, name: "Links", path: admin_links_path) %>
           <% nav_item.with_dropdown_item(resource: Contact, name: "Contacts", path: admin_contacts_path) %>
+          <% nav_item.with_dropdown_item(resource: Link, name: "Links", path: admin_links_path) %>
         <% end %>
 
         <%= render Admin::NavItem::Component.new(title: "Management") do |nav_item| %>
           <% nav_item.with_dropdown_item(resource: DataLog, name: "Data Logs", path: admin_data_logs_path) %>
-          <% nav_item.with_dropdown_item(resource: User, name: "Users", path: admin_users_path) %>
+          <% nav_item.with_dropdown_item(resource: User, name: "System Users", path: admin_users_path) %>
         <% end %>
   
         <%= render Admin::UserLogin::Component.new(user_signed_in: user_signed_in?) %>
