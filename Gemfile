@@ -56,7 +56,7 @@ group :development do
   gem 'bundler-audit', '0.9.2', require: false
   gem 'lookbook', '2.3.4'
   gem 'rspec-rails', '7.1.0'
-  gem 'rubocop', '1.69.2', require: false
+  gem 'rubocop', '1.70.0', require: false
   gem 'web-console', '4.2.1'
 end
 
