@@ -25,6 +25,7 @@ gem 'jbuilder', '2.13.0'
 gem 'jsbundling-rails', '1.3.1'
 gem 'kamal', '2.4.0', require: false
 gem 'maintenance_tasks', '2.10.1'
+gem 'noticed', '2.5.1'
 gem 'pagy', '9.3.3'
 gem 'pg', '1.5.9'
 gem 'pghero', '3.6.1', '>= 2'
@@ -43,7 +44,7 @@ gem 'tzinfo-data', '1.2024.2'
 gem 'view_component', '3.21.0'
 
 group :production, :staging do
-  gem 'honeybadger', '5.26.1'
+  gem 'honeybadger', '5.26.2'
 end
 
 group :development, :test do
