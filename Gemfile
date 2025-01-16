@@ -10,7 +10,7 @@ gem 'rails', '8.0.1'
 # gem install debug
 
 gem 'awesome_print', '1.9.2'
-gem 'aws-sdk-s3', '1.177.0'
+gem 'aws-sdk-s3', '1.178.0'
 gem 'aws-sdk-sns', '1.92.0'
 gem 'blazer', '3.1.0'
 gem 'bootsnap', '1.18.4', require: false
