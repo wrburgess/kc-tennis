@@ -39,7 +39,7 @@ gem 'solid_cache', '1.0.6'
 gem 'stimulus-rails', '1.3.4'
 gem 'thruster', '0.1.10', require: false
 gem 'turbo-rails', '2.0.11'
-gem 'tzinfo-data', '1.2024.2'
+gem 'tzinfo-data', '1.2025.1'
 gem 'view_component', '3.21.0'
 
 group :production, :staging do
