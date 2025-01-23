@@ -20,7 +20,7 @@ gem 'cssbundling-rails', '1.4.1'
 gem 'csv', '3.3.2'
 gem 'devise', '4.9.4'
 gem 'faker', '3.5.1'
-gem 'good_job', '4.7.0'
+gem 'good_job', '4.8.0'
 gem 'jbuilder', '2.13.0'
 gem 'jsbundling-rails', '1.3.1'
 gem 'kamal', '2.4.0', require: false
