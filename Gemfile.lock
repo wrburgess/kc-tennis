@@ -301,7 +301,7 @@ GEM
       date
       stringio
     public_suffix (6.0.1)
-    puma (6.5.0)
+    puma (6.6.0)
       nio4r (~> 2.0)
     pundit (2.4.0)
       activesupport (>= 3.0.0)
@@ -519,7 +519,7 @@ DEPENDENCIES
   pghero (>= 2, = 3.6.1)
   pretender (= 0.5.0)
   propshaft (= 1.1.0)
-  puma (= 6.5.0)
+  puma (= 6.6.0)
   pundit (= 2.4.0)
   rails (= 8.0.1)
   rails-controller-testing (= 1.0.5)
