@@ -24,7 +24,7 @@ gem 'good_job', '4.7.0'
 gem 'jbuilder', '2.13.0'
 gem 'jsbundling-rails', '1.3.1'
 gem 'kamal', '2.4.0', require: false
-gem 'maintenance_tasks', '2.10.1'
+gem 'maintenance_tasks', '2.11.0'
 gem 'pagy', '9.3.3'
 gem 'pg', '1.5.9'
 gem 'pghero', '3.6.1', '>= 2'
