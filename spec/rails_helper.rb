@@ -63,6 +63,28 @@ RSpec.configure do |config|
 
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
+
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.around(:each) do |example|
+    unless example.metadata[:skip_db_cleaner]
+      DatabaseCleaner.cleaning do
+        example.run
+      end
+    end
+  end
+
+  # TODO: Remove below adjustments when Devise fixes https://github.com/heartcombo/devise/issues/5705
+  config.before(:each, type: :controller) do
+    Rails.application.reload_routes_unless_loaded
+  end
+
+  config.before(:each, type: :component) do
+    Rails.application.reload_routes_unless_loaded
+  end
 end
 
 Shoulda::Matchers.configure do |config|
