@@ -23,7 +23,7 @@ gem 'faker', '3.5.1'
 gem 'good_job', '4.8.2'
 gem 'jbuilder', '2.13.0'
 gem 'jsbundling-rails', '1.3.1'
-gem 'kamal', '2.4.0', require: false
+gem 'kamal', '2.5.0', require: false
 gem 'maintenance_tasks', '2.11.0'
 gem 'pagy', '9.3.3'
 gem 'pg', '1.5.9'
@@ -57,7 +57,7 @@ group :development do
   gem 'bullet', '8.0.0'
   gem 'bundler-audit', '0.9.2', require: false
   gem 'lookbook', '2.3.4'
-  gem 'rubocop', '1.71.1', require: false
+  gem 'rubocop', '1.71.2', require: false
   gem 'web-console', '4.2.1'
 end
 
