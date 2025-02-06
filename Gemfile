@@ -35,7 +35,7 @@ gem 'pundit', '2.4.0'
 gem 'ransack', '4.2.1'
 gem 'roo', '2.10.1'
 gem 'simple_form', '5.3.1'
-gem 'solid_cache', '1.0.6'
+gem 'solid_cache', '1.0.7'
 gem 'stimulus-rails', '1.3.4'
 gem 'thruster', '0.1.10', require: false
 gem 'turbo-rails', '2.0.11'
