@@ -23,7 +23,7 @@ gem 'faker', '3.5.1'
 gem 'good_job', '4.8.2'
 gem 'jbuilder', '2.13.0'
 gem 'jsbundling-rails', '1.3.1'
-gem 'kamal', '2.5.0', require: false
+gem 'kamal', '2.5.1', require: false
 gem 'maintenance_tasks', '2.11.0'
 gem 'pagy', '9.3.3'
 gem 'pg', '1.5.9'
@@ -35,7 +35,7 @@ gem 'pundit', '2.4.0'
 gem 'ransack', '4.2.1'
 gem 'roo', '2.10.1'
 gem 'simple_form', '5.3.1'
-gem 'solid_cache', '1.0.6'
+gem 'solid_cache', '1.0.7'
 gem 'stimulus-rails', '1.3.4'
 gem 'thruster', '0.1.10', require: false
 gem 'turbo-rails', '2.0.11'
@@ -49,7 +49,7 @@ end
 group :development, :test do
   gem 'debug', '1.10.0'
   gem 'factory_bot_rails', '6.4.4'
-  gem 'rspec-rails', '7.1.0'
+  gem 'rspec-rails', '7.1.1'
 end
 
 group :development do
