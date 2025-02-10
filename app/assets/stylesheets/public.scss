@@ -4,3 +4,54 @@
 $bootstrap-icons-font-src: url("bootstrap-icons.woff2") format("woff2"), url("fonts/bootstrap-icons.woff") format("woff") !default;
 
 // Your public-specific styles here
+
+.winner {
+  color: green;
+  font-weight: bold;
+
+  .player-seed {
+    border-color: green;
+  }
+}
+
+.player-seed {
+  align-items: center;
+  border-radius: 50%;
+  border: 2px solid black;
+  display: inline-flex;
+  font-size: 0.8rem;
+  font-weight: bold;
+  height: 1.5rem;
+  justify-content: center;
+  margin-right: 0.5rem;
+  width: 1.5rem;
+}
+
+.player-last-name {
+  font-size: 1.2rem;
+}
+
+.player-ratings {
+  font-size: 0.8rem;
+}
+
+.match-score {
+  width: 100%;
+  max-width: 200px; /* Set a fixed width for the card */
+
+  .header {
+    background-color: black;
+    color: white;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-align: left;
+    padding-left: 0.5rem;
+    position: relative;
+    top: -15px;
+    left: -15px;
+    right: -15px;
+    width: calc(100% + 30px);
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+  }
+}

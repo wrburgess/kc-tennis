@@ -1,7 +1,411 @@
 This is the static#index view.
+<div class="container my-5">
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="round1-tab" data-bs-toggle="tab" data-bs-target="#round1" type="button" role="tab" aria-controls="round1" aria-selected="true">Round Robin</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="round2-tab" data-bs-toggle="tab" data-bs-target="#round2" type="button" role="tab" aria-controls="round2" aria-selected="false">Playoffs</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="championship-tab" data-bs-toggle="tab" data-bs-target="#championship" type="button" role="tab" aria-controls="championship" aria-selected="false">Championship</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="rankings-tab" data-bs-toggle="tab" data-bs-target="#rankings" type="button" role="tab" aria-controls="rankings" aria-selected="false">Rankings</button>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="round1" role="tabpanel" aria-labelledby="round1-tab">
+      <div>
+        <div class="row mb-4">
+            <div class="col">
+                <div class="d-flex overflow-auto bg-light p-3 rounded">
+                    <div class="match-score p-3 bg-light border rounded me-3 col-2"><!-- .match-score -->
+                      <div class="header text-white py-2">Group A - Court 7 - Match 1</div><!-- .header -->
+                      <div class="d-flex justify-content-between align-items-center mb-3 winner"><!-- First player row -->
+                        <div class="player-info"><!-- .player-info -->
+                          <span class="player-seed">1</span>
+                          <span class="player-first-name">Robert</span><br>
+                          <span class="player-last-name">Halksworth</span><br>
+                          <span class="player-ratings">28.4 WTN / 3.5 C</span>
+                        </div><!-- /.player-info -->
+                        <div class="score"><!-- .score -->
+                          <span class="player-score">10</span>
+                        </div><!-- /.score -->
+                      </div><!-- /First player row -->
+                      <div class="d-flex justify-content-between align-items-center"><!-- Second player row -->
+                        <div class="player-info"><!-- .player-info -->
+                          <span class="player-seed">3</span>
+                          <span class="player-first-name">Johnny</span><br>
+                          <span class="player-last-name">Huynh</span><br>
+                          <span class="player-ratings">29.1 WTN / 3.5 C</span>
+                        </div><!-- /.player-info -->
+                        <div class="score"><!-- .score -->
+                          <span class="player-score">6</span>
+                        </div><!-- /.score -->
+                      </div><!-- /Second player row -->
+                    </div><!-- /.match-score -->
+                    <div class="match-score p-3 bg-light border rounded me-3 col-2"><!-- .match-score -->
+                      <div class="header text-white py-2">Group A - Court 7 - Match 2</div><!-- .header -->
+                      <div class="d-flex justify-content-between align-items-center mb-3"><!-- First player row -->
+                        <div class="player-info"><!-- .player-info -->
+                          <span class="player-seed">5</span>
+                          <span class="player-first-name">Denny</span><br>
+                          <span class="player-last-name">Lawlor</span><br>
+                          <span class="player-ratings">00.0 WTN / 3.5 S</span>
+                        </div><!-- /.player-info -->
+                        <div class="score"><!-- .score -->
+                          <span class="player-score">9</span>
+                        </div><!-- /.score -->
+                      </div><!-- /First player row -->
+                      <div class="d-flex justify-content-between align-items-center winner"><!-- Second player row -->
+                        <div class="player-info"><!-- .player-info -->
+                          <span class="player-seed">7</span>
+                          <span class="player-first-name">Tom</span><br>
+                          <span class="player-last-name">Rosewicz</span><br>
+                          <span class="player-ratings">31.6 WTN / 3.5 C</span>
+                        </div><!-- /.player-info -->
+                        <div class="score"><!-- .score -->
+                          <span class="player-score">10</span>
+                        </div><!-- /.score -->
+                      </div><!-- /Second player row -->
+                    </div><!-- /.match-score -->
+                    <div class="match-score p-3 bg-light border rounded me-3 col-2"><!-- .match-score -->
+                      <div class="header text-white py-2">Group A - Court 7 - Match 3</div><!-- .header -->
+                      <div class="d-flex justify-content-between align-items-center mb-3 winner"><!-- First player row -->
+                        <div class="player-info"><!-- .player-info -->
+                          <span class="player-seed">1</span>
+                          <span class="player-first-name">Robert</span><br>
+                          <span class="player-last-name">Halksworth</span><br>
+                          <span class="player-ratings">28.4 WTN / 3.5 C</span>
+                        </div><!-- /.player-info -->
+                        <div class="score"><!-- .score -->
+                          <span class="player-score">10</span>
+                        </div><!-- /.score -->
+                      </div><!-- /First player row -->
+                      <div class="d-flex justify-content-between align-items-center"><!-- Second player row -->
+                        <div class="player-info"><!-- .player-info -->
+                          <span class="player-seed">5</span>
+                          <span class="player-first-name">Denny</span><br>
+                          <span class="player-last-name">Lawlor</span><br>
+                          <span class="player-ratings">00.0 WTN / 3.5 S</span>
+                        </div><!-- /.player-info -->
+                        <div class="score"><!-- .score -->
+                          <span class="player-score">4</span>
+                        </div><!-- /.score -->
+                      </div><!-- /Second player row -->
+                    </div><!-- /.match-score -->
+                    <div class="match-score p-3 bg-light border rounded me-3 col-2"><!-- .match-score -->
+                      <div class="header text-white py-2">Group A - Court 7 - Match 4</div><!-- .header -->
+                      <div class="d-flex justify-content-between align-items-center mb-3 winner"><!-- First player row -->
+                        <div class="player-info"><!-- .player-info -->
+                          <span class="player-seed">3</span>
+                          <span class="player-first-name">Johnny</span><br>
+                          <span class="player-last-name">Huynh</span><br>
+                          <span class="player-ratings">29.1 WTN / 3.5 C</span>
+                        </div><!-- /.player-info -->
+                        <div class="score"><!-- .score -->
+                          <span class="player-score">10</span>
+                        </div><!-- /.score -->
+                      </div><!-- /First player row -->
+                      <div class="d-flex justify-content-between align-items-center"><!-- Second player row -->
+                        <div class="player-info"><!-- .player-info -->
+                          <span class="player-seed">7</span>
+                          <span class="player-first-name">Tom</span><br>
+                          <span class="player-last-name">Rosewicz</span><br>
+                          <span class="player-ratings">31.6 WTN / 3.5 C</span>
+                        </div><!-- /.player-info -->
+                        <div class="score"><!-- .score -->
+                          <span class="player-score">2</span>
+                        </div><!-- /.score -->
+                      </div><!-- /Second player row -->
+                    </div><!-- /.match-score -->
+                    <div class="match-score p-3 bg-light border rounded me-3 col-2"><!-- .match-score -->
+                      <div class="header text-white py-2">Group A - Court 7 - Match 5</div><!-- .header -->
+                      <div class="d-flex justify-content-between align-items-center mb-3 winner"><!-- First player row -->
+                        <div class="player-info"><!-- .player-info -->
+                          <span class="player-seed">1</span>
+                          <span class="player-first-name">Robert</span><br>
+                          <span class="player-last-name">Halksworth</span><br>
+                          <span class="player-ratings">28.4 WTN / 3.5 C</span>
+                        </div><!-- /.player-info -->
+                        <div class="score"><!-- .score -->
+                          <span class="player-score">10</span>
+                        </div><!-- /.score -->
+                      </div><!-- /First player row -->
+                      <div class="d-flex justify-content-between align-items-center"><!-- Second player row -->
+                        <div class="player-info"><!-- .player-info -->
+                          <span class="player-seed">7</span>
+                          <span class="player-first-name">Tom</span><br>
+                          <span class="player-last-name">Rosewicz</span><br>
+                          <span class="player-ratings">31.6 WTN / 3.5 C</span>
+                        </div><!-- /.player-info -->
+                        <div class="score"><!-- .score -->
+                          <span class="player-score">2</span>
+                        </div><!-- /.score -->
+                      </div><!-- /Second player row -->
+                    </div><!-- /.match-score -->
+                    <div class="match-score p-3 bg-light border rounded me-3 col-2"><!-- .match-score -->
+                      <div class="header text-white py-2">Group A - Court 7 - Match 6</div><!-- .header -->
+                      <div class="d-flex justify-content-between align-items-center mb-3"><!-- First player row -->
+                        <div class="player-info"><!-- .player-info -->
+                          <span class="player-seed">3</span>
+                          <span class="player-first-name">Johnny</span><br>
+                          <span class="player-last-name">Huynh</span><br>
+                          <span class="player-ratings">29.1 WTN / 3.5 C</span>
+                        </div><!-- /.player-info -->
+                        <div class="score"><!-- .score -->
+                          <span class="player-score">1</span>
+                        </div><!-- /.score -->
+                      </div><!-- /First player row -->
+                      <div class="d-flex justify-content-between align-items-center winner"><!-- Second player row -->
+                        <div class="player-info"><!-- .player-info -->
+                          <span class="player-seed">5</span>
+                          <span class="player-first-name">Denny</span><br>
+                          <span class="player-last-name">Lawlor</span><br>
+                          <span class="player-ratings">00.0 WTN / 3.5 S</span>
+                        </div><!-- /.player-info -->
+                        <div class="score"><!-- .score -->
+                          <span class="player-score">10</span>
+                        </div><!-- /.score -->
+                      </div><!-- /Second player row -->
+                    </div><!-- /.match-score -->
+                    <!-- add more matchups as needed -->
+                </div>
+            </div>
+        </div>
+        <div class="row mb-4">
+          <div class="col">
+            <div class="d-flex overflow-auto bg-light p-3 rounded">
+              <div class="match-score p-3 bg-light border rounded me-3 col-2"><!-- .match-score -->
+                <div class="header text-white py-2">Group B - Court 8 - Match 1</div><!-- .header -->
+                <div class="d-flex justify-content-between align-items-center mb-3 winner"><!-- First player row -->
+                  <div class="player-info"><!-- .player-info -->
+                    <span class="player-seed">2</span>
+                    <span class="player-first-name">Marc</span><br>
+                    <span class="player-last-name">Morris</span><br>
+                    <span class="player-ratings">28.7 WTN / 3.5 C</span>
+                  </div><!-- /.player-info -->
+                  <div class="score"><!-- .score -->
+                    <span class="player-score">10</span>
+                  </div><!-- /.score -->
+                </div><!-- /First player row -->
+                <div class="d-flex justify-content-between align-items-center"><!-- Second player row -->
+                  <div class="player-info"><!-- .player-info -->
+                    <span class="player-seed">4</span>
+                    <span class="player-first-name">Todd</span><br>
+                    <span class="player-last-name">Schemmel</span><br>
+                    <span class="player-ratings">30.0 WTN / 3.5 C</span>
+                  </div><!-- /.player-info -->
+                  <div class="score"><!-- .score -->
+                    <span class="player-score">6</span>
+                  </div><!-- /.score -->
+                </div><!-- /Second player row -->
+              </div><!-- /.match-score -->
 
-<% if current_user != true_user %>
-  You (<%= true_user.name %>) are signed in as <%= current_user.name %>
-<% else %>
-  You are <%= current_user.full_name if current_user %>
-<% end %>
+              <div class="match-score p-3 bg-light border rounded me-3 col-2"><!-- .match-score -->
+                <div class="header text-white py-2">Group B - Court 8 - Match 2</div><!-- .header -->
+                <div class="d-flex justify-content-between align-items-center mb-3"><!-- First player row -->
+                  <div class="player-info"><!-- .player-info -->
+                    <span class="player-seed">6</span>
+                    <span class="player-first-name">JT</span><br>
+                    <span class="player-last-name">Martin</span><br>
+                    <span class="player-ratings">00.0 WTN / 3.0 C</span>
+                  </div><!-- /.player-info -->
+                  <div class="score"><!-- .score -->
+                    <span class="player-score">9</span>
+                  </div><!-- /.score -->
+                </div><!-- /First player row -->
+                <div class="d-flex justify-content-between align-items-center winner"><!-- Second player row -->
+                  <div class="player-info"><!-- .player-info -->
+                    <span class="player-seed">8</span>
+                    <span class="player-first-name">Brian</span><br>
+                    <span class="player-last-name">James</span><br>
+                    <span class="player-ratings">31.6 WTN / 3.0 C</span>
+                  </div><!-- /.player-info -->
+                  <div class="score"><!-- .score -->
+                    <span class="player-score">10</span>
+                  </div><!-- /.score -->
+                </div><!-- /Second player row -->
+              </div><!-- /.match-score -->
+
+              <div class="match-score p-3 bg-light border rounded me-3 col-2"><!-- .match-score -->
+                <div class="header text-white py-2">Group B - Court 8 - Match 3</div><!-- .header -->
+                <div class="d-flex justify-content-between align-items-center mb-3 winner"><!-- First player row -->
+                  <div class="player-info"><!-- .player-info -->
+                    <span class="player-seed">2</span>
+                    <span class="player-first-name">Marc</span><br>
+                    <span class="player-last-name">Morris</span><br>
+                    <span class="player-ratings">28.7 WTN / 3.5 C</span>
+                  </div><!-- /.player-info -->
+                  <div class="score"><!-- .score -->
+                    <span class="player-score">10</span>
+                  </div><!-- /.score -->
+                </div><!-- /First player row -->
+                <div class="d-flex justify-content-between align-items-center"><!-- Second player row -->
+                  <div class="player-info"><!-- .player-info -->
+                    <span class="player-seed">6</span>
+                    <span class="player-first-name">JT</span><br>
+                    <span class="player-last-name">Martin</span><br>
+                    <span class="player-ratings">00.0 WTN / 3.0 C</span>
+                  </div><!-- /.player-info -->
+                  <div class="score"><!-- .score -->
+                    <span class="player-score">4</span>
+                  </div><!-- /.score -->
+                </div><!-- /Second player row -->
+              </div><!-- /.match-score -->
+
+              <div class="match-score p-3 bg-light border rounded me-3 col-2"><!-- .match-score -->
+                <div class="header text-white py-2">Group B - Court 8 - Match 4</div><!-- .header -->
+                <div class="d-flex justify-content-between align-items-center mb-3 winner"><!-- First player row -->
+                  <div class="player-info"><!-- .player-info -->
+                    <span class="player-seed">4</span>
+                    <span class="player-first-name">Todd</span><br>
+                    <span class="player-last-name">Schemmel</span><br>
+                    <span class="player-ratings">30.0 WTN / 3.5 C</span>
+                  </div><!-- /.player-info -->
+                  <div class="score"><!-- .score -->
+                    <span class="player-score">10</span>
+                  </div><!-- /.score -->
+                </div><!-- /First player row -->
+                <div class="d-flex justify-content-between align-items-center"><!-- Second player row -->
+                  <div class="player-info"><!-- .player-info -->
+                    <span class="player-seed">8</span>
+                    <span class="player-first-name">Brian</span><br>
+                    <span class="player-last-name">James</span><br>
+                    <span class="player-ratings">31.6 WTN / 3.0 C</span>
+                  </div><!-- /.player-info -->
+                  <div class="score"><!-- .score -->
+                    <span class="player-score">2</span>
+                  </div><!-- /.score -->
+                </div><!-- /Second player row -->
+              </div><!-- /.match-score -->
+
+              <div class="match-score p-3 bg-light border rounded me-3 col-2"><!-- .match-score -->
+                <div class="header text-white py-2">Group B - Court 8 - Match 5</div><!-- .header -->
+                <div class="d-flex justify-content-between align-items-center mb-3 winner"><!-- First player row -->
+                  <div class="player-info"><!-- .player-info -->
+                    <span class="player-seed">2</span>
+                    <span class="player-first-name">Marc</span><br>
+                    <span class="player-last-name">Morris</span><br>
+                    <span class="player-ratings">28.7 WTN / 3.5 C</span>
+                  </div><!-- /.player-info -->
+                  <div class="score"><!-- .score -->
+                    <span class="player-score">10</span>
+                  </div><!-- /.score -->
+                </div><!-- /First player row -->
+                <div class="d-flex justify-content-between align-items-center"><!-- Second player row -->
+                  <div class="player-info"><!-- .player-info -->
+                    <span class="player-seed">6</span>
+                    <span class="player-first-name">JT</span><br>
+                    <span class="player-last-name">Martin</span><br>
+                    <span class="player-ratings">00.0 WTN / 3.0 C</span>
+                  </div><!-- /.player-info -->
+                  <div class="score"><!-- .score -->
+                    <span class="player-score">4</span>
+                  </div><!-- /.score -->
+                </div><!-- /Second player row -->
+              </div><!-- /.match-score -->
+
+              <div class="match-score p-3 bg-light border rounded me-3 col-2"><!-- .match-score -->
+                <div class="header text-white py-2">Group B - Court 8 - Match 6</div><!-- .header -->
+                <div class="d-flex justify-content-between align-items-center mb-3 winner"><!-- First player row -->
+                  <div class="player-info"><!-- .player-info -->
+                    <span class="player-seed">4</span>
+                    <span class="player-first-name">Todd</span><br>
+                    <span class="player-last-name">Schemmel</span><br>
+                    <span class="player-ratings">30.0 WTN / 3.5 C</span>
+                  </div><!-- /.player-info -->
+                  <div class="score"><!-- .score -->
+                    <span class="player-score">10</span>
+                  </div><!-- /.score -->
+                </div><!-- /First player row -->
+                <div class="d-flex justify-content-between align-items-center"><!-- Second player row -->
+                  <div class="player-info"><!-- .player-info -->
+                    <span class="player-seed">8</span>
+                    <span class="player-first-name">Brian</span><br>
+                    <span class="player-last-name">James</span><br>
+                    <span class="player-ratings">31.6 WTN / 3.0 C</span>
+                  </div><!-- /.player-info -->
+                  <div class="score"><!-- .score -->
+                    <span class="player-score">2</span>
+                  </div><!-- /.score -->
+                </div><!-- /Second player row -->
+              </div><!-- /.match-score -->
+
+              <div class="match-score p-3 bg-light border rounded me-3 col-2"><!-- .match-score -->
+                <div class="header text-white py-2">Group B - Court 8 - Match 7</div><!-- .header -->
+                <div class="d-flex justify-content-between align-items-center mb-3 winner"><!-- First player row -->
+                  <div class="player-info"><!-- .player-info -->
+                    <span class="player-seed">2</span>
+                    <span class="player-first-name">Marc</span><br>
+                    <span class="player-last-name">Morris</span><br>
+                    <span class="player-ratings">28.7 WTN / 3.5 C</span>
+                  </div><!-- /.player-info -->
+                  <div class="score"><!-- .score -->
+                    <span class="player-score">10</span>
+                  </div><!-- /.score -->
+                </div><!-- /First player row -->
+                <div class="d-flex justify-content-between align-items-center"><!-- Second player row -->
+                  <div class="player-info"><!-- .player-info -->
+                    <span class="player-seed">8</span>
+                    <span class="player-first-name">Brian</span><br>
+                    <span class="player-last-name">James</span><br>
+                    <span class="player-ratings">31.6 WTN / 3.0 C</span>
+                  </div><!-- /.player-info -->
+                  <div class="score"><!-- .score -->
+                    <span class="player-score">4</span>
+                  </div><!-- /.score -->
+                </div><!-- /Second player row -->
+              </div><!-- /.match-score -->
+
+              <div class="match-score p-3 bg-light border rounded me-3 col-2"><!-- .match-score -->
+                <div class="header text-white py-2">Group B - Court 8 - Match 8</div><!-- .header -->
+                <div class="d-flex justify-content-between align-items-center mb-3 winner"><!-- First player row -->
+                  <div class="player-info"><!-- .player-info -->
+                    <span class="player-seed">4</span>
+                    <span class="player-first-name">Todd</span><br>
+                    <span class="player-last-name">Schemmel</span><br>
+                    <span class="player-ratings">30.0 WTN / 3.5 C</span>
+                  </div><!-- /.player-info -->
+                  <div class="score"><!-- .score -->
+                    <span class="player-score">10</span>
+                  </div><!-- /.score -->
+                </div><!-- /First player row -->
+                <div class="d-flex justify-content-between align-items-center"><!-- Second player row -->
+                  <div class="player-info"><!-- .player-info -->
+                    <span class="player-seed">6</span>
+                    <span class="player-first-name">JT</span><br>
+                    <span class="player-last-name">Martin</span><br>
+                    <span class="player-ratings">00.0 WTN / 3.0 C</span>
+                  </div><!-- /.player-info -->
+                  <div class="score"><!-- .score -->
+                    <span class="player-score">2</span>
+                  </div><!-- /.score -->
+                </div><!-- /Second player row -->
+              </div><!-- /.match-score -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="round2" role="tabpanel" aria-labelledby="round2-tab">
+      <div class="p-4">
+        <h1>Round 2</h1>
+        <p>This is the profile page. Information about the user goes here.</p>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="championship" role="tabpanel" aria-labelledby="championship-tab">
+      <div class="p-4">
+        <h1>Champ Match</h1>
+        <p>Get in touch with us through this contact page.</p>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="rankings" role="tabpanel" aria-labelledby="rankings-tab">
+      <div class="p-4">
+        <h1>Rankings</h1>
+        <p>Get in touch with us through this contact page.</p>
+      </div>
+    </div>
+  </div>
+</div>

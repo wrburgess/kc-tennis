@@ -9,6 +9,9 @@ application.debug = true
 
 window.Stimulus = application
 
+// Import Bootstrap JS
+import "bootstrap"
+
 // Import all public controllers
 import "./controllers"
 
