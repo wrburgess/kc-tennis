@@ -1,0 +1,25 @@
+<div class="match-score p-3 bg-light border rounded me-3 col-2"><!-- .match-score -->
+  <div class="header text-white py-2"><%= @match_record[:header] %></div><!-- .header -->
+  <div class="d-flex justify-content-between align-items-center mb-3 <%= @match_record[:player_1_status] %>"><!-- first player row -->
+    <div class="player-info"><!-- .player-info -->
+      <span class="player-seed"><%= @match_record[:player_1_seed] %></span>
+      <span class="player-first-name"><%= @match_record[:player_1][:first_name] %></span><br>
+      <span class="player-last-name"><%= @match_record[:player_1][:last_name] %></span><br>
+      <span class="player-ratings"><%= @match_record[:player_1][:wtn_singles_rating] %> WTN / <%= @match_record[:player_1][:ntrp_rating] %> NTRP</span>
+    </div><!-- /.player-info -->
+    <div class="score"><!-- .score -->
+      <span class="player-score"><%= @match_record[:player_1_final_score] %></span>
+    </div><!-- /.score -->
+  </div><!-- /first player row -->
+  <div class="d-flex justify-content-between align-items-center <%= @match_record[:player_2_status] %>"><!-- second player row -->
+    <div class="player-info"><!-- .player-info -->
+      <span class="player-seed"><%= @match_record[:player_2_seed] %></span>
+      <span class="player-first-name"><%= @match_record[:player_2][:first_name] %></span><br>
+      <span class="player-last-name"><%= @match_record[:player_2][:last_name] %></span><br>
+      <span class="player-ratings"><%= @match_record[:player_2][:wtn_singles_rating] %> WTN / <%= @match_record[:player_2][:ntrp_rating] %> NTRP</span>
+    </div><!-- /.player-info -->
+    <div class="score"><!-- .score -->
+      <span class="player-score"><%= @match_record[:player_2_final_score] %></span>
+    </div><!-- /.score -->
+  </div><!-- /second player row -->
+</div><!-- /.match-score -->

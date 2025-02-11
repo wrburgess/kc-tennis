@@ -1,0 +1,12 @@
+Event
+Tournament
+Match
+  match_type
+  header
+  player_1_id
+  player_2_id
+  player_1_status
+  player_2_status
+  player_1_score
+  player_2_score
+User

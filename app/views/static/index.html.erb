@@ -20,6 +20,7 @@ This is the static#index view.
         <div class="row mb-4">
             <div class="col">
                 <div class="d-flex overflow-auto bg-light p-3 rounded">
+                    <%= render TennisSinglesMatchCard::Component.new(match_record: @match_record) %>
                     <div class="match-score p-3 bg-light border rounded me-3 col-2"><!-- .match-score -->
                       <div class="header text-white py-2">Group A - Court 7 - Match 1</div><!-- .header -->
                       <div class="d-flex justify-content-between align-items-center mb-3 winner"><!-- First player row -->
