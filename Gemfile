@@ -10,8 +10,8 @@ gem 'rails', '8.0.1'
 # gem install debug
 
 gem 'awesome_print', '1.9.2'
-gem 'aws-sdk-s3', '1.180.0'
-gem 'aws-sdk-sns', '1.95.0'
+gem 'aws-sdk-s3', '1.182.0'
+gem 'aws-sdk-sns', '1.96.0'
 gem 'blazer', '3.1.0'
 gem 'bootsnap', '1.18.4', require: false
 gem 'caxlsx', '4.2.0'
@@ -43,7 +43,7 @@ gem 'tzinfo-data', '1.2025.1'
 gem 'view_component', '3.21.0'
 
 group :production, :staging do
-  gem 'honeybadger', '5.26.3'
+  gem 'honeybadger', '5.26.4'
 end
 
 group :development, :test do
@@ -57,7 +57,7 @@ group :development do
   gem 'bullet', '8.0.1'
   gem 'bundler-audit', '0.9.2', require: false
   gem 'lookbook', '2.3.4'
-  gem 'rubocop', '1.72.0', require: false
+  gem 'rubocop', '1.72.2', require: false
   gem 'web-console', '4.2.1'
 end
 
@@ -70,7 +70,7 @@ group :test do
   gem 'rspec-json_expectations', '2.2.0'
   gem 'rspec_junit_formatter', '0.6.0'
   gem 'rspec-longrun', '3.1.0'
-  gem 'selenium-webdriver', '4.28.0'
+  gem 'selenium-webdriver', '4.29.0'
   gem 'shoulda-matchers', '6.4.0'
   gem 'timecop', '0.9.10'
 end
