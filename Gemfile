@@ -38,7 +38,7 @@ gem 'simple_form', '5.3.1'
 gem 'solid_cache', '1.0.7'
 gem 'stimulus-rails', '1.3.4'
 gem 'thruster', '0.1.11', require: false
-gem 'turbo-rails', '2.0.11'
+gem 'turbo-rails', '2.0.12'
 gem 'tzinfo-data', '1.2025.1'
 gem 'view_component', '3.21.0'
 
