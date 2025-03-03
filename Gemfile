@@ -23,7 +23,7 @@ gem 'faker', '3.5.1'
 gem 'good_job', '4.9.0'
 gem 'jbuilder', '2.13.0'
 gem 'jsbundling-rails', '1.3.1'
-gem 'kamal', '2.5.2', require: false
+gem 'kamal', '2.5.3', require: false
 gem 'maintenance_tasks', '2.11.0'
 gem 'pagy', '9.3.3'
 gem 'pg', '1.5.9'
@@ -38,7 +38,7 @@ gem 'simple_form', '5.3.1'
 gem 'solid_cache', '1.0.7'
 gem 'stimulus-rails', '1.3.4'
 gem 'thruster', '0.1.11', require: false
-gem 'turbo-rails', '2.0.11'
+gem 'turbo-rails', '2.0.12'
 gem 'tzinfo-data', '1.2025.1'
 gem 'view_component', '3.21.0'
 
@@ -56,8 +56,8 @@ group :development do
   gem 'brakeman', '7.0.0', require: false
   gem 'bullet', '8.0.1'
   gem 'bundler-audit', '0.9.2', require: false
-  gem 'lookbook', '2.3.4'
-  gem 'rubocop', '1.72.2', require: false
+  gem 'lookbook', '2.3.5'
+  gem 'rubocop', '1.73.1', require: false
   gem 'web-console', '4.2.1'
 end
 
