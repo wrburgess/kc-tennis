@@ -11,7 +11,7 @@ gem 'rails', '8.0.1'
 
 gem 'awesome_print', '1.9.2'
 gem 'aws-sdk-s3', '1.182.0'
-gem 'aws-sdk-sns', '1.96.0'
+gem 'aws-sdk-sns', '1.97.0'
 gem 'blazer', '3.2.0'
 gem 'bootsnap', '1.18.4', require: false
 gem 'caxlsx', '4.2.0'
