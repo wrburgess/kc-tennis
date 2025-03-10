@@ -25,7 +25,7 @@ gem 'jbuilder', '2.13.0'
 gem 'jsbundling-rails', '1.3.1'
 gem 'kamal', '2.5.3', require: false
 gem 'maintenance_tasks', '2.11.0'
-gem 'pagy', '9.3.3'
+gem 'pagy', '9.3.4'
 gem 'pg', '1.5.9'
 gem 'pghero', '3.6.1', '>= 2'
 gem 'pretender', '0.5.0'
