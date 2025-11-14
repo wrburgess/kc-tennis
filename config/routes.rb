@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount MaintenanceTasks::Engine, at: "/maintenance_tasks"
   draw :external_urls
 
   devise_for :users
