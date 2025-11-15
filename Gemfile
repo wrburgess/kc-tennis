@@ -13,7 +13,7 @@ gem 'awesome_print', '1.9.2'
 gem 'aws-sdk-s3', '1.203.1'
 gem 'aws-sdk-sns', '1.108.0'
 gem 'blazer', '3.3.0'
-gem 'bootsnap', '1.18.6', require: false
+gem 'bootsnap', '1.19.0', require: false
 gem 'caxlsx', '4.4.0'
 gem 'caxlsx_rails', '0.6.4'
 gem 'cssbundling-rails', '1.4.3'
