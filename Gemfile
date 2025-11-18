@@ -13,7 +13,7 @@ gem 'awesome_print', '1.9.2'
 gem 'aws-sdk-s3', '1.203.1'
 gem 'aws-sdk-sns', '1.108.0'
 gem 'blazer', '3.3.0'
-gem 'bootsnap', '1.18.6', require: false
+gem 'bootsnap', '1.19.0', require: false
 gem 'caxlsx', '4.4.0'
 gem 'caxlsx_rails', '0.6.4'
 gem 'cssbundling-rails', '1.4.3'
@@ -25,7 +25,7 @@ gem 'jbuilder', '2.14.1'
 gem 'jsbundling-rails', '1.3.1'
 gem 'kamal', '2.8.2', require: false
 gem 'maintenance_tasks', '2.13.0'
-gem 'pagy', '9.3.3' # 43.0.5 breaking changes
+gem 'pagy', '9.3.3' # 43.0.6 breaking changes
 gem 'pg', '1.6.2'
 gem 'pghero', '3.7.0', '>= 2'
 gem 'pretender', '0.6.0'
