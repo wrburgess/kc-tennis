@@ -55,7 +55,7 @@ end
 group :development do
   gem 'brakeman', '7.1.1', require: false
   gem 'bullet', '8.1.0'
-  gem 'bundler-audit', '0.9.2', require: false
+  gem 'bundler-audit', '0.9.3', require: false
   gem 'lookbook', '2.3.13'
   gem 'rubocop', '1.81.7', require: false
   gem 'web-console', '4.2.1'
